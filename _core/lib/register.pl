@@ -9,7 +9,7 @@ my $mode = $::in{mode};
 if($mode eq 'register'){
   if(!checkToken($::in{_token})){ error('セッションの有効期限が切れたか、二重投稿です'); }
 
-  if($set::registerkey && $set::registerkey ne $::in{registerkey}){ error('登録キーが間違っています。'); }
+  if($set::registerkey && $set::registerkey ne $::in{registerkey}){ error('金鑰錯誤。'); }
   if($::in{password} ne $::in{password_confirm}){ error('パスワードの確認入力が一致しません'); }
   if ($::in{password} eq ''){ error('パスワードが入力されていません'); }
   else {

@@ -5,7 +5,7 @@
   <li><a href="./?mode=blanksheet<TMPL_IF type>&type=<TMPL_VAR type></TMPL_IF>"><span class="icon"><span class="material-symbols-outlined" aria-hidden="true">note_add</span></span><span class="label">新建角色</span></a>
   <li class="small <TMPL_IF modeConvert>current</TMPL_IF>"><a href="./?mode=convertform"><span class="icon"><span class="material-symbols-outlined" aria-hidden="true">file_export</span></span><span class="label">轉換</span></a>
   <TMPL_IF LOGIN_ID>
-    <li class="mylist <TMPL_IF modeMylist>current</TMPL_IF>"><a href='<TMPL_VAR mylistURL DEFAULT="./?mode=mylist">'><span class="icon"><span class="material-symbols-outlined" aria-hidden="true">article_person</span></span><span class="label">マイリスト</span></a>
+    <li class="mylist <TMPL_IF modeMylist>current</TMPL_IF>"><a href='<TMPL_VAR mylistURL DEFAULT="./?mode=mylist">'><span class="icon"><span class="material-symbols-outlined" aria-hidden="true">article_person</span></span><span class="label">我的角色</span></a>
     <li class="small <TMPL_IF modeOption>current</TMPL_IF>"><a href="./?mode=option"><span class="icon"><span class="material-symbols-outlined" aria-hidden="true">manage_accounts</span></span><span class="label">帳號</span></a>
   <TMPL_ELSE>
     <TMPL_IF OAUTH_MODE>

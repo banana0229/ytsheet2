@@ -53,7 +53,7 @@ if ($mode eq 'make'){
   
   ## 登録キーチェック
   if(!$set::user_reqd && $set::registerkey && $set::registerkey ne $::in{registerkey}){
-    error('400:登録キーが一致しません。');
+    error('400:金鑰錯誤。');
   }
   
   open (my $LIST, '<', $set::passfile);

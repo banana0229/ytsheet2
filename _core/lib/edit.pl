@@ -556,7 +556,7 @@ sub renderProtectBlock {
   }
   # 登録キーの入力欄（設定している場合）
   if($set::registerkey && $::isNewSheet){
-    $html .= qq|登録キー：<input type="text" name="registerkey" required>\n|;
+    $html .= qq|金鑰：<input type="text" name="registerkey" required>\n|;
   }
   # 通常の表示
   $html .= qq|<details class="box" id="edit-protect" @{[$::in{mode} eq 'edit' ? '' : 'open']}>\n|;
