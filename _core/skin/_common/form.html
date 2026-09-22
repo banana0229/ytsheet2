@@ -2,29 +2,29 @@
   <TMPL_IF modeRegister>
     <article>
       <section class="form">
-        <h2>ユーザーアカウント作成</h2>
+        <h2>建立使用者帳號</h2>
         <form method="post" action="./">
           <input type="hidden" name="mode" value="register">
           <input type="hidden" name="_token" value="<TMPL_VAR token>">
           <TMPL_IF registerkey>
           <p>
-            <label><span>登録キー</span> <input type="text" name="registerkey" required><b>必須</b></label>
+            <label><span>金鑰</span> <input type="text" name="registerkey" required><b>必填</b></label>
           </p>
           </TMPL_IF>
           <p>
-            <label><span>名前</span> <input type="text" name="name" required><b>必須</b></label>
+            <label><span>名稱</span> <input type="text" name="name" required><b>必填</b></label>
           </p>
           <p>
-            <label><span>ＩＤ<small>(ログインに使用)</small></span> <input type="text" name="id" pattern="^[0-9A-Za-z]+$" title="半角英数字のみ。" required><b>必須</b></label>
+            <label><span>ＩＤ<small>(登入用)</small></span> <input type="text" name="id" pattern="^[0-9A-Za-z]+$" title="半角英数字のみ。" required><b>必填</b></label>
           </p>
           <p>
-            <label><span>メールアドレス</span> <input type="email" name="mail"></label>
+            <label><span>信箱</span> <input type="email" name="mail"></label>
           </p>
           <p>
-            <label><span>パスワード</span> <input type="password" name="password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必須</b></label>
+            <label><span>密碼</span> <input type="password" name="password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必填</b></label>
           </p>
           <p>
-            <label><span>パスワード(確認)</span> <input type="password" name="password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必須</b></label>
+            <label><span>密碼(重新確認)</span> <input type="password" name="password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必填</b></label>
           </p>
           <p>
             <input type="submit" value="登録">
@@ -37,20 +37,20 @@
   <TMPL_IF modeLogin>
     <article>
       <section class="form">
-        <h2>ログイン</h2>
+        <h2>登入</h2>
         <form method="post" action="./">
           <input type="hidden" name="mode" value="login">
           <p>
             <label><span>ＩＤ</span> <input type="text" name="id" required></label>
           </p>
           <p>
-            <label><span>パスワード</span> <input type="password" name="password" required></label>
+            <label><span>密碼</span> <input type="password" name="password" required></label>
           </p>
           <p>
             <input type="submit" value="ログイン">
           </p>
         </form>
-        <a href="./?mode=reminder">⇒ID、パスワードを忘れた場合</a>
+        <a href="./?mode=reminder">⇒忘記ID或密碼？</a>
       </section>
     </article>
   </TMPL_IF>
@@ -71,7 +71,7 @@
         </form>
       </section>
       <section class="form">
-        <h2>パスワードをリセットする</h2>
+        <h2>重製密碼</h2>
         <p>登録されたメールアドレスにリセット用のURLを送信します。</p>
         <form method="post" action="./">
           <input type="hidden" name="mode" value="reminder">
@@ -89,18 +89,18 @@
   <TMPL_IF modeReset>
     <article>
       <section class="form">
-        <h2>パスワードを変更する</h2>
+        <h2>變更密碼</h2>
         <form method="post" action="./">
           <input type="hidden" name="mode" value="reset">
           <input type="hidden" name="code" value="<TMPL_VAR token>">
           <p>
-            <label><span>パスワード</span> <input type="password" name="password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必須</b></label>
+            <label><span>密碼</span> <input type="password" name="password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必填</b></label>
           </p>
           <p>
-            <label><span>パスワード(確認)</span> <input type="password" name="password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必須</b></label>
+            <label><span>密碼(重新確認)</span> <input type="password" name="password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必填</b></label>
           </p>
           <p>
-            <input type="submit" value="送信">
+            <input type="submit" value="送出">
           </p>
         </form>
       </section>
@@ -116,8 +116,8 @@
     <article>
       <TMPL_IF LOGIN_ID><aside id="login-state">
         <ul>
-          <li><b><TMPL_VAR LOGIN_ID></b> でログイン中です
-          <li class="logout-button"><a href="./?mode=logout"><span class="material-symbols-outlined" aria-hidden="true">logout</span>ログアウト</a>
+          <li><b><TMPL_VAR LOGIN_ID></b> 登入中
+          <li class="logout-button"><a href="./?mode=logout"><span class="material-symbols-outlined" aria-hidden="true">logout</span>登出</a>
         </ul>
       </aside></TMPL_IF>
       <section class="form">
@@ -152,13 +152,13 @@
             ID: <b><TMPL_VAR LOGIN_ID></b>
           </p>
           <p>
-            <label><span>名前</span> <input type="text" name="name" value="<TMPL_VAR userName>" required></label>
+            <label><span>名稱</span> <input type="text" name="name" value="<TMPL_VAR userName>" required></label>
           </p>
           <p>
-            <label><span>メールアドレス</span> <input type="email" name="mail" value="<TMPL_VAR userMail>"></label>
+            <label><span>信箱</span> <input type="email" name="mail" value="<TMPL_VAR userMail>"></label>
           </p>
           <p>
-            <input type="submit" value="変更">
+            <input type="submit" value="變更">
           </p>
         </form>
       </section></TMPL_IF>
@@ -166,34 +166,34 @@
         <!-- 何も出さない -->
       <TMPL_ELSE>
         <TMPL_IF LOGIN_ID><section class="form">
-          <h2>パスワード変更</h2>
+          <h2>變更密碼</h2>
           <form method="post" action="./">
             <input type="hidden" name="mode" value="passchange">
             <p>
-              <label><span>現在のパスワード</span> <input type="password" name="password"></label>
+              <label><span>舊密碼</span> <input type="password" name="password"></label>
             </p>
             <p>
-              <label><span>新しいパスワード</span> <input type="password" name="new_password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ"></label>
+              <label><span>新密碼</span> <input type="password" name="new_password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ"></label>
             </p>
             <p>
-              <label><span>新しいパスワード(確認)</span> <input type="password" name="new_password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ"></label>
+              <label><span>新密碼(重新確認)</span> <input type="password" name="new_password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ"></label>
             </p>
             <p>
               <input type="submit" value="変更">
             </p>
           </form>
         </section><section class="form" id="delete-account">
-          <h2>アカウント削除</h2>
-          <p><button class="submit" onclick="document.querySelector('#delete-account > form').style.display = 'block'">アカウント削除</button></p>
+          <h2>刪除帳號</h2>
+          <p><button class="submit" onclick="document.querySelector('#delete-account > form').style.display = 'block'">刪除帳號</button></p>
           <form method="post" action="./" style="display:none;">
             <input type="hidden" name="mode" value="delete-account">
             <p>
-              本当にアカウントを削除してもよろしいですか？<br>
+              真的要刪除帳號嗎？<br>
               <br>
-              アカウントを削除しても、現在保存されている各シートは<b>削除されません</b>。<br>
-              （閲覧／出力のみが可能なシートとして残ります）<br>
+              就算刪除了帳號，已建立的角色也<b>不會消失</b>。<br>
+              （會變成只能讀取／輸出，無法變更的角色）<br>
               <br>
-              アカウントの削除を行う場合、<br>以下にパスワードを入力した後、「削除する」ボタンを押してください。
+              確定刪除帳號的話，<br>請在輸入完密碼後，點擊下方的「削除する」按鈕。
             </p>
             <p><label><span>パスワード</span> <input type="password" name="password"></label></p>
             <p><input type="submit" value="削除する"></p>
