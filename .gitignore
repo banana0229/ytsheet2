@@ -1,0 +1,11 @@
+# Runtime data
+_core/data/*.cgi
+_core/data/*.lock
+
+# Instance-specific configuration
+*/config.cgi
+
+# Character / application runtime data
+*/data/*.cgi
+*/data/*.lock
+*/data/chara/
