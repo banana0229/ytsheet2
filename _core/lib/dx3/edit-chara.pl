@@ -49,9 +49,9 @@ elsif($::mode eq 'blanksheet'){
   $pc{history0Exp}   = 0;
 
   ($pc{effect1Type},$pc{effect1Name},$pc{effect1Lv},$pc{effect1Timing},$pc{effect1Skill},$pc{effect1Dfclty},$pc{effect1Target},$pc{effect1Range},$pc{effect1Encroach},$pc{effect1Restrict},$pc{effect1Note})
-    = ('auto','復原',1,'自動','―','自動成功','自身','至近','參照效果','―','(LV)D点HP回復、侵蝕值上昇');
+    = ('auto','復原',1,'自動','―','自動成功','自身','至近','參照效果','―','恢復並上升(LV)D點的HP與侵蝕值');
   ($pc{effect2Type},$pc{effect2Name},$pc{effect2Lv},$pc{effect2Timing},$pc{effect2Skill},$pc{effect2Dfclty},$pc{effect2Target},$pc{effect2Range},$pc{effect2Encroach},$pc{effect2Restrict},$pc{effect2Note})
-    = ('auto','防衛',1,'自動','―','自動成功','場景','視界','0','―','非オーヴァードをエキストラ化');
+    = ('auto','防衛',1,'自動','―','自動成功','場景','視界','0','―','非超越者臨時角色化');
 
   $pc{comboNum} = 1;
   $pc{combo1Condition1} = '100%前';
@@ -187,7 +187,7 @@ print <<"HTML";
     <details class="box" id="regulation" @{[$::mode eq 'edit' ? '':'open']}>
       <summary class="in-toc">創建條件</summary>
       <dl>
-        <dt>創建方法
+        <dt>創建方式
         <dd>@{[ radios 'createType', 'changeCreateType', 'C=>基本創建','F=>完全描繪' ]}
         <dt>消費經驗點
         <dd>@{[ input "history0Exp",'number','changeRegu',($set::make_fix?' readonly':'') ]} <span class="fullscratch-only">※完全描繪的130點不包含在內。</span>

@@ -94,7 +94,7 @@ sub dataCalc {
         $pc{expUsedEffect} += $lv * 5 + 10; #lv×5 + 新規取得の差分10
         if($type =~ /^(auto|dlois)$/i){
           $pc{expUsedEffect} += -15; #自動かDロイスは新規取得ぶん減らす
-          if($pc{createType} eq 'C' && $pc{'effect'.$num.'Name'} =~ /^コンセントレイト/ && $lv >= 2){
+          if($pc{createType} eq 'C' && $pc{'effect'.$num.'Name'} =~ /^專注/ && $lv >= 2){
             $pc{expUsedEffect} += -5;
           }
         }

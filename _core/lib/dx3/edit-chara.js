@@ -49,23 +49,23 @@ function changeCreateType(){
     if(!form['effect3Name']){
       addEffect();
     }
-    if(!form['effect3Name'].value || form['effect3Name'].value.match(/^コンセントレイト/)){
-      form['effect3Name'].value ||= 'コンセントレイト：'
+    if(!form['effect3Name'].value || form['effect3Name'].value.match(/^專注/)){
+      form['effect3Name'].value ||= '專注'
       form['effect3Type'].value = 'auto';
       form['effect3Lv'].value = 2;
-      form['effect3Timing'].value = 'メジャー';
-      form['effect3Skill'].value = 'シンドローム';
+      form['effect3Timing'].value = '主要';
+      form['effect3Skill'].value = '症候群';
       form['effect3Dfclty'].value = '―';
       form['effect3Range'].value = '―';
       form['effect3Target'].value = '―';
       form['effect3Encroach'].value = 2;
       form['effect3Restrict'].value = '―';
-      form['effect3Note'].value ||= 'クリティカル値を-LV（下限値7）';
+      form['effect3Note'].value ||= 'C值-LV（下限值7）';
     }
   }
   else {
-    if(form['effect3Name'].value.match(/^コンセントレイト/)){
-      confirm('作成方法をフルスクラッチに切り替えます。\n入力済みの《コンセントレイト：～》が自動習得でなくなります。');
+    if(form['effect3Name'].value.match(/^專注/)){
+      confirm('創建方式將改為完全描繪。\n已輸入的《專注：～》將取消自動取得。');
       form['effect3Type'].value = '';
     }
   }
@@ -260,7 +260,7 @@ function calcEffect() {
         if(type.match(/^(auto|dlois)$/i)){
           exps['effect'] += -15;
           //コンストラクションのコンセントレイトは2LVのぶんも減らす
-          if(createType === 'C' && form['effect'+num+'Name'].value.match(/^コンセントレイト/) && lv >= 2){
+          if(createType === 'C' && form['effect'+num+'Name'].value.match(/^專注/) && lv >= 2){
             exps['effect'] += -5;
           }
         }
