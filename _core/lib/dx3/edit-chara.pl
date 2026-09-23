@@ -49,9 +49,9 @@ elsif($::mode eq 'blanksheet'){
   $pc{history0Exp}   = 0;
 
   ($pc{effect1Type},$pc{effect1Name},$pc{effect1Lv},$pc{effect1Timing},$pc{effect1Skill},$pc{effect1Dfclty},$pc{effect1Target},$pc{effect1Range},$pc{effect1Encroach},$pc{effect1Restrict},$pc{effect1Note})
-    = ('auto','リザレクト',1,'オート','―','自動成功','自身','至近','効果参照','―','(LV)D点HP回復、侵蝕値上昇');
+    = ('auto','リザレクト',1,'自動','―','自動成功','自身','至近','參照效果','―','(LV)D点HP回復、侵蝕值上昇');
   ($pc{effect2Type},$pc{effect2Name},$pc{effect2Lv},$pc{effect2Timing},$pc{effect2Skill},$pc{effect2Dfclty},$pc{effect2Target},$pc{effect2Range},$pc{effect2Encroach},$pc{effect2Restrict},$pc{effect2Note})
-    = ('auto','ワーディング',1,'オート','―','自動成功','シーン','視界','0','―','非オーヴァードをエキストラ化');
+    = ('auto','ワーディング',1,'自動','―','自動成功','シーン','視界','0','―','非オーヴァードをエキストラ化');
 
   $pc{comboNum} = 1;
   $pc{combo1Condition1} = '100%未満';
@@ -129,15 +129,15 @@ convertEscapedBrToNewlines(\%pc,
 );
 
 ### コンボ欄用選択肢 --------------------------------------------------
-my @setComboSkills = qw/― 白兵 射撃 RC 交渉 回避 知覚 意志 調達/;
+my @setComboSkills = qw/― 近戰 射擊 RC 交涉 迴避 知覺 意志 籌備/;
 foreach my $id ('Ride','Art','Know','Info'){
   foreach my $num (1 .. $pc{'skill'.$id.'Num'}){
     push(@setComboSkills, $pc{'skill'.$id.$num.'Name'}) if $pc{'skill'.$id.$num.'Name'};
   }
 }
-push(@setComboSkills, '解説参照');
+push(@setComboSkills, '參照解說');
 
-my @setComboStatus = qw/DEF==>自動（技能に合った能力値） LABEL=▼エフェクト等による差し替え 肉体 感覚 精神 社会/;
+my @setComboStatus = qw/DEF==>自動（技能に合った能力值） LABEL=▼エフェクト等による差し替え 肉體 感覺 精神 社會/;
 ### フォーム表示 #####################################################################################
 print renderEditPageStart(
   title => (removeTags removeRuby unescapeTags ($pc{characterName} || qq|“$pc{aka}”|)),
@@ -193,8 +193,8 @@ print <<"HTML";
         <dd>@{[ input "history0Exp",'number','changeRegu',($set::make_fix?' readonly':'') ]} <span class="fullscratch-only">※フルスクラッチ作成時の130点は含みません。</span>
         <dt>ステージ
         <dd>@{[ input "stage",'','checkStage','list="list-stage"' ]}<br>
-          ※ステージの入力値に「クロウリングケイオス」が“含まれる”場合、専用項目が表示されます。
-        <dt>備考
+          ※ステージの入力值に「クロウリングケイオス」が“含まれる”場合、専用項目が表示されます。
+        <dt>備註
         <dd>@{[ input "history0Note" ]}
       </dl>
     </details>
@@ -216,16 +216,16 @@ print <<"HTML";
       </div>
 
       <div class="box" id="syndrome-status">
-        <h2 class="in-toc" data-content-title="シンドローム／能力値">シンドローム／能力値 [<span id="exp-status">0</span>]</h2>
+        <h2 class="in-toc" data-content-title="症候群／能力值">症候群／能力值 [<span id="exp-status">0</span>]</h2>
         <table>
           <thead>
             <tr>
-              <th class="breed"><span class="small">ブリード<span>
-              <th>シンドローム
-              <th>肉体
-              <th>感覚
+              <th class="breed"><span class="small">血統<span>
+              <th>症候群
+              <th>肉體
+              <th>感覺
               <th>精神
-              <th>社会
+              <th>社會
           <tbody class="syndrome-rows">
             <tr>
               <th class="breed" rowspan="3"><span id="breed-value"></span><span class="small">ブリード</span>
@@ -274,23 +274,23 @@ print <<"HTML";
       </div>
       <div class="box-union" id="sub-status">
         <dl class="box" id="max-hp">
-          <dt>HP最大値
+          <dt>HP最大值
           <dd>+@{[input "maxHpAdd",'number','calcMaxHp']}=<b id="max-hp-total"></b>
         </dl>
         <dl class="box" id="stock-pt">
-          <dt>常備化ポイント
+          <dt>常備化點數
           <dd>+@{[input "stockAdd",'number','calcStock']}=<b id="stock-total"></b>
         </dl>
         <dl class="box" id="saving">
-          <dt>財産ポイント
+          <dt>財產點數
           <dd>+@{[input "savingAdd",'number','calcSaving']}=<b id="saving-total"></b>
         </dl>
         <dl class="box" id="initiative">
-          <dt>行動値
+          <dt>行動值
           <dd>+@{[input "initiativeAdd",'number','calcInitiative']}=<b id="initiative-total"></b>
         </dl>
         <dl class="box" id="move">
-          <dt>戦闘移動
+          <dt>戰鬥移動
           <dd>+@{[input "moveAdd",'number','calcMove']}=<b id="move-total"></b>
         </dl>
         <dl class="box" id="dash">
@@ -307,17 +307,17 @@ print <<"HTML";
     <details class="box" id="status" $open{skill}>
       <summary class="in-toc" data-content-title="技能">技能 [<span id="exp-skill">0</span>]</summary>
       <dl id="status-table">
-        <dt>肉体<dd id="skill-body"  >0
-        <dt>感覚<dd id="skill-sense" >0
+        <dt>肉體<dd id="skill-body"  >0
+        <dt>感覺<dd id="skill-sense" >0
         <dt>精神<dd id="skill-mind"  >0
-        <dt>社会<dd id="skill-social">0
+        <dt>社會<dd id="skill-social">0
       </dl>
       <dl id="skill-table">
-        <dt>【肉体】を使用する技能
+        <dt>【肉體】を使用する技能
         <dd>
           <dl id="skill-body-table">
-            <dt class="left">白兵<dd>@{[input "skillMelee"  ,'number','calcSkill', 'min="0"']}+@{[input "skillAddMelee"  ,'number','calcSkill']}
-            <dt class="left">回避<dd>@{[input "skillDodge"  ,'number','calcSkill', 'min="0"']}+@{[input "skillAddDodge"  ,'number','calcSkill']}
+            <dt class="left">近戰<dd>@{[input "skillMelee"  ,'number','calcSkill', 'min="0"']}+@{[input "skillAddMelee"  ,'number','calcSkill']}
+            <dt class="left">迴避<dd>@{[input "skillDodge"  ,'number','calcSkill', 'min="0"']}+@{[input "skillAddDodge"  ,'number','calcSkill']}
             @{[ map {
               my $num = $_;
               '<dt>'. (input "skillRide${num}Name",'','comboSkillSetAll','list="list-ride"')
@@ -327,11 +327,11 @@ print <<"HTML";
           </dl>
         @{[ renderAddDelButtons('skill', q|'Ride'|, 'skillRideNum') ]}
         </dd>
-        <dt>【感覚】を使用する技能
+        <dt>【感覺】を使用する技能
         <dd>
           <dl id="skill-sense-table">
-            <dt class="left">射撃<dd>@{[input "skillRanged" ,'number','calcSkill', 'min="0"']}+@{[input "skillAddRanged"    ,'number','calcSkill']}
-            <dt class="left">知覚<dd>@{[input "skillPercept",'number','calcSkill', 'min="0"']}+@{[input "skillAddPercept",'number','calcSkill']}
+            <dt class="left">射擊<dd>@{[input "skillRanged" ,'number','calcSkill', 'min="0"']}+@{[input "skillAddRanged"    ,'number','calcSkill']}
+            <dt class="left">知覺<dd>@{[input "skillPercept",'number','calcSkill', 'min="0"']}+@{[input "skillAddPercept",'number','calcSkill']}
             @{[ map {
               my $num = $_;
               '<dt>'. (input "skillArt${num}Name",'','comboSkillSetAll','list="list-art"')
@@ -355,11 +355,11 @@ print <<"HTML";
           </dl>
         @{[ renderAddDelButtons('skill', q|'Know'|, 'skillKnowNum') ]}
         </dd>
-        <dt>【社会】を使用する技能
+        <dt>【社會】を使用する技能
         <dd>
           <dl id="skill-social-table">
-            <dt class="left">交渉<dd>@{[input "skillNegotiate",'number','calcSkill', 'min="0"']}+@{[input "skillAddNegotiate",'number']}
-            <dt class="left">調達<dd>@{[input "skillProcure"  ,'number','calcSkill();calcStock', 'min="0"']}+@{[input "skillAddProcure",  'number','calcSkill();calcStock']}
+            <dt class="left">交涉<dd>@{[input "skillNegotiate",'number','calcSkill', 'min="0"']}+@{[input "skillAddNegotiate",'number']}
+            <dt class="left">籌備<dd>@{[input "skillProcure"  ,'number','calcSkill();calcStock', 'min="0"']}+@{[input "skillAddProcure",  'number','calcSkill();calcStock']}
             @{[ map {
               my $num = $_;
               '<dt>'. (input "skillInfo${num}Name",'','comboSkillSetAll','list="list-info"')
@@ -381,55 +381,55 @@ print <<"HTML";
       <table class="edit-table line-tbody">
         <tbody>
           <tr>
-            <th>出自
+            <th>出身
             <td colspan="2">@{[ input "lifepathOrigin"]}
-            <td colspan="2" class="left">@{[ input "lifepathOriginNote",'','','placeholder="備考"' ]}
+            <td colspan="2" class="left">@{[ input "lifepathOriginNote",'','','placeholder="備註"' ]}
         <tbody>
           <tr>
-            <th>経験
+            <th>經驗
             <td colspan="2">@{[ input "lifepathExperience"]}
-            <td colspan="2" class="left">@{[ input "lifepathExperienceNote",'','','placeholder="備考"' ]}
+            <td colspan="2" class="left">@{[ input "lifepathExperienceNote",'','','placeholder="備註"' ]}
         <tbody>
           <tr>
             <th id="encounter-or-desire">邂逅/欲望
             <td colspan="2">@{[ input "lifepathEncounter"]}
-            <td colspan="2" class="left">@{[ input "lifepathEncounterNote",'','','placeholder="備考"' ]}
+            <td colspan="2" class="left">@{[ input "lifepathEncounterNote",'','','placeholder="備註"' ]}
         <tbody class="awaken">
           <tr>
-            <th>覚醒
+            <th>覺醒
             <td><select name="lifepathAwaken" oninput="calcEncroach()">@{[ option "lifepathAwaken",@awakens ]}</select>
-            <th class="small encroach">侵蝕値
+            <th class="small encroach">侵蝕值
             <td class="center encroach" id="awaken-encroach">
-            <td class="left">@{[ input "lifepathAwakenNote",'','','placeholder="備考"' ]}
+            <td class="left">@{[ input "lifepathAwakenNote",'','','placeholder="備註"' ]}
         <tbody class="impulse">
           <tr>
             <th rowspan="2">衝動
             <td><select name="lifepathImpulse" oninput="refreshByImpulse()">@{[ option "lifepathImpulse",@impulses ]}</select>
-            <th class="small encroach">侵蝕値
+            <th class="small encroach">侵蝕值
             <td class="center encroach" id="impulse-encroach">
-            <td class="left">@{[ input "lifepathImpulseNote",'','','placeholder="備考"' ]}
+            <td class="left">@{[ input "lifepathImpulseNote",'','','placeholder="備註"' ]}
           <tr>
-            <th><span class="small">@{[ input "lifepathUrgeCheck",'checkbox' ]}変異暴走</span>
-            <th class="small">効果
-            <td class="left" colspan="2">@{[ input "lifepathUrgeNote",'','','placeholder="効果"' ]}
+            <th><span class="small">@{[ input "lifepathUrgeCheck",'checkbox' ]}變異暴走</span>
+            <th class="small">效果
+            <td class="left" colspan="2">@{[ input "lifepathUrgeNote",'','','placeholder="效果"' ]}
         <tbody class="encroach-offset">
           <tr>
-            <th colspan="3" class="right small">その他の修正
+            <th colspan="3" class="right small">其他修正
             <td class="center">@{[ input "lifepathOtherEncroach",'number','calcEncroach' ]}
-            <td class="left">@{[ input "lifepathOtherNote",'','','placeholder="備考"' ]}
+            <td class="left">@{[ input "lifepathOtherNote",'','','placeholder="備註"' ]}
         <tbody class="neutral-encroach">
           <tr>
-            <th colspan="3" class="right">侵蝕率<span class="suffix">基本値</span>
+            <th colspan="3" class="right">侵蝕率<span class="suffix">基本值</span>
             <td class="center bold">
               <span class="calculated-value" id="base-encroach"></span>
               @{[ input "encroachFixedValue", 'number', 'calcEncroach' ]}
-            <td>@{[ checkbox 'encroachFixed', '侵蝕率を固定にする（ＮＰＣ向け）', 'encroachModeChanged' ]}
+            <td>@{[ checkbox 'encroachFixed', '固定侵蝕率（ＮＰＣ用）', 'encroachModeChanged' ]}
         </tbody>
       </table>
     </details>
     <div id="enc-bonus" style="position: relative;">
       <div class="box">
-        <h2 class="in-toc">侵蝕率効果表</h2>
+        <h2 class="in-toc">侵蝕率效果表</h2>
         <p>
           <!-- 現在侵蝕率:@{[ input 'currentEncroach','number','encroachBonusSet(this.value)','style="width: 4em;"' ]} -->
           @{[ checkbox 'encroachEaOn','エフェクトアーカイブ適用','encroachBonusType' ]}
@@ -443,7 +443,7 @@ print <<"HTML";
       </div>
     </div>
     <details class="box" id="lois" $open{lois} style="position:relative">
-      <summary class="in-toc">ロイス</summary>
+      <summary class="in-toc">露易絲</summary>
       <div>
         <table class="edit-table no-border-cells" id="lois-table">
           <colgroup>
@@ -459,12 +459,12 @@ print <<"HTML";
           </colgroup>
           <thead>
             <tr>
-              <th>関係
-              <th>名前
+              <th>關係
+              <th>名稱
               <th colspan="3">感情<span class="small">(Positive／Negative)</span>
-              <th>属性
-              <th colspan="2" class="right small">Sロイス
-              <th class="right">状態
+              <th>屬性
+              <th colspan="2" class="right small">S露易絲
+              <th class="right">狀態
             </tr>
           <tbody>
             @{[ map {
@@ -498,8 +498,8 @@ print <<"HTML";
           <thead>
             <tr>
               <th>
-              <th>関係
-              <th>名前
+              <th>關係
+              <th>名稱
               <th>感情
               <th>
             </tr>
@@ -524,7 +524,7 @@ print <<"HTML";
       <summary class="in-toc">永続的狂気</summary>
       <dl class="edit-table " id="insanity-table">
         <dt>@{[input "insanity",'','','placeholder="名称"']}
-        <dd>@{[input "insanityNote",'','','placeholder="効果"']}
+        <dd>@{[input "insanityNote",'','','placeholder="效果"']}
       </dl>
     </details>
 
@@ -533,7 +533,7 @@ print <<"HTML";
       <div>
         <table class="edit-table line-tbody no-border-cells" id="effect-table">
           <thead id="effect-head">
-            <tr><th><th>名称<th>LV<th>タイミング<th>技能<th>難易度<th>対象<th>射程<th>侵蝕値<th>制限
+            <tr><th><th>名稱<th>LV<th>時機<th>技能<th>難易度<th>對象<th>射程<th>侵蝕值<th>限制
           @{[ renderTemplateLoop(
             'effect',
             sub ($num) {
@@ -541,31 +541,31 @@ print <<"HTML";
               <tbody id="effect-row${num}">
                 <tr>
                   <td rowspan="2" class="handle">
-                  <td>@{[input "effect${num}Name",'','','placeholder="名称"']}
+                  <td>@{[input "effect${num}Name",'','','placeholder="名稱"']}
                   <td>@{[input "effect${num}Lv",'number','calcEffect','placeholder="Lv" min="0"']}
-                  <td>@{[input "effect${num}Timing",'','','placeholder="タイミング" list="list-timing"']}
+                  <td>@{[input "effect${num}Timing",'','','placeholder="時機" list="list-timing"']}
                   <td>@{[input "effect${num}Skill",'','','placeholder="技能" list="list-effect-skill"']}
                   <td>@{[input "effect${num}Dfclty",'','','placeholder="難易度" list="list-dfclty"']}
-                  <td>@{[input "effect${num}Target",'','','placeholder="対象" list="list-target"']}
+                  <td>@{[input "effect${num}Target",'','','placeholder="對象" list="list-target"']}
                   <td>@{[input "effect${num}Range",'','','placeholder="射程" list="list-range"']}
-                  <td>@{[input "effect${num}Encroach",'','','placeholder="侵蝕値" list="list-encroach"']}
-                  <td>@{[input "effect${num}Restrict",'','','placeholder="制限" list="list-restrict"']}
+                  <td>@{[input "effect${num}Encroach",'','','placeholder="侵蝕值" list="list-encroach"']}
+                  <td>@{[input "effect${num}Restrict",'','','placeholder="限制" list="list-restrict"']}
                 <tr><td colspan="9">
                   <div>
-                    <b>種別</b><select name="effect${num}Type" oninput="calcEffect()">@{[ option "effect${num}Type",'auto=>自動取得','dlois=>Dロイス','easy=>イージー','enemy=>エネミー' ]}</select>
-                    <b class="small">経験点修正</b>@{[input "effect${num}Exp",'number','calcEffect']}
-                    <b>効果</b>@{[input "effect${num}Note"]}
+                    <b>種類</b><select name="effect${num}Type" oninput="calcEffect()">@{[ option "effect${num}Type",'auto=>自動取得','dlois=>Dロイス','easy=>イージー','enemy=>エネミー' ]}</select>
+                    <b class="small">經驗點修正</b>@{[input "effect${num}Exp",'number','calcEffect']}
+                    <b>效果</b>@{[input "effect${num}Note"]}
                   </div>
               ROW
             }
           ) ]}
           <tfoot id="effect-foot">
-            <tr><th><th>名称<th>LV<th>タイミング<th>技能<th>難易度<th>対象<th>射程<th>侵蝕値<th>制限
+            <tr><th><th>名稱<th>LV<th>時機<th>技能<th>難易度<th>對象<th>射程<th>侵蝕值<th>限制
         </table>
       </div>
       @{[ renderAddDelButtons('effect') ]}
       <ul class="annotate">
-        <li>種別「自動」「Dロイス」を選択した場合、取得時（1レベル）の経験点を0として計算します。
+        <li>種類「自動」「Dロイス」を選択した場合、取得時（1レベル）の経験点を0として計算します。
         <li>経験点修正の欄は、自動計算で対応しきれない例外的な取得・成長に使用してください（Dロイス転生者など）
       </ul>
     </details>
@@ -580,7 +580,7 @@ print <<"HTML";
       <div>
         <table class="edit-table line-tbody no-border-cells" id="magic-table">
           <thead id="magic-head">
-            <tr><th><th>名称<th>種別<th>経験点<th>発動値<th>侵蝕値<th>効果
+            <tr><th><th>名称<th>種類<th>經驗點<th>発動值<th>侵蝕值<th>效果
           @{[ renderTemplateLoop(
             'magic',
             sub ($num) {
@@ -589,11 +589,11 @@ print <<"HTML";
                 <tr>
                   <td class="handle">
                   <td>@{[input "magic${num}Name"    ,'','','placeholder="名称"']}
-                  <td>@{[input "magic${num}Type"    ,'','','placeholder="種別" list="list-magic-type"']}
+                  <td>@{[input "magic${num}Type"    ,'','','placeholder="種類" list="list-magic-type"']}
                   <td>@{[input "magic${num}Exp"     ,'number','calcMagic']}
-                  <td>@{[input "magic${num}Activate",'','','placeholder="発動値"']}
-                  <td>@{[input "magic${num}Encroach",'','','placeholder="侵蝕値"']}
-                  <td>@{[input "magic${num}Note"    ,'','','placeholder="効果"']}
+                  <td>@{[input "magic${num}Activate",'','','placeholder="発動值"']}
+                  <td>@{[input "magic${num}Encroach",'','','placeholder="侵蝕值"']}
+                  <td>@{[input "magic${num}Note"    ,'','','placeholder="效果"']}
               ROW
             }
           ) ]}
@@ -608,7 +608,7 @@ print <<"HTML";
     </div>
 
     <details class="box" id="combo" $open{combo} style="position:relative">
-      <summary class="in-toc">コンボ</summary>
+      <summary class="in-toc">組合</summary>
       <div id="combo-list">
         @{[ renderTemplateLoop(
           'combo',
@@ -616,23 +616,23 @@ print <<"HTML";
             return <<~"ROW";
             <div class="combo-table" id="combo-row${num}">
               <div class="handle"></div>
-              <dl class="combo-name"><dt>名称</dt><dd>@{[input "combo${num}Name"]}</dd></dl>
-              <dl class="combo-combo"><dt>組み合わせ</dt><dd>@{[input "combo${num}Combo"]}</dl>
+              <dl class="combo-name"><dt>名稱</dt><dd>@{[input "combo${num}Name"]}</dd></dl>
+              <dl class="combo-combo"><dt>組合</dt><dd>@{[input "combo${num}Combo"]}</dl>
               <div class="combo-in">
-                <dl><dt>タイミング<dd>@{[input "combo${num}Timing",'','','list="list-combo-timing"']}</dl>
+                <dl><dt>時機<dd>@{[input "combo${num}Timing",'','','list="list-combo-timing"']}</dl>
                 <dl><dt>技能      <dd>@{[ selectBox "combo${num}Skill", "calcCombo(${num})", @setComboSkills ]}</dl>
-                <dl><dt>能力値    <dd>@{[ selectBox "combo${num}Stt", "calcCombo(${num})", @setComboStatus ]}</dl>
+                <dl><dt>能力值    <dd>@{[ selectBox "combo${num}Stt", "calcCombo(${num})", @setComboStatus ]}</dl>
                 <dl><dt>難易度    <dd>@{[input "combo${num}Dfclty",'','','list="list-dfclty"']}</dl>
-                <dl><dt>対象      <dd>@{[input "combo${num}Target",'','','list="list-target"']}</dl>
+                <dl><dt>對象      <dd>@{[input "combo${num}Target",'','','list="list-target"']}</dl>
                 <dl><dt>射程      <dd>@{[input "combo${num}Range",'','','list="list-range"']}</dl>
-                <dl><dt>侵蝕値    <dd>@{[input "combo${num}Encroach"]}</dl>
+                <dl><dt>侵蝕值    <dd>@{[input "combo${num}Encroach"]}</dl>
               </div>
               <dl class="combo-out">
-                <dt class="combo-cond">条件<span class="combo-condition-utility"></span>
-                <dt class="combo-dice">ダイス
-                <dt class="combo-crit">Ｃ値
-                <dt class="combo-fixed">達成値修正<br><span class="very-small">(技能レベル+修正値)</span>
-                <dt class="combo-atk">攻撃力
+                <dt class="combo-cond">條件<span class="combo-condition-utility"></span>
+                <dt class="combo-dice">骰數
+                <dt class="combo-crit">Ｃ值
+                <dt class="combo-fixed">達成值修正<br><span class="very-small">(技能レベル+修正值)</span>
+                <dt class="combo-atk">攻擊力
                 @{[ map {
                   <<~"DD";
                   <dd>@{[input "combo${num}Condition${_}"]}
@@ -645,8 +645,8 @@ print <<"HTML";
                   DD
                 } 1 .. 5 ]}
               </dl>
-              <div class="combo-note"><textarea name="combo${num}Note" rows="3" placeholder="解説">$pc{"combo${num}Note"}</textarea></div>
-              <div class="combo-other">@{[ checkbox "combo${num}Manual",'技能レベル・能力値を自動挿入しない',"calcCombo(${num})" ]} <span class="button" onclick="addCombo($num)">コンボ複製</span></div>
+              <div class="combo-note"><textarea name="combo${num}Note" rows="3" placeholder="解說">$pc{"combo${num}Note"}</textarea></div>
+              <div class="combo-other">@{[ checkbox "combo${num}Manual",'技能レベル・能力值を自動挿入しない',"calcCombo(${num})" ]} <span class="button" onclick="addCombo($num)">コンボ複製</span></div>
             </div>
             ROW
           }
@@ -660,7 +660,7 @@ print <<"HTML";
     <div class="box">
       <table class="edit-table no-border-cells" id="weapon-table">
         <thead>
-          <tr><th>武器<th>常備化<th>経験点<th>種別<th>技能<th>命中<th>攻撃力<th><span class="small">ガード値</span><th>射程<th>解説
+          <tr><th>武器<th>常備化<th>經驗點<th>種類<th>技能<th>命中<th>攻擊力<th><span class="small">格擋值</span><th>射程<th>解說
         <tbody>
           @{[ renderTemplateLoop(
             'weapon',
@@ -686,7 +686,7 @@ print <<"HTML";
     <div class="box">
       <table class="edit-table no-border-cells" id="armor-table">
         <thead>
-          <tr><th>防具<th>常備化<th>経験点<th>種別<th><th>行動<th>ドッジ<th>装甲値<th>解説
+          <tr><th>防具<th>常備化<th>經驗點<th>種類<th><th>行動<th>ドッジ<th>装甲值<th>解說
         <tbody>
           @{[ renderTemplateLoop(
             'armor',
@@ -712,7 +712,7 @@ print <<"HTML";
     <div class="box">
       <table class="edit-table no-border-cells" id="vehicle-table">
         <thead>
-          <tr><th>ヴィークル<th>常備化<th>経験点<th>種別<th>技能<th>行動<th>攻撃力<th>装甲値<th><span class="small">全力移動</span><th>解説
+          <tr><th>ヴィークル<th>常備化<th>經驗點<th>種類<th>技能<th>行動<th>攻擊力<th>装甲值<th><span class="small">全力移動</span><th>解說
         <tbody>
           @{[ renderTemplateLoop(
             'vehicle',
@@ -738,7 +738,7 @@ print <<"HTML";
     <div class="box">
       <table class="edit-table no-border-cells" id="item-table">
         <thead>
-          <tr><th>一般アイテム<th>常備化<th>経験点<th>種別<th>技能<th>解説
+          <tr><th>一般アイテム<th>常備化<th>經驗點<th>種類<th>技能<th>解說
         <tbody>
           @{[ renderTemplateLoop(
             'item',
@@ -759,7 +759,7 @@ print <<"HTML";
     </div>
     <div class="box">
       <table class="edit-table">
-        <thead><tr><th><th>常備化<th>経験点<th>
+        <thead><tr><th><th>常備化<th>經驗點<th>
         <tbody>
           <tr>
             <th>合計
@@ -785,7 +785,7 @@ print <<"HTML";
     </details>
 
     <div class="box" id="history">
-      <h2 class="in-toc">セッション履歴</h2>
+      <h2 class="in-toc">團務履歷</h2>
       <table class="edit-table line-tbody no-border-cells" id="history-table">
         <colgroup id="history-col">
           <col>
@@ -799,7 +799,7 @@ print <<"HTML";
         <thead id="history-head">
           <tr>
             <th>
-            <th>日付
+            <th>日期
             <th>タイトル
             <th colspan="2">経験点
             <th>GM
@@ -824,12 +824,12 @@ print <<"HTML";
                 <td class="gm    ">@{[ input "history${num}Gm" ]}
                 <td class="member">@{[ input "history${num}Member" ]}
               <tr>
-                <td colspan="4" class="left">@{[ input "history${num}Note",'','','placeholder="備考"' ]}
+                <td colspan="4" class="left">@{[ input "history${num}Note",'','','placeholder="備註"' ]}
             ROW
           }
         ) ]}
         <tfoot id="history-foot">
-          <tr><th></th><th>日付</th><th>タイトル</th><th colspan="2">経験点</th><th>GM</th><th>参加者</th></tr>
+          <tr><th></th><th>日期</th><th>タイトル</th><th colspan="2">経験点</th><th>GM</th><th>参加者</th></tr>
       </table>
       @{[ renderAddDelButtons('history') ]}
       <h2>記入例</h2>
@@ -846,9 +846,9 @@ print <<"HTML";
         <thead>
           <tr>
             <th>
-            <th>日付
+            <th>日期
             <th>タイトル
-            <th colspan="2">経験点
+            <th colspan="2">經驗點
             <th>GM
             <th>参加者
           </tr>
@@ -865,23 +865,23 @@ print <<"HTML";
         </tbody>
       </table>
       <ul class="annotate">
-        <li>経験点欄は<code>10+5+1</code>など四則演算が有効です（獲得条件の違う経験点などを分けて書けます）。<br>
+        <li>経験点欄は<code>10+5+1</code>など四則演算が有効です（獲得條件の違う経験点などを分けて書けます）。<br>
           経験点欄の右の適用チェックを入れると、その経験点が適用されます。
       </ul>
-      @{[ ($::in{log} || $::in{overwrite}) ? '<button type="button" class="set-newest" onclick="setNewestHistoryData()">最新のセッション履歴を適用する</button>' : '' ]}
+      @{[ ($::in{log} || $::in{overwrite}) ? '<button type="button" class="set-newest" onclick="setNewestHistoryData()">最新の團務履歷を適用する</button>' : '' ]}
     </div>
 
     <div class="box" id="exp-footer">
       <p class="construction-only">
         <b>コンストラクション作成</b>
-        :  能力値フリーポイント[<b id="freepoint-status"></b>/3]
+        :  能力值フリーポイント[<b id="freepoint-status"></b>/3]
         ／ 技能フリーポイント[<b id="freepoint-skill"></b>/5]
         ／ 任意エフェクト[<b id="freepoint-effect"></b>/4]個
         ／ エフェクトレベルフリーポイント[<b id="freepoint-effectlv"></b>/2]
       </p>
       <p>
       経験点[<b id="exp-total"></b>] -
-      ( 能力値[<b id="exp-used-status"></b>]
+      ( 能力值[<b id="exp-used-status"></b>]
       + 技能[<b id="exp-used-skill"></b>]
       + エフェクト[<b id="exp-used-effect"></b>]
       <span class="crc-only">+ 術式[<b id="exp-used-magic"></b>]</span>
@@ -923,7 +923,7 @@ sub renderDataList {
   <datalist id="list-gender">
     <option value="男">
     <option value="女">
-    <option value="其它">
+    <option value="其他">
     <option value="無">
     <option value="不明">
     <option value="不詳">
@@ -1011,23 +1011,23 @@ sub renderDataList {
   </datalist>
   <datalist id="list-art" >
     <option value="藝術:">
-    <option value="藝術:音楽">
+    <option value="藝術:音樂">
     <option value="藝術:歌唱">
     <option value="藝術:演技">
-    <option value="藝術:絵画">
-    <option value="藝術:写真">
-    <option value="藝術:彫刻">
-    <option value="藝術:ゲーム">
+    <option value="藝術:繪畫">
+    <option value="藝術:攝影">
+    <option value="藝術:雕刻">
+    <option value="藝術:遊戲">
   </datalist>
   <datalist id="list-know">
     <option value="知識:">
-    <option value="知識:レネゲイド">
-    <option value="知識:医療">
+    <option value="知識:背教者">
+    <option value="知識:醫療">
     <option value="知識:心理">
-    <option value="知識:機械工学">
+    <option value="知識:機械工學">
     <option value="知識:機械操作">
-    <option value="知識:オカルト">
-    <option value="知識:遺産">
+    <option value="知識:超自然">
+    <option value="知識:遺產">
   </datalist>
   <datalist id="list-info">
     <option value="情報:">
@@ -1035,13 +1035,13 @@ sub renderDataList {
     <option value="情報:FH">
     <option value="情報:ゼノス">
     <option value="情報:噂話">
-    <option value="情報:裏社会">
+    <option value="情報:裏社會">
     <option value="情報:警察">
     <option value="情報:軍事">
-    <option value="情報:学問">
-    <option value="情報:ウェブ">
-    <option value="情報:メディア">
-    <option value="情報:ビジネス">
+    <option value="情報:學問">
+    <option value="情報:網路">
+    <option value="情報:媒體">
+    <option value="情報:商業">
   </datalist>
   <datalist id="list-lois-color">
     <option value="BK">ブラック
@@ -1054,81 +1054,81 @@ sub renderDataList {
     <option value="YE">イエロー
   </datalist>
   <datalist id="list-timing">
-    <option value="オート">
-    <option value="マイナー">
-    <option value="メジャー">
-    <option value="メジャー／リア">
-    <option value="リアクション">
-    <option value="セットアップ">
-    <option value="イニシアチブ">
-    <option value="クリンナップ">
-    <option value="常時">
-    <option value="効果参照">
+    <option value="自動">
+    <option value="次要">
+    <option value="主要">
+    <option value="主要／反應">
+    <option value="反應動作">
+    <option value="設置階段">
+    <option value="先攻階段">
+    <option value="清除階段">
+    <option value="常駐">
+    <option value="參照效果">
   </datalist>
   <datalist id="list-effect-skill">
     <option value="―">
-    <option value="シンドローム">
-    <option value="〈白兵〉">
-    <option value="〈射撃〉">
+    <option value="症候群">
+    <option value="〈近戰〉">
+    <option value="〈射擊〉">
     <option value="〈RC〉">
-    <option value="〈交渉〉">
-    <option value="〈白兵〉〈射撃〉">
-    <option value="〈白兵〉〈RC〉">
-    <option value="〈回避〉">
-    <option value="〈知覚〉">
+    <option value="〈交涉〉">
+    <option value="〈近戰〉〈射擊〉">
+    <option value="〈近戰〉〈RC〉">
+    <option value="〈迴避〉">
+    <option value="〈知覺〉">
     <option value="〈意志〉">
-    <option value="〈調達〉">
-    <option value="【肉体】">
-    <option value="【感覚】">
+    <option value="〈籌備〉">
+    <option value="【肉體】">
+    <option value="【感覺】">
     <option value="【精神】">
-    <option value="【社会】">
+    <option value="【社會】">
     <option value="〈駕駛:〉">
     <option value="〈藝術:〉">
     <option value="〈知識:〉">
     <option value="〈情報:〉">
-    <option value="効果参照">
+    <option value="參照效果">
   </datalist>
   <datalist id="list-combo-timing">
-    <option value="オート">
-    <option value="マイナー">
-    <option value="メジャー">
-    <option value="リアクション">
-    <option value="セットアップ">
-    <option value="イニシアチブ">
-    <option value="クリンナップ">
-    <option value="常時">
-    <option value="効果参照">
+    <option value="自動">
+    <option value="次要">
+    <option value="主要">
+    <option value="反應動作">
+    <option value="設置階段">
+    <option value="先攻階段">
+    <option value="清除階段">
+    <option value="常駐">
+    <option value="參照效果">
   </datalist>
   <datalist id="list-combo-skill">
     <option value="―">
-    <option value="〈白兵〉">
-    <option value="〈射撃〉">
+    <option value="〈近戰〉">
+    <option value="〈射擊〉">
     <option value="〈RC〉">
-    <option value="〈交渉〉">
-    <option value="〈白兵〉〈射撃〉">
-    <option value="〈白兵〉〈RC〉">
-    <option value="〈回避〉">
-    <option value="〈知覚〉">
+    <option value="〈交涉〉">
+    <option value="〈近戰〉〈射擊〉">
+    <option value="〈近戰〉〈RC〉">
+    <option value="〈迴避〉">
+    <option value="〈知覺〉">
     <option value="〈意志〉">
-    <option value="〈調達〉">
-    <option value="【肉体】">
-    <option value="【感覚】">
+    <option value="〈籌備〉">
+    <option value="【肉體】">
+    <option value="【感覺】">
     <option value="【精神】">
-    <option value="【社会】">
+    <option value="【社會】">
     <option value="〈駕駛:〉">
     <option value="〈藝術:〉">
     <option value="〈知識:〉">
     <option value="〈情報:〉">
-    <option value="効果参照">
+    <option value="參照效果">
   </datalist>
   <datalist id="list-weapon-skill">
     <option value="―">
-    <option value="〈白兵〉">
-    <option value="〈射撃〉">
-    <option value="〈白兵〉〈射撃〉">
-    <option value="〈交渉〉">
-    <option value="〈知識:機械工学〉">
-    <option value="解説参照">
+    <option value="〈近戰〉">
+    <option value="〈射擊〉">
+    <option value="〈近戰〉〈射擊〉">
+    <option value="〈交涉〉">
+    <option value="〈知識:機械工學〉">
+    <option value="參照解說">
   </datalist>
   <datalist id="list-vehicle-skill">
     <option value="〈駕駛:〉">
@@ -1142,52 +1142,52 @@ sub renderDataList {
   </datalist>
   <datalist id="list-item-skill">
     <option value="―">
-    <option value="〈調達〉">
+    <option value="〈籌備〉">
     <option value="〈知識:〉">
     <option value="〈情報:〉">
     <option value="〈情報:UGN〉">
     <option value="〈情報:FH〉">
     <option value="〈情報:ゼノス〉">
     <option value="〈情報:噂話〉">
-    <option value="〈情報:裏社会〉">
+    <option value="〈情報:裏社會〉">
     <option value="〈情報:警察〉">
     <option value="〈情報:軍事〉">
     <option value="〈情報:学問〉">
-    <option value="〈情報:ウェブ〉">
-    <option value="〈情報:メディア〉">
-    <option value="〈情報:ビジネス〉">
-    <option value="解説参照">
+    <option value="〈情報:網路〉">
+    <option value="〈情報:媒體〉">
+    <option value="〈情報:商業〉">
+    <option value="參照解說">
   </datalist>
   <datalist id="list-weapon-type">
-    <option value="白兵">
-    <option value="射撃">
-    <option value="白兵／射撃">
-    <option value="エンブレム／白兵">
-    <option value="エンブレム／射撃">
-    <option value="リレーション／白兵">
-    <option value="リレーション／射撃">
+    <option value="近戰">
+    <option value="射擊">
+    <option value="近戰／射擊">
+    <option value="紋章／近戰">
+    <option value="紋章／射擊">
+    <option value="リレーション／近戰">
+    <option value="リレーション／射擊">
   </datalist>
   <datalist id="list-armor-type">
     <option value="防具">
     <option value="防具※">
     <option value="防具（補助）">
-    <option value="エンブレム／防具">
-    <option value="エンブレム／防具（補助）">
+    <option value="紋章／防具">
+    <option value="紋章／防具（補助）">
     <option value="リレーション／防具">
   </datalist>
   <datalist id="list-vehicle-type">
     <option value="ヴィークル">
-    <option value="エンブレム／ヴィークル">
+    <option value="紋章／ヴィークル">
   </datalist>
   <datalist id="list-item-type">
-    <option value="コネ">
+    <option value="關係">
     <option value="一般">
     <option value="その他">
     <option value="使い捨て">
-    <option value="エンブレム／コネ">
-    <option value="エンブレム／一般">
-    <option value="エンブレム／その他">
-    <option value="エンブレム／使い捨て">
+    <option value="紋章／コネ">
+    <option value="紋章／一般">
+    <option value="紋章／その他">
+    <option value="紋章／使い捨て">
     <option value="リレーション／コネ">
     <option value="リレーション／一般">
     <option value="リレーション／その他">
@@ -1196,27 +1196,27 @@ sub renderDataList {
   <datalist id="list-dfclty">
     <option value="―">
     <option value="自動成功">
-    <option value="対決">
-    <option value="効果参照">
+    <option value="對決">
+    <option value="參照效果">
   </datalist>
   <datalist id="list-target">
     <option value="―">
     <option value="自身">
-    <option value="単体">
-    <option value="3体">
-    <option value="[LV+1]体">
-    <option value="範囲">
-    <option value="範囲（選択）">
-    <option value="シーン">
-    <option value="シーン（選択）">
-    <option value="効果参照">
+    <option value="單體">
+    <option value="3體">
+    <option value="[LV+1]體">
+    <option value="範圍">
+    <option value="範圍（選擇）">
+    <option value="場景">
+    <option value="場景（選擇）">
+    <option value="參照效果">
   </datalist>
   <datalist id="list-range">
     <option value="―">
     <option value="至近">
     <option value="武器">
     <option value="視界">
-    <option value="効果参照">
+    <option value="參照效果">
   </datalist>
   <datalist id="list-encroach">
     <option value="―">
@@ -1233,18 +1233,18 @@ sub renderDataList {
     <option value="1D10">
     <option value="2D10">
     <option value="4D10">
-    <option value="効果参照">
+    <option value="參照效果">
   </datalist>
   <datalist id="list-restrict">
     <option value="―">
-    <option value="ピュア">
+    <option value="純血">
     <option value="80%">
     <option value="100%">
     <option value="120%" class="percent120">
-    <option value="Dロイス">
-    <option value="リミット">
+    <option value="D露易絲">
+    <option value="極限">
     <option value="RB">
-    <option value="従者専用">
+    <option value="從者專用">
   </datalist>
   <datalist id="list-magic-type">
     <option value="通常">
