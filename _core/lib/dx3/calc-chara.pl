@@ -50,14 +50,14 @@ sub dataCalc {
 
   ### 技能 --------------------------------------------------
   my %skill_name_to_id = (
-    '白兵' => 'Melee',
-    '射撃' => 'Ranged',
+    '近戰' => 'Melee',
+    '射擊' => 'Ranged',
     'RC' => 'RC',
-    '交渉' => 'Negotiate',
-    '回避' => 'Dodge',
-    '知覚' => 'Percept',
+    '交涉' => 'Negotiate',
+    '迴避' => 'Dodge',
+    '知覺' => 'Percept',
     '意志' => 'Will',
-    '調達' => 'Procure',
+    '籌備' => 'Procure',
   );
   # 経験点
   $pc{expUsedSkill} = -9; #ワークス取得ぶん

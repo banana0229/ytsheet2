@@ -200,14 +200,14 @@ function calcMagicDice(){
 }
 // 技能
 const skillNameToId = {
-  '白兵': 'Melee'    ,
-  '射撃': 'Ranged'   ,
+  '近戰': 'Melee'    ,
+  '射擊': 'Ranged'   ,
   'RC'  : 'RC'       ,  
-  '交渉': 'Negotiate',
-  '回避': 'Dodge'    ,
-  '知覚': 'Percept'  ,
+  '交涉': 'Negotiate',
+  '迴避': 'Dodge'    ,
+  '知覺': 'Percept'  ,
   '意志': 'Will'     ,
-  '調達': 'Procure'  ,
+  '籌備': 'Procure'  ,
 }
 let skillData = {};
 function calcSkill() {
