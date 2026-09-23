@@ -17,7 +17,7 @@ if($mode eq 'bu-naming'){
 
   ## パスワードチェック
   (my $file, my $type, my $user) = authSheet($id,$pass,$LOGIN_ID);
-  if(!$file){ error('403:パスワードが間違っているか、編集権限がありません。'); }
+  if(!$file){ error('403:密碼錯誤或沒有編輯權限。'); }
   changeFileByType($type);
 
   ## ディレクトリ

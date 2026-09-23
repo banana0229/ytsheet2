@@ -214,7 +214,7 @@ sub display {
 
 ### ログインエラー --------------------------------------------------
 sub loginError {
-  our $login_error = 'パスワードが間違っているか、<br>編集権限がありません。';
+  our $login_error = '密碼錯誤或<br>沒有編輯權限。';
   require $set::lib_view;
   exit;
 }
