@@ -74,7 +74,7 @@ sub error {
     infoJson('error',$message =~ s/<br>/ /gr);
   }
   else {
-    info('エラー',$message);
+    info('錯誤',$message);
   }
 }
 
@@ -286,7 +286,7 @@ sub readSheetRecordLines {
   my @source = readSheetFileLines($dir, $file, "${datatype}.cgi");
   if(!@source){
     checkDeletedSheet();
-    error('404:シートが見つかりませんでした。');
+    error('404:找不到對應的角色。');
   }
   elsif($datatype ne 'logs'){
     return @source;

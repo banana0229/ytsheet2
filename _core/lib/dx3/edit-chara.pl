@@ -274,7 +274,7 @@ print <<"HTML";
       </div>
       <div class="box-union" id="sub-status">
         <dl class="box" id="max-hp">
-          <dt>HP最大值
+          <dt>最大HP
           <dd>+@{[input "maxHpAdd",'number','calcMaxHp']}=<b id="max-hp-total"></b>
         </dl>
         <dl class="box" id="stock-pt">

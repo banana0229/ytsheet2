@@ -31,7 +31,7 @@ window.onload = function() {
 // 送信前チェック ----------------------------------------
 function formCheck(){
   if(form.characterName.value === '' && form.aka.value === ''){
-    alert('請輸入角色或代號的名稱。');
+    alert('請輸入角色名稱或代號。');
     form.characterName.focus();
     return false;
   }

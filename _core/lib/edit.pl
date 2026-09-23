@@ -214,7 +214,7 @@ sub display {
 
 ### ログインエラー --------------------------------------------------
 sub loginError {
-  our $login_error = '密碼錯誤或<br>沒有編輯權限。';
+  our $login_error = '密碼錯誤<br>或是沒有編輯權限。';
   require $set::lib_view;
   exit;
 }
@@ -278,7 +278,7 @@ sub loadSheetData {
         ($pc{protect} eq 'none') ||
         ($author && ($author eq $LOGIN_ID || $set::masterid eq $LOGIN_ID))
       ){
-        error("403:閲覧・編集権限がありません。");
+        error("403:沒有檢視或編輯的權限。");
       }
     }
 
@@ -298,7 +298,7 @@ sub loadSheetData {
     delete $pc{protect};
     $_ =~ s/"/&quot;/g foreach(values %pc);
     if($::in{backupJSON}){
-      $message = '<span class="data-imported backup-loaded">入力途中の新規シートを復元しました</span>';
+      $message = '<span class="data-imported backup-loaded">未完成的角色資料還原成功</span>';
     }
     else {
       $message = qq|<div class="data-imported">${convertedName}をコンバートして新規作成します。<br>（まだ保存はされていません）</div>|;

@@ -238,7 +238,7 @@ sub getMylist {
 my %groups;
 sub setupGroupList {
   %groups = groupArrayToHash();
-  $groups{all}{name} = 'すべて' if $::in{group} eq 'all';
+  $groups{all}{name} = '全部' if $::in{group} eq 'all';
   $template->param(Groups => groupArrayToList());
   $template->param(group => $groups{$::in{group}}{name});
   return %groups;

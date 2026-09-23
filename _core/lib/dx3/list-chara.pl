@@ -68,14 +68,14 @@ my @lines = loadLines();
 
 ## ブリード検索
 $INDEX->param(Breeds => [makeSelectOptions(
-  values   => [ [1, 'ピュア'], [2, 'クロス'], [3, 'トライ'] ],
+  values   => [ [1, '純血'], [2, '混血'], [3, '三種混合'] ],
   selected => $::in{breed},
   nameOf   => sub { $_[0]->[1] },
 )]);
 if($::in{breed}){
-  if   ($::in{breed} == 1){ @lines = grep { m{^(?:[^<]*<>){13}[^/]+//<}           } @lines; $::in{breed} = 'ピュア'; }
-  elsif($::in{breed} == 2){ @lines = grep { m{^(?:[^<]*<>){13}[^/]+/[^/]+/<}      } @lines; $::in{breed} = 'クロス'; }
-  elsif($::in{breed} == 3){ @lines = grep { m{^(?:[^<]*<>){13}[^/]+/[^/]+/[^<]+<} } @lines; $::in{breed} = 'トライ'; }
+  if   ($::in{breed} == 1){ @lines = grep { m{^(?:[^<]*<>){13}[^/]+//<}           } @lines; $::in{breed} = '純血'; }
+  elsif($::in{breed} == 2){ @lines = grep { m{^(?:[^<]*<>){13}[^/]+/[^/]+/<}      } @lines; $::in{breed} = '混血'; }
+  elsif($::in{breed} == 3){ @lines = grep { m{^(?:[^<]*<>){13}[^/]+/[^/]+/[^<]+<} } @lines; $::in{breed} = '三種混合'; }
 }
 ## 星座検索
 if($::in{sign}) {

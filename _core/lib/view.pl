@@ -524,8 +524,8 @@ sub setSheetMenu {
         push(@menu, { TEXT => '輸出' , ICON => 'output', TYPE => "onclick", VALUE => "downloadListOn()" });
       }
       push(@menu, { TEXT => '歷史紀錄', ICON => 'history', TYPE => "onclick", VALUE => 'loglistOn()' });
-      if($::pc{reqdPassword}){ push(@menu, { TEXT => '復原', ICON => 'restore_page',  TYPE => "onclick", VALUE => "editOn()" }); }
-      else                   { push(@menu, { TEXT => '復原', ICON => 'restore_page',  TYPE => "href" , VALUE => "./?mode=edit&id=$::in{id}&log=$::in{log}" });
+      if($::pc{reqdPassword}){ push(@menu, { TEXT => '還原', ICON => 'restore_page',  TYPE => "onclick", VALUE => "editOn()" }); }
+      else                   { push(@menu, { TEXT => '還原', ICON => 'restore_page',  TYPE => "href" , VALUE => "./?mode=edit&id=$::in{id}&log=$::in{log}" });
       }
     }
     else { #通常
