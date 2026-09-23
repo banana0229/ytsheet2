@@ -480,7 +480,7 @@ $SHEET->param(currentEncroach => $pc{baseEncroach} =~ /^[0-9]+$/ ? $pc{baseEncro
 ### 履歴 --------------------------------------------------
 my @history;
 my $h_num = 0;
-$pc{history0Title} = !$pc{forbiddenMode} ? ($pc{createType} eq 'C') ? 'コンストラクション作成' : 'フルスクラッチ作成' : '作成';
+$pc{history0Title} = !$pc{forbiddenMode} ? ($pc{createType} eq 'C') ? '基本創建' : '完全描繪' : '作成';
 foreach (0 .. $pc{historyNum}){
   next if(!existsRow "history${_}",'Date','Title','Exp','Gm','Member','Note');
   $h_num++ if $pc{'history'.$_.'Gm'};

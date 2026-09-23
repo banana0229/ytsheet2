@@ -44,7 +44,7 @@
       </aside>
 
       <aside id="downloadlist" class="float-box">
-        <h2>出力</h2>
+        <h2>輸出</h2>
         <ul>
           <li id="downloadlist-udonarium"><a onclick="downloadAsUdonarium();">ユドナリウム用コマデータ<small>(zip形式ファイル)</small></a>
           <li id="downloadlist-ccfolia"><a onclick="downloadAsCcfolia();">ココフォリア用コマデータ<small>(クリップボードへコピー)</small></a>
@@ -68,8 +68,8 @@
 
   <main id="character">
     <TMPL_IF forbidden><aside class="information attention">
-      閲覧が限制されているデータです。<br>
-      <TMPL_IF yourAuthor>あなた以外には一部または全てのデータが伏せられます。(<a href="./?id=<TMPL_VAR id>&checkView=1">⇒確認</a>)</TMPL_IF>
+      有閱覽限制的資料。<br>
+      <TMPL_IF yourAuthor>除了你以外，部分或全部的資料會受到隱藏。(<a href="./?id=<TMPL_VAR id>&checkView=1">⇒確認</a>)</TMPL_IF>
     </aside></TMPL_IF>
     
     <TMPL_IF logId><aside class="information log">
@@ -86,7 +86,7 @@
         <h1 id="character-name"><TMPL_IF aka><span id="aka">“<TMPL_VAR aka>”</span></TMPL_IF><TMPL_VAR characterName></h1>
         <div>
         <p id="update-time"><time><TMPL_VAR updateTime></time></p>
-        <p id="player-name">プレイヤー：<TMPL_VAR playerName></p>
+        <p id="player-name">玩家：<TMPL_VAR playerName></p>
         </div>
       </div>
       
@@ -136,7 +136,7 @@
             <dt>症候群
             <dd><TMPL_VAR syndrome1>
             <dd><TMPL_VAR syndrome2>
-            <dt><TMPL_IF syndrome3>オプショナル</TMPL_IF>
+            <dt><TMPL_IF syndrome3>隱性症候群</TMPL_IF>
             <dd><TMPL_VAR syndrome3>
           </dl>
         </div>
@@ -238,7 +238,7 @@
 
       <section class="box" id="status">
         <h2>能力值</h2>
-        <TMPL_UNLESS forbiddenMode><button class="open-button" onclick="switchStatusBreakdown();" data-open="" data-text-open="能力值内訳を表示" data-text-close="能力值内訳を畳む"></button></TMPL_UNLESS>
+        <TMPL_UNLESS forbiddenMode><button class="open-button" onclick="switchStatusBreakdown();" data-open="" data-text-open="詳細顯示" data-text-close="簡略顯示"></button></TMPL_UNLESS>
         <table>
           <thead>
           <tr>
@@ -413,7 +413,7 @@
               <col class="note">
             </colgroup>
             <thead>
-              <tr><th>名稱<th>種類<th>經驗點<th>発動值<th>侵蝕值<th>效果
+              <tr><th>名稱<th>種類<th>經驗點<th>發動值<th>侵蝕值<th>效果
             </thead>
             <TMPL_LOOP Magics><tbody>
                <tr>
@@ -430,7 +430,7 @@
 
         <section class="box" id="combo">
           <h2>組合</h2>
-          <button class="open-button" onclick="swapComboDisplayMode();" data-open="true" data-text-open="詳細表示にする" data-text-close="簡易表示にする"></button>
+          <button class="open-button" onclick="swapComboDisplayMode();" data-open="true" data-text-open="詳細顯示" data-text-close="簡略顯示"></button>
           <TMPL_LOOP Combos><div class="combo-table">
             <h3><span><TMPL_VAR NAME></span></h3>
             <dl class="combo-combo"><dt>組合內容<dd><span><TMPL_VAR COMBO></span></dl>
@@ -551,14 +551,14 @@
         
         <section class="box" id="exps">
           <TMPL_IF isConstruction>
-          <h2>コンストラクション作成</h2>
+          <h2>基本創建</h2>
           <table class="data-table">
             <thead>
               <tr>
-                <th>能力值<wbr>フリーポイント
-                <th>技能<wbr>フリーポイント
-                <th>作成時<wbr>任意エフェクト
-                <th>エフェクトレベル<wbr>フリーポイント
+                <th>任意<wbr>能力值分配
+                <th>任意<wbr>技能分配
+                <th>任意<wbr>異能
+                <th>任意<wbr>異能升級分配
             <tbody>
               <tr>
                 <td><TMPL_VAR fpUsedStatus>/3
@@ -578,8 +578,8 @@
                 <TMPL_IF Magics><th>術式</TMPL_IF>
                 <th>道具
                 <th>回憶
-                <th>使用総計
-                <th>未使用<wbr>／合計
+                <th>總共使用
+                <th>未使用<wbr>／總計
             <tbody>
               <tr>
                 <td><TMPL_VAR expUsedStatus>
@@ -599,7 +599,7 @@
           <summary>侵蝕率效果表</summary>
           <p>
             <span class="encroach-prefix">現在</span>侵蝕率:<TMPL_IF encroachFixed><span class="encroach-fixed-value"><TMPL_VAR encroachFixedValue></span><TMPL_ELSE><input type="number" id="current-encroach" value="<TMPL_VAR currentEncroach>" oninput="encroachBonusSet(this.value);"></TMPL_IF>
-            <input type="checkbox" id="encroach-ea-on" oninput="encroachBonusType();" <TMPL_IF encroachEaOn>checked</TMPL_IF>><label for="encroach-ea-on">エフェクトアーカイブ</label>
+            <input type="checkbox" id="encroach-ea-on" oninput="encroachBonusType();" <TMPL_IF encroachEaOn>checked</TMPL_IF>><label for="encroach-ea-on">EA</label>
             <input type="checkbox" id="encroach-or-on" oninput="encroachBonusType();" <TMPL_IF encroachOrOn>checked</TMPL_IF>><label for="encroach-or-on">起源種</label>
           </p>
           <table class="data-table" id="enc-table">
@@ -663,18 +663,18 @@
       }
       </script>
       <section class="box" id="free-note">
-        <h2><TMPL_IF head_freeNote><TMPL_VAR head_freeNote><TMPL_ELSE>容姿・経歴・その他メモ</TMPL_IF></h2>
+        <h2><TMPL_IF head_freeNote><TMPL_VAR head_freeNote><TMPL_ELSE>外貌・經歷・筆記</TMPL_IF></h2>
         <p><TMPL_VAR freeNote></p>
       </section>
       <TMPL_IF freeHistory>
       <section class="box" id="free-history">
-        <h2><TMPL_IF head_freeHistory><TMPL_VAR head_freeHistory><TMPL_ELSE>履歴</TMPL_IF></h2>
+        <h2><TMPL_IF head_freeHistory><TMPL_VAR head_freeHistory><TMPL_ELSE>履歷</TMPL_IF></h2>
         <p><TMPL_VAR freeHistory></p>
       </section>
       </TMPL_IF>
       <section class="box" id="history">
         <h2>團務履歷</h2>
-        <button class="open-button" onclick="switchHistoryView();" data-open="true" data-text-open="履歴を展開" data-text-close="履歴を畳む"></button>
+        <button class="open-button" onclick="switchHistoryView();" data-open="true" data-text-open="展開" data-text-close="摺疊"></button>
         <table class="data-table line-tbody">
           <thead>
             <tr>
@@ -698,9 +698,9 @@
         </table>
       </section>
       <section class="box chat-palette float-box">
-        <h2>チャットパレット</h2>
+        <h2>對話組合板</h2>
         <div class="chat-palette-menu">
-          <b>使用ツール:</b>
+          <b>使用工具:</b>
           <a onclick="chatPaletteSelect('')"       id="cp-switch-ytc">ゆとチャadv.</a>
           <a onclick="chatPaletteSelect('tekey')"  id="cp-switch-tekey">Tekey</a>
           <a onclick="chatPaletteSelect('bcdice')" id="cp-switch-bcdice">他BCDice系</a>

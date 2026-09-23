@@ -207,7 +207,7 @@ sub dataCalc {
   $pc{expUsed} = $pc{expUsedStatus} + $pc{expUsedSkill} + $pc{expUsedEffect} + $pc{expUsedMagic} + $pc{expUsedItem} + $pc{expUsedMemory};
   $pc{expRest} = $pc{expTotal} - $pc{expUsed};
 
-  $pc{createTypeName} = ($pc{createType} eq 'C') ? 'コンストラクション' : 'フルスクラッチ';
+  $pc{createTypeName} = ($pc{createType} eq 'C') ? '基本創建' : '完全描繪';
 
   ### 0を消去 --------------------------------------------------
   foreach (

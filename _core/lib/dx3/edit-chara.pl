@@ -887,7 +887,7 @@ print <<"HTML";
       <span class="crc-only">+ 術式[<b id="exp-used-magic"></b>]</span>
       + 道具[<b id="exp-used-item"></b>]
       + 回憶[<b id="exp-used-memory"></b>]
-      ) = 剩餘[<b id="exp-rest"></b>]点
+      ) = 剩餘[<b id="exp-rest"></b>]點
       </p>
     </div>
   </section>
