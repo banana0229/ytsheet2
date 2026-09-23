@@ -15,7 +15,7 @@
             <dd><input type="text" name="player" value="<TMPL_VAR player>">
           <dt>舞台
             <dd><input type="text" name="stage" value="<TMPL_VAR stage>">
-          <dt>消耗經驗值
+          <dt>消耗經驗點
             <dd>+<input type="number" name="exp-min" value="<TMPL_VAR expMin>" style="width:5em;"> ～ <input type="number" name="exp-max" value="<TMPL_VAR expMax>" style="width:5em;">
           <dt>症候群
             <dd><input type="text" name="syndrome" value="<TMPL_VAR syndrome>">
@@ -32,9 +32,9 @@
               <label><input type="radio" name="gender" value="cross"  <TMPL_VAR genderCross >><span data-gender="cross" >⚧</span></label>
               <label><input type="radio" name="gender" value="none"   <TMPL_VAR genderNone  >><span data-gender="none"  >―</span></label>
           <dt>圖片
-            <dd><label><input type="checkbox" name="image" value="1" <TMPL_IF image>checked</TMPL_IF>>あり</dd></label>
+            <dd><label><input type="checkbox" name="image" value="1" <TMPL_IF image>checked</TMPL_IF>>有</dd></label>
         </dl>
-        <p class="right"><input type="submit" value="検索"></p>
+        <p class="right"><input type="submit" value="搜尋"></p>
       </form>
       <script src="<TMPL_VAR coreDir>/skin/_common/js/list.js?<TMPL_VAR ver>" defer></script>
       <TMPL_IF searchSummary><dl class="search-summary"><dt>搜尋結果<dd><TMPL_VAR searchSummary></dl></TMPL_IF>
