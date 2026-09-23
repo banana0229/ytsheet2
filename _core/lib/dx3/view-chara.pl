@@ -278,10 +278,8 @@ $SHEET->param(Effects => \@effects);
 sub renderTiming {
   my $text = shift;
   $text =~ s#([^<])[／\/]#$1<hr class="dotted">#g;
-  $text =~ s#(オート|メジャー|マイナー)(アクション)?#<span class="thin">$1<span class="shorten">アクション</span></span>#g;
-  $text =~ s#(移動|主要|次要)(動作)?#<span class="thin">$1<span class="shorten">動作</span></span>#g;
-  $text =~ s#リアク?(ション)?#<span class="thin">リア<span class="shorten">クション</span></span>#g;
-  $text =~ s#(セットアップ|クリンナップ)(プロセス)?#<span class="thiner">$1<span class="shorten">プロセス</span></span>#g;
+  $text =~ s#(移動|主要|次要|反應)(動作)?#<span class="thin">$1<span class="shorten">動作</span></span>#g;
+  $text =~ s#(設置|清除|先攻)(階段)?#<span class="thiner">$1<span class="shorten">階段</span></span>#g;
   return $text;
 }
 sub renderSkill {
