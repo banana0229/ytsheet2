@@ -521,23 +521,23 @@ sub setSheetMenu {
   else {
     if($::in{log}){ # 過去ログ
       unless($::pc{forbiddenMode}){
-        push(@menu, { TEXT => '出力' , ICON => 'output', TYPE => "onclick", VALUE => "downloadListOn()" });
+        push(@menu, { TEXT => '輸出' , ICON => 'output', TYPE => "onclick", VALUE => "downloadListOn()" });
       }
-      push(@menu, { TEXT => '過去ログ', ICON => 'history', TYPE => "onclick", VALUE => 'loglistOn()' });
-      if($::pc{reqdPassword}){ push(@menu, { TEXT => '復元', ICON => 'restore_page',  TYPE => "onclick", VALUE => "editOn()" }); }
-      else                   { push(@menu, { TEXT => '復元', ICON => 'restore_page',  TYPE => "href" , VALUE => "./?mode=edit&id=$::in{id}&log=$::in{log}" });
+      push(@menu, { TEXT => '歷史紀錄', ICON => 'history', TYPE => "onclick", VALUE => 'loglistOn()' });
+      if($::pc{reqdPassword}){ push(@menu, { TEXT => '復原', ICON => 'restore_page',  TYPE => "onclick", VALUE => "editOn()" }); }
+      else                   { push(@menu, { TEXT => '復原', ICON => 'restore_page',  TYPE => "href" , VALUE => "./?mode=edit&id=$::in{id}&log=$::in{log}" });
       }
     }
     else { #通常
       unless($::pc{forbiddenMode}){
         if($template->param('generateType')){
-          push(@menu, { TEXT => 'パレット', ICON => 'speaker_notes', TYPE => "onclick", VALUE => "chatPaletteOn()" });
+          push(@menu, { TEXT => '對話板', ICON => 'speaker_notes', TYPE => "onclick", VALUE => "chatPaletteOn()" });
         }
-        push(@menu, { TEXT => '出力'    , ICON => 'output',  TYPE => "onclick", VALUE => "downloadListOn()" });
-        push(@menu, { TEXT => '過去ログ', ICON => 'history', TYPE => "onclick", VALUE => "loglistOn()" });
+        push(@menu, { TEXT => '輸出'    , ICON => 'output',  TYPE => "onclick", VALUE => "downloadListOn()" });
+        push(@menu, { TEXT => '歷史紀錄', ICON => 'history', TYPE => "onclick", VALUE => "loglistOn()" });
       }
-      if($::pc{reqdPassword}){ push(@menu, { TEXT => '編集', ICON => 'edit_document', SIZE=> 'large', TYPE => "onclick", VALUE => "editOn()" }); }
-      else                   { push(@menu, { TEXT => '編集', ICON => 'edit_document', SIZE=> 'large', TYPE => "href"   , VALUE => "./?mode=edit&id=$::in{id}" }); }
+      if($::pc{reqdPassword}){ push(@menu, { TEXT => '編輯', ICON => 'edit_document', SIZE=> 'large', TYPE => "onclick", VALUE => "editOn()" }); }
+      else                   { push(@menu, { TEXT => '編輯', ICON => 'edit_document', SIZE=> 'large', TYPE => "href"   , VALUE => "./?mode=edit&id=$::in{id}" }); }
     }
   }
 

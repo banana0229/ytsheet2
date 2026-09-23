@@ -523,16 +523,16 @@ sub renderEditHeaderMenu {
       <h2><span></span></h2>
       <ul class="menu-items">
         $tabsHtml
-        <li onclick="sectionSelect('color');" class="color-icon" title="シートデザインカスタム">
-        <li onclick="view('text-rule')" class="help-icon" title="テキスト整形ルール">
+        <li onclick="sectionSelect('color');" class="color-icon" title="自訂外觀">
+        <li onclick="view('text-rule')" class="help-icon" title="文字裝飾語法">
         <li onclick="toggleNightMode()" class="nightmode-button">
         <li class="buttons">
           <ul>
-            <li @{[ display ($::in{mode} eq 'edit') ]} class="view-icon" title="閲覧画面"><a href="./?id=$::in{id}"></a>
-            <li @{[ display ($::in{mode} eq 'edit') ]}  class="import-icon" title="別のデータを開く"><button type="button" command="show-modal" commandfor="dialog-import-json"></button>
-            <li class="export-icon" title="JSONデータを保存"><button type="button" command="show-modal" commandfor="dialog-export-json"></button>
+            <li @{[ display ($::in{mode} eq 'edit') ]} class="view-icon" title="檢視"><a href="./?id=$::in{id}"></a>
+            <li @{[ display ($::in{mode} eq 'edit') ]}  class="import-icon" title="開啟別的資料"><button type="button" command="show-modal" commandfor="dialog-import-json"></button>
+            <li class="export-icon" title="儲存為JSON"><button type="button" command="show-modal" commandfor="dialog-export-json"></button>
             <li @{[ display ($::in{mode} eq 'edit') ]} class="copy" onclick="window.open('./?mode=copy&id=$::in{id}$logQ');">複製
-            <li class="submit" onclick="formSubmit()" title="Ctrl+S">保存
+            <li class="submit" onclick="formSubmit()" title="Ctrl+S">儲存
           </ul>
         </li>
       </ul>
@@ -697,8 +697,7 @@ sub renderImageForm {
         $set::img_notice
         <h3>選擇圖片</h3>
         <p>
-          プレビューエリアに画像ファイルをドロップ、<br>
-          または画像を選択<br>
+          將圖片拖曳到預覽區或選擇檔案<br>
         </p>
           @{[
             join '', map {
@@ -707,8 +706,8 @@ sub renderImageForm {
             } '', 2 .. $imageMaxCount
           ]}
         <p>
-          ※ ファイルサイズ @{[ $imageMaxSizeView ]} までの JPG/PNG/GIF/WebP
-          <small>（サイズを超過する場合、自動的にWebP形式に変換し、その上でまだ超過している場合は縮小処理が行われます）</small>
+          ※ 檔案限制為最大 @{[ $imageMaxSizeView ]} 的 JPG/PNG/GIF/WebP
+          <small>（過大的檔案將自動轉換為WebP，如果轉換後還是超過的話，會調整尺寸）</small>
         </p>
         <div id="image-select-buttons">
           @{[
@@ -720,14 +719,14 @@ sub renderImageForm {
                 <div class="image-select-block" data-num="$n">
                   @{[ input "image$suffix",'hidden','','class="image-ext"' ]}
                   @{[ input "imageUpdate$suffix",'hidden' ]}
-                  @{[ checkbox "imageDelete$suffix","削除" ]}
+                  @{[ checkbox "imageDelete$suffix","移除" ]}
                   <label class="image-select" onclick="switchImageLayoutConfig($n)">
-                    <span>画像$n</span>
+                    <span>圖片$n</span>
                     <span class="check"><input type="radio" name="imageEditing" @{[ $n eq $::pc{mainImage} ? 'checked' : '' ]}></span>
                     <img src="@{[ $imageURLs{$n} || $emptyImageURL ]}" style="width:100px;height:100px;object-fit:contain;" data-num="$n" class="$selected">
                   </label>
-                  @{[ radio "mainImage", "checkMainImage($n)", $n, 'メイン画像' ]}
-                  @{[ checkbox "imageHide$suffix", '非表示' ]}
+                  @{[ radio "mainImage", "checkMainImage($n)", $n, '主圖片' ]}
+                  @{[ checkbox "imageHide$suffix", '隱藏' ]}
                   @{[ selectBox "imageSpoiler$suffix", "", 'DEF==>警示設定', @spoilerTypes ]}
                 </div>
               HTM
@@ -817,18 +816,18 @@ sub renderImageForm {
           <b>URL（作者のWebサイトなど）：</b><br>
           @{[ input 'editingImageCopyrightURL','url ','wordsPreView','placeholder="https://..." style="width:90%;"' ]}<br>
         </p>
-        <h3>画像に重ねるセリフ</h3>
+        <h3>圖片上的台詞</h3>
         <p>
-          <textarea name="editingWords" style="width:100%;height:3.6em;" onchange="wordsPreView();" placeholder="「任意の台詞」">$::pc{words}</textarea>
+          <textarea name="editingWords" style="width:100%;height:3.6em;" onchange="wordsPreView();" placeholder="「任意台詞」">$::pc{words}</textarea>
         </p>
         <p>
-          <b>セリフの配置</b>：
+          <b>台詞位置</b>：
           <select name="editingWordsX" oninput="wordsPreView();">@{[ option 'editingWordsX','右','左' ]}</select>
           <select name="editingWordsY" oninput="wordsPreView();">@{[ option 'editingWordsY','上','下' ]}</select>
         </p>
       </div>
       <div class="image-custom-form close-button">
-        <a class="button" onclick="imagePositionClose()">画像とセリフの設定を閉じる</a>
+        <a class="button" onclick="imagePositionClose()">關閉圖片與台詞的設定</a>
       </div>
       @{[
         join '', map {
@@ -970,7 +969,7 @@ sub renderDecorationForm {
       <h2>シートの装飾設定</h2>
       <div class="box-union">
         <div class="box color-custom">
-          <h2>メインカラー</h2>
+          <h2>主色彩</h2>
           <table>
           <tr class="color-range-H"><th>色相</th><td><input type="range" name="colorHeadBgH" min="0" max="360" value="$::pc{colorHeadBgH}" oninput="changeColor();"></td><td id="colorHeadBgHValue">$::pc{colorHeadBgH}</td></tr>
           <tr class="color-range-S"><th>彩度</th><td><input type="range" name="colorHeadBgS" min="0" max="100" value="$::pc{colorHeadBgS}" oninput="changeColor();"></td><td id="colorHeadBgSValue">$::pc{colorHeadBgS}</td></tr>
@@ -978,7 +977,7 @@ sub renderDecorationForm {
           </table>
         </div>
         <div class="box color-custom">
-          <h2>サブカラー</h2>
+          <h2>副色彩</h2>
           <table>
           <tr class="color-range-H"><th>色相</th><td><input type="range" name="colorBaseBgH"  min="0" max="360" value="$::pc{colorBaseBgH}" oninput="changeColor();"></td><td id="colorBaseBgHValue">$::pc{colorBaseBgH}</td></tr>
           <tr class="color-range-S"><th>色の濃さ</th><td><input type="range" name="colorBaseBgS"  min="0" max="100" value="$::pc{colorBaseBgS}" oninput="changeColor();"></td><td id="colorBaseBgSValue">$::pc{colorBaseBgS}</td></tr>
