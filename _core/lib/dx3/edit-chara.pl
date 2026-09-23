@@ -185,13 +185,13 @@ print <<"HTML";
     </div>
 
     <details class="box" id="regulation" @{[$::mode eq 'edit' ? '':'open']}>
-      <summary class="in-toc">作成レギュレーション</summary>
+      <summary class="in-toc">創建條件</summary>
       <dl>
-        <dt>作成方法
-        <dd>@{[ radios 'createType', 'changeCreateType', 'C=>コンストラクション','F=>フルスクラッチ' ]}
-        <dt>消費経験点
-        <dd>@{[ input "history0Exp",'number','changeRegu',($set::make_fix?' readonly':'') ]} <span class="fullscratch-only">※フルスクラッチ作成時の130点は含みません。</span>
-        <dt>ステージ
+        <dt>創建方法
+        <dd>@{[ radios 'createType', 'changeCreateType', 'C=>基本創建','F=>完全描繪' ]}
+        <dt>消費經驗點
+        <dd>@{[ input "history0Exp",'number','changeRegu',($set::make_fix?' readonly':'') ]} <span class="fullscratch-only">※完全描繪的130點不包含在內。</span>
+        <dt>舞台
         <dd>@{[ input "stage",'','checkStage','list="list-stage"' ]}<br>
           ※ステージの入力值に「クロウリングケイオス」が“含まれる”場合、専用項目が表示されます。
         <dt>備註
@@ -245,7 +245,7 @@ print <<"HTML";
               <td colspan="4">
           <tbody>
             <tr class="works-row">
-              <th colspan="2" class="right">ワークスによる修正
+              <th colspan="2" class="right">真身修正
               <td>@{[ radio 'sttWorks', 'deselectable,calcStt', 'body'  , '+1' ]}
               <td>@{[ radio 'sttWorks', 'deselectable,calcStt', 'sense' , '+1' ]}
               <td>@{[ radio 'sttWorks', 'deselectable,calcStt', 'mind'  , '+1' ]}
@@ -257,13 +257,13 @@ print <<"HTML";
               <td>@{[input "sttGrowMind"  ,'number','calcStt', 'min="0"']}
               <td>@{[input "sttGrowSocial",'number','calcStt', 'min="0"']}
             <tr>
-              <th colspan="2" class="right">その他の修正
+              <th colspan="2" class="right">其他修正
               <td>@{[input "sttAddBody"  ,'number','calcStt']}
               <td>@{[input "sttAddSense" ,'number','calcStt']}
               <td>@{[input "sttAddMind"  ,'number','calcStt']}
               <td>@{[input "sttAddSocial",'number','calcStt']}
             <tr>
-              <th colspan="2" class="right">合計
+              <th colspan="2" class="right">總計
               <td id="stt-total-body"  >0
               <td id="stt-total-sense" >0
               <td id="stt-total-mind"  >0
@@ -377,7 +377,7 @@ print <<"HTML";
       </ul>
     </details>
     <details class="box" id="lifepath" $open{lifepath}>
-      <summary class="in-toc">ライフパス</summary>
+      <summary class="in-toc">經歷</summary>
       <table class="edit-table line-tbody">
         <tbody>
           <tr>
@@ -432,7 +432,7 @@ print <<"HTML";
         <h2 class="in-toc">侵蝕率效果表</h2>
         <p>
           <!-- 現在侵蝕率:@{[ input 'currentEncroach','number','encroachBonusSet(this.value)','style="width: 4em;"' ]} -->
-          @{[ checkbox 'encroachEaOn','エフェクトアーカイブ適用','encroachBonusType' ]}
+          @{[ checkbox 'encroachEaOn','套用EA','encroachBonusType' ]}
         </p>
         <table class="data-table" id="enc-table">
           <colgroup></colgroup>
@@ -492,7 +492,7 @@ print <<"HTML";
       </div>
     </details>
     <details class="box" id="memory" $open{memory}>
-      <summary class="in-toc" data-content-title="メモリー">メモリー [<span id="exp-memory">0</span>]</summary>
+      <summary class="in-toc" data-content-title="回憶">回憶 [<span id="exp-memory">0</span>]</summary>
       <div>
         <table class="edit-table no-border-cells" id="memory-table">
           <thead>
@@ -529,7 +529,7 @@ print <<"HTML";
     </details>
 
     <details class="box" id="effect" $open{effect}>
-      <summary class="in-toc" data-content-title="エフェクト">エフェクト [<span id="exp-effect">0</span>]</summary>
+      <summary class="in-toc" data-content-title="異能">異能 [<span id="exp-effect">0</span>]</summary>
       <div>
         <table class="edit-table line-tbody no-border-cells" id="effect-table">
           <thead id="effect-head">
@@ -773,13 +773,13 @@ print <<"HTML";
     </details>
 
     <details class="box" id="free-note" @{[$pc{freeNote}?'open':'']}>
-      <summary class="in-toc">容姿・経歴・その他メモ</summary>
+      <summary class="in-toc">外貌・經歷・筆記</summary>
       <textarea name="freeNote">$pc{freeNote}</textarea>
       @{[ ($::in{log} || $::in{overwrite}) ? '<button type="button" class="set-newest" onclick="setNewestSingleData(\'freeNote\')">最新のメモを適用する</button>' : '' ]}
     </details>
 
     <details class="box" id="free-history" @{[$pc{freeHistory}?'open':'']}>
-      <summary class="in-toc">履歴（自由記入）</summary>
+      <summary class="in-toc">履歷（自由填寫）</summary>
       <textarea name="freeHistory">$pc{freeHistory}</textarea>
       @{[ ($::in{log} || $::in{overwrite}) ? '<button type="button" class="set-newest" onclick="setNewestSingleData(\'freeHistory\')">最新の履歴（自由記入）を適用する</button>' : '' ]}
     </details>
@@ -801,15 +801,15 @@ print <<"HTML";
             <th>
             <th>日期
             <th>タイトル
-            <th colspan="2">経験点
+            <th colspan="2">經驗點
             <th>GM
             <th>参加者
           <tr>
             <td>-
             <td>
-            <td>キャラクター作成
+            <td>角色創建
             <td id="history0-exp">$pc{history0Exp}
-            <td><input type="checkbox" checked disabled>適用
+            <td><input type="checkbox" checked disabled>套用
         @{[ renderTemplateLoop(
           'history',
           sub ($num) {
@@ -820,7 +820,7 @@ print <<"HTML";
                 <td class="date  " rowspan="2">@{[input "history${num}Date" ]}
                 <td class="title " rowspan="2">@{[input "history${num}Title" ]}
                 <td class="exp   ">@{[ input "history${num}Exp",'text','calcExp' ]}
-                <td class="apply "><label>@{[ input "history${num}ExpApply",'checkbox','calcExp' ]}<b>適用</b></label>
+                <td class="apply "><label>@{[ input "history${num}ExpApply",'checkbox','calcExp' ]}<b>套用</b></label>
                 <td class="gm    ">@{[ input "history${num}Gm" ]}
                 <td class="member">@{[ input "history${num}Member" ]}
               <tr>
@@ -829,10 +829,10 @@ print <<"HTML";
           }
         ) ]}
         <tfoot id="history-foot">
-          <tr><th></th><th>日期</th><th>タイトル</th><th colspan="2">経験点</th><th>GM</th><th>参加者</th></tr>
+          <tr><th></th><th>日期</th><th>タイトル</th><th colspan="2">經驗點</th><th>GM</th><th>参加者</th></tr>
       </table>
       @{[ renderAddDelButtons('history') ]}
-      <h2>記入例</h2>
+      <h2>填寫範例</h2>
       <table class="example edit-table line-tbody no-border-cells">
         <colgroup>
           <col>
@@ -856,9 +856,9 @@ print <<"HTML";
           <tr>
             <td>-
             <td><input type="text" value="2020-03-18" disabled>
-            <td><input type="text" value="第一話「記入例」" disabled>
+            <td><input type="text" value="第一話「填寫範例」" disabled>
             <td><input type="text" value="10+5+1" disabled>
-            <td><label><input type="checkbox" checked disabled><b>適用</b></label>
+            <td><label><input type="checkbox" checked disabled><b>套用</b></label>
             <td class="gm"><input type="text" value="サンプルGM" disabled>
             <td class="member"><input type="text" value="荒川ヨドミ　鎧畑ショウコ　橘シドウ　金床スズ" disabled>
           </tr>

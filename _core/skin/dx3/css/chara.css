@@ -1171,7 +1171,7 @@
   border-radius: 5px;
 }
 #enc-bonus details:not([open]) summary::after {
-  content: '（クリックで展開）';
+  content: '（點擊展開）';
   font-size: 90%;
 }
 #enc-bonus p {

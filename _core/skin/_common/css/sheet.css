@@ -285,7 +285,7 @@ dl.box > dt,
   }
 }
 details:not([open]) > summary::after {
-  content: "（クリックで展開）";
+  content: "（點擊展開）";
   font-size: 80%;
   font-weight: normal;
   opacity: 0.8;

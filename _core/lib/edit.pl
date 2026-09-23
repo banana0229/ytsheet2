@@ -678,9 +678,9 @@ sub renderImageForm {
   );
   return <<~"HTML";
     <div class="box" id="image" style="max-height:550px;">
-      <h2>キャラクター画像</h2>
+      <h2>角色圖片</h2>
       <p>
-        <a class="button" onclick="imagePositionView();wordsPreView()">画像とセリフの設定</a>
+        <a class="button" onclick="imagePositionView();wordsPreView()">設定圖片與台詞</a>
       </p>
     </div>
 
@@ -695,7 +695,7 @@ sub renderImageForm {
       </div>
       <div class="image-custom-form">
         $set::img_notice
-        <h3>画像選択</h3>
+        <h3>選擇圖片</h3>
         <p>
           プレビューエリアに画像ファイルをドロップ、<br>
           または画像を選択<br>

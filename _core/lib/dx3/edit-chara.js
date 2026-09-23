@@ -100,7 +100,7 @@ function checkSyndrome(){
   const syn2 = syndromes[1];
   const syn3 = syndromes[2];
 
-  document.getElementById('breed-value').textContent = syn3 ? 'トライ' : syn2 ? 'クロス' : syn1 ? 'ピュア' : '';
+  document.getElementById('breed-value').textContent = syn3 ? '三種混合' : syn2 ? '混血' : syn1 ? '純血' : '';
   
   form.syndrome1.parentNode.classList.toggle('error', !syn1 && (syn2 || syn3));
   form.syndrome2.parentNode.classList.toggle('error', !syn2 && syn3);
@@ -430,7 +430,7 @@ function encroachBonusType(){
   }
   document.querySelector('#enc-table colgroup').prepend(document.createElement("col"));
   let thHead  = document.createElement("th"); thHead.textContent  = ''       ; document.getElementById('enc-table-head' ).prepend(thHead);
-  let thBonus = document.createElement("th"); thBonus.textContent = 'ダイス' ; document.getElementById('enc-table-dices').prepend(thBonus);
+  let thBonus = document.createElement("th"); thBonus.textContent = '骰數' ; document.getElementById('enc-table-dices').prepend(thBonus);
   let thLevel = document.createElement("th"); thLevel.textContent = 'Efct.Lv'; document.getElementById('enc-table-level').prepend(thLevel);
 
   document.getElementById('combo').classList.toggle('original-renegade-mode', OR); //コンボ欄5行目ON/OFF
