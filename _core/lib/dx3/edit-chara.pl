@@ -228,7 +228,7 @@ print <<"HTML";
               <th>社會
           <tbody class="syndrome-rows">
             <tr>
-              <th class="breed" rowspan="3"><span id="breed-value"></span><span class="small">ブリード</span>
+              <th class="breed" rowspan="3"><span id="breed-value"></span><span class="small">種</span>
               <td>@{[ selectInput 'syndrome1','changeSyndrome(1,this.value)',@data::syndromes ]}
               <td><span id="stt-syn1-body"  ></span>@{[ input "sttSyn1Body"  ,'number','calcStt' ]}
               <td><span id="stt-syn1-sense" ></span>@{[ input "sttSyn1Sense" ,'number','calcStt' ]}
@@ -251,7 +251,7 @@ print <<"HTML";
               <td>@{[ radio 'sttWorks', 'deselectable,calcStt', 'mind'  , '+1' ]}
               <td>@{[ radio 'sttWorks', 'deselectable,calcStt', 'social', '+1' ]}
             <tr>
-              <th colspan="2" class="right"><span class="construction-only">フリーポイント＋</span>成長
+              <th colspan="2" class="right"><span class="construction-only">任意分配＋</span>成長
               <td>@{[input "sttGrowBody"  ,'number','calcStt', 'min="0"']}
               <td>@{[input "sttGrowSense" ,'number','calcStt', 'min="0"']}
               <td>@{[input "sttGrowMind"  ,'number','calcStt', 'min="0"']}
@@ -372,8 +372,8 @@ print <<"HTML";
       </dl>
       <ul class="annotate">
         <li>右側的輸入框是D露易絲等額外加值的欄位（不計算經驗點）
-        <li>沒輸入真身對應的技能時<span class="fullscratch-only">消費經驗點會顯示為「-9」</span><span class="construction-only">任意技能分配會顯示為「-4.5」</span><br>
-          正確輸入真身對應的技能時會變成「0」點（部分擴充收錄的真身例外）
+        <li>沒輸入真身的對應技能時<span class="fullscratch-only">消費經驗點會顯示為「-9」</span><span class="construction-only">任意技能分配會顯示為「-4.5」</span><br>
+          正確輸入真身的對應技能時會變成「0」點（部分擴充收錄的真身例外）
       </ul>
     </details>
     <details class="box" id="lifepath" $open{lifepath}>
@@ -469,7 +469,7 @@ print <<"HTML";
           <tbody>
             @{[ map {
               my $num = $_;
-              $pc{"lois${num}State"} = 'ロイス' unless $pc{"lois${num}State"};
+              $pc{"lois${num}State"} = '露易絲' unless $pc{"lois${num}State"};
               <<~"ROW";
               <tr id="lois${num}">
                 <td class="relation"><span class="handle"></span>@{[input "lois${num}Relation",'','','list="list-lois-relation"']}
@@ -873,7 +873,7 @@ print <<"HTML";
 
     <div class="box" id="exp-footer">
       <p class="construction-only">
-        <b>コンストラクション作成</b>
+        <b>基本創建</b>
         :  任意能力值分配[<b id="freepoint-status"></b>/3]
         ／ 任意技能分配[<b id="freepoint-skill"></b>/5]
         ／ 任意異能[<b id="freepoint-effect"></b>/4]個

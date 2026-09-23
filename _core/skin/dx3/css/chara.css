@@ -543,8 +543,8 @@
     display: inline-block;
     transform: scaleY(1.2);
   }
-  &[data-state="ロイス"]  { background: hsla(120,100%,50%,0.05); }
-  &[data-state="タイタス"]{ background: hsla(200,100%,50%,0.3); font-weight: bold; }
+  &[data-state="露易絲"]  { background: hsla(120,100%,50%,0.05); }
+  &[data-state="泰特斯"]{ background: hsla(200,100%,50%,0.3); font-weight: bold; }
   &[data-state="昇華"]    { background: hsla( 50,100%,50%,0.3); font-weight: bold; }
 }
 #lois table tbody td.sperior span[data-state] {
@@ -559,8 +559,8 @@
     width: 1em;
     font-weight: bold;
   }
-  &[data-state="ロイス"]  { background: linear-gradient(to right,hsla(0,100%,50%,0.3) 1.1em, hsla(120,100%,50%,0.05) 1.1em); }
-  &[data-state="タイタス"]{ background: linear-gradient(to right,hsla(0,100%,50%,0.3) 1.1em, hsla(200,100%,50%,0.3 ) 1.1em); }
+  &[data-state="露易絲"]  { background: linear-gradient(to right,hsla(0,100%,50%,0.3) 1.1em, hsla(120,100%,50%,0.05) 1.1em); }
+  &[data-state="泰特斯"]{ background: linear-gradient(to right,hsla(0,100%,50%,0.3) 1.1em, hsla(200,100%,50%,0.3 ) 1.1em); }
   &[data-state="昇華"]    { background: linear-gradient(to right,hsla(0,100%,50%,0.3) 1.1em, hsla( 50,100%,50%,0.3 ) 1.1em); }
 }
 #lois table:not(:has(td.color:not(:empty))) .color {
@@ -722,7 +722,7 @@
 }
 .ef-dlois::after {
   display: block;
-  content: 'ロイス';
+  content: '露易絲';
   white-space: nowrap;
   transform: translateY(-.1em);
 }

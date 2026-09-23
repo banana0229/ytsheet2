@@ -202,7 +202,7 @@ sub selectInput {
   my $func = shift;
   if($func && $func !~ /\(.*?\);?$/){ $func .= '()'; }
   my $text = '<div class="select-input"><select name="'.$name.'" oninput="selectInputCheck(this);'.$func.'">'.option($name, @_);
-  $text .= '<option value="free">その他（自由記入）';
+  $text .= '<option value="free">其他（自由輸入）';
   unless($text =~ /value="\Q$::pc{$name}\E"/){ $text .= '<option value="'.$::pc{$name}.'" selected>'.$::pc{$name}; }
   $text .= '</select>';
   $text .= '<input type="text" name="'.$name.'Free" list="list-'.$name.'"></div>';

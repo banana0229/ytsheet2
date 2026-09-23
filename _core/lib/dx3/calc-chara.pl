@@ -129,10 +129,10 @@ sub dataCalc {
         elsif($id =~ /Negotiate|Procure|Info/){ $stt = $pc{sttTotalSocial}; }
       }
       if($pc{"combo${num}Stt"}){
-        if   ($pc{"combo${num}Stt"} eq '肉体'){ $stt = $pc{sttTotalBody}; }
-        elsif($pc{"combo${num}Stt"} eq '感覚'){ $stt = $pc{sttTotalSense}; }
+        if   ($pc{"combo${num}Stt"} eq '肉體'){ $stt = $pc{sttTotalBody}; }
+        elsif($pc{"combo${num}Stt"} eq '感覺'){ $stt = $pc{sttTotalSense}; }
         elsif($pc{"combo${num}Stt"} eq '精神'){ $stt = $pc{sttTotalMind}; }
-        elsif($pc{"combo${num}Stt"} eq '社会'){ $stt = $pc{sttTotalSocial}; }
+        elsif($pc{"combo${num}Stt"} eq '社會'){ $stt = $pc{sttTotalSocial}; }
       }
       $stt;
     };

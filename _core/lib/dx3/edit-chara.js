@@ -501,7 +501,7 @@ function changeLoisColor(num){
 function changeLoisState(id){
   const obj = document.querySelector(`#${id} [name$="State"]`);
   let state = obj.value;
-  state = (state == 'ロイス') ? 'タイタス' : (state == 'タイタス') ? '昇華' : 'ロイス';
+  state = (state == '露易絲') ? '泰特斯' : (state == '泰特斯') ? '昇華' : '露易絲';
   obj.value = state;
   document.getElementById(id+'-state').dataset.state = state;
 }
@@ -521,17 +521,17 @@ function resetLois(num){
   form[`lois${num}Color`   ].value = '';
   form[`lois${num}Color`   ].style.backgroundColor = '';
   form[`lois${num}Note`    ].value = '';
-  form[`lois${num}State`   ].value = 'ロイス';
-  document.getElementById(`lois${num}-state`).dataset.state = 'ロイス';
+  form[`lois${num}State`   ].value = '露易絲';
+  document.getElementById(`lois${num}-state`).dataset.state = '露易絲';
 }
 function resetLoisAll(){
-  if (!confirm('全てのロイスを削除します。よろしいですか？')) return false;
+  if (!confirm('確定要清除所有的露易絲嗎？')) return false;
   for(let num = 1; num <= 7; num++){
     resetLois(num);
   }
 }
 function resetLoisAdd(){
-  if (!confirm('4～7番目のロイスを削除します。よろしいですか？')) return false;
+  if (!confirm('確定要清除第4～7格的露易絲嗎？')) return false;
   for(let num = 4; num <= 7; num++){
     resetLois(num);
   }
