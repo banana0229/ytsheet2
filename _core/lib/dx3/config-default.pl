@@ -59,7 +59,7 @@ our $game = 'dx3';
 our %customizedInitialValues = (
     '' => {
         # 例：「侵蝕率効果表」の「エフェクトアーカイブ適用」を初期状態で有効にする
-        # 'encroachEaOn' => '1',
+        'encroachEaOn' => '1',
     },
 );
 
