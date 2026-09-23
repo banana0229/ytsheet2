@@ -598,7 +598,7 @@ sub renderVisibilityBlock {
           <option value="">於清單內顯示
           <option value="1" @{[ $::pc{hide} ? 'selected' : '' ]}>不要顯示在清單上
         </select>
-      <dd>※就算「不要顯示在清單上」還是會出現在標籤搜尋，以及我的角色一覽上
+      <dd>※就算選擇「不要顯示在清單上」，還是會出現在標籤搜尋，以及我的角色一覽之中
     </dl>
   HTML
 }

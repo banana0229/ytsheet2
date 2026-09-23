@@ -137,15 +137,15 @@ foreach my $id ('Ride','Art','Know','Info'){
 }
 push(@setComboSkills, '參照解說');
 
-my @setComboStatus = qw/DEF==>自動（技能に合った能力值） LABEL=▼エフェクト等による差し替え 肉體 感覺 精神 社會/;
+my @setComboStatus = qw/DEF==>自動（與技能對應的能力值） LABEL=▼替換 肉體 感覺 精神 社會/;
 ### フォーム表示 #####################################################################################
 print renderEditPageStart(
   title => (removeTags removeRuby unescapeTags ($pc{characterName} || qq|“$pc{aka}”|)),
 );
 print renderEditHeaderMenu(
   tabsHtml => <<~'HTML',
-    <li onclick="sectionSelect('common');" class="sheet-main"><span>キャラ<span class="shorten">クター</span></span><span>データ</span>
-    <li onclick="sectionSelect('palette');" class="unit-setting"><span><span class="shorten">ユニット(</span>コマ<span class="shorten">)</span></span><span>設定</span>
+    <li onclick="sectionSelect('common');" class="sheet-main"><span>角色<span class="shorten">資料</span></span>
+    <li onclick="sectionSelect('palette');" class="unit-setting"><span><span class="shorten">角色(</span>棋子<span class="shorten">)</span></span><span>設定</span>
   HTML
 );
 print qq|<aside class="message">$message</aside>| if $message;
@@ -193,7 +193,7 @@ print <<"HTML";
         <dd>@{[ input "history0Exp",'number','changeRegu',($set::make_fix?' readonly':'') ]} <span class="fullscratch-only">※完全描繪的130點不包含在內。</span>
         <dt>舞台
         <dd>@{[ input "stage",'','checkStage','list="list-stage"' ]}<br>
-          ※ステージの入力值に「クロウリングケイオス」が“含まれる”場合、専用項目が表示されます。
+          ※舞台名稱如果<b>包含<b>「クロウリングケイオス」的話，會出現舞台的專用項目。
         <dt>備註
         <dd>@{[ input "history0Note" ]}
       </dl>
@@ -298,7 +298,7 @@ print <<"HTML";
           <dd><b id="dash-total"></b>
         </dl>
         <dl class="box crc-only" id="magic-dice">
-          <dt>魔術ダイス
+          <dt>魔術骰
           <dd>+@{[input "magicAdd",'number','calcMagicDice']}=<b id="magic-total"></b>
         </dl>
       </div>
@@ -371,9 +371,9 @@ print <<"HTML";
         </dd>
       </dl>
       <ul class="annotate">
-        <li>右側は、Dロイスなどによるレベル補正の欄です（経験点が計算されません）
-        <li>ワークスによる技能取得ぶんとして、無入力時は<span class="fullscratch-only">消費経験点の表示が「-9」</span><span class="construction-only">技能フリーポイントの表示が「-4.5」</span>になっています。<br>
-          ワークスぶんを正しく入力すると「0」点になります（一部書籍収録のワークスを除く）
+        <li>右側的輸入框是D露易絲等額外加值的欄位（不計算經驗點）
+        <li>沒輸入真身對應的技能時<span class="fullscratch-only">消費經驗點會顯示為「-9」</span><span class="construction-only">任意技能分配會顯示為「-4.5」</span><br>
+          正確輸入真身對應的技能時會變成「0」點（部分擴充收錄的真身例外）
       </ul>
     </details>
     <details class="box" id="lifepath" $open{lifepath}>
@@ -487,8 +487,8 @@ print <<"HTML";
         </table>
       </div>
       <div class="right lois-reset-buttons">
-        <button type="button" class="small" onclick="resetLoisAll()">全ロイスをリセット</button>
-        <button type="button" class="small" onclick="resetLoisAdd()">4番目以降をリセット</button>
+        <button type="button" class="small" onclick="resetLoisAll()">清空所有露易絲</button>
+        <button type="button" class="small" onclick="resetLoisAdd()">清空第4格以後的路易斯</button>
       </div>
     </details>
     <details class="box" id="memory" $open{memory}>
@@ -518,12 +518,12 @@ print <<"HTML";
           </tbody>
         </table>
       </div>
-      <ul class="annotate"><li>「関係」か「名前」を入力すると経験点が計算されます。</ul>
+      <ul class="annotate"><li>有輸入「關係」或「名稱」才會計算經驗點。</ul>
     </details>
     <details class="box crc-only" id="insanity" $open{insanity}>
-      <summary class="in-toc">永続的狂気</summary>
+      <summary class="in-toc">永久瘋狂</summary>
       <dl class="edit-table " id="insanity-table">
-        <dt>@{[input "insanity",'','','placeholder="名称"']}
+        <dt>@{[input "insanity",'','','placeholder="名稱"']}
         <dd>@{[input "insanityNote",'','','placeholder="效果"']}
       </dl>
     </details>
@@ -565,8 +565,8 @@ print <<"HTML";
       </div>
       @{[ renderAddDelButtons('effect') ]}
       <ul class="annotate">
-        <li>種類「自動」「Dロイス」を選択した場合、取得時（1レベル）の経験点を0として計算します。
-        <li>経験点修正の欄は、自動計算で対応しきれない例外的な取得・成長に使用してください（Dロイス転生者など）
+        <li>種類設定為「自動取得」或「D露易絲」時，取得時(LV1)的經驗點將以0點做計算。
+        <li>經驗點修正的欄位，可用來處理自動計算無法對應的例外狀況(如D露易絲轉生者)。
       </ul>
     </details>
     <div class="box trash-box" id="effect-trash">
@@ -580,7 +580,7 @@ print <<"HTML";
       <div>
         <table class="edit-table line-tbody no-border-cells" id="magic-table">
           <thead id="magic-head">
-            <tr><th><th>名稱<th>種類<th>經驗點<th>発動值<th>侵蝕值<th>效果
+            <tr><th><th>名稱<th>種類<th>經驗點<th>發動值<th>侵蝕值<th>效果
           @{[ renderTemplateLoop(
             'magic',
             sub ($num) {
@@ -588,10 +588,10 @@ print <<"HTML";
               <tbody id="magic-row${num}">
                 <tr>
                   <td class="handle">
-                  <td>@{[input "magic${num}Name"    ,'','','placeholder="名称"']}
+                  <td>@{[input "magic${num}Name"    ,'','','placeholder="名稱"']}
                   <td>@{[input "magic${num}Type"    ,'','','placeholder="種類" list="list-magic-type"']}
                   <td>@{[input "magic${num}Exp"     ,'number','calcMagic']}
-                  <td>@{[input "magic${num}Activate",'','','placeholder="発動值"']}
+                  <td>@{[input "magic${num}Activate",'','','placeholder="發動值"']}
                   <td>@{[input "magic${num}Encroach",'','','placeholder="侵蝕值"']}
                   <td>@{[input "magic${num}Note"    ,'','','placeholder="效果"']}
               ROW
@@ -800,7 +800,7 @@ print <<"HTML";
           <tr>
             <th>
             <th>日期
-            <th>タイトル
+            <th>名稱
             <th colspan="2">經驗點
             <th>GM
             <th>参加者
@@ -829,7 +829,7 @@ print <<"HTML";
           }
         ) ]}
         <tfoot id="history-foot">
-          <tr><th></th><th>日期</th><th>タイトル</th><th colspan="2">經驗點</th><th>GM</th><th>参加者</th></tr>
+          <tr><th></th><th>日期</th><th>名稱</th><th colspan="2">經驗點</th><th>GM</th><th>参加者</th></tr>
       </table>
       @{[ renderAddDelButtons('history') ]}
       <h2>填寫範例</h2>
@@ -847,7 +847,7 @@ print <<"HTML";
           <tr>
             <th>
             <th>日期
-            <th>タイトル
+            <th>名稱
             <th colspan="2">經驗點
             <th>GM
             <th>参加者
@@ -865,8 +865,8 @@ print <<"HTML";
         </tbody>
       </table>
       <ul class="annotate">
-        <li>経験点欄は<code>10+5+1</code>など四則演算が有効です（獲得條件の違う経験点などを分けて書けます）。<br>
-          経験点欄の右の適用チェックを入れると、その経験点が適用されます。
+        <li>經驗點的欄位可以進行<code>10+5+1</code>的四則運算（可以用來區分不同條件的經驗點）。<br>
+          勾選經驗點欄右邊的套用後，就會計算那欄的經驗點。
       </ul>
       @{[ ($::in{log} || $::in{overwrite}) ? '<button type="button" class="set-newest" onclick="setNewestHistoryData()">最新の團務履歷を適用する</button>' : '' ]}
     </div>
