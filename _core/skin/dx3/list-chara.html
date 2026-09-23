@@ -9,21 +9,21 @@
             <dd><input type="text" name="tag" value="<TMPL_VAR tag>">
           <dt>群組
             <dd><select name="group"><option value="all">すべて<TMPL_LOOP Groups><option value="<TMPL_VAR ID>" <TMPL_VAR SELECTED>><TMPL_VAR NAME></TMPL_LOOP></select>
-          <dt>名前
+          <dt>名字
             <dd><input type="text" name="name" value="<TMPL_VAR name>">
-          <dt>ＰＬ名
+          <dt>玩家
             <dd><input type="text" name="player" value="<TMPL_VAR player>">
-          <dt>ステージ
+          <dt>舞台
             <dd><input type="text" name="stage" value="<TMPL_VAR stage>">
-          <dt>消費経験点
+          <dt>消耗經驗值
             <dd>+<input type="number" name="exp-min" value="<TMPL_VAR expMin>" style="width:5em;"> ～ <input type="number" name="exp-max" value="<TMPL_VAR expMax>" style="width:5em;">
-          <dt>シンドローム
+          <dt>症候群
             <dd><input type="text" name="syndrome" value="<TMPL_VAR syndrome>">
-          <dt>ブリード
+          <dt>血統
             <dd><select name="breed"><option value=""><TMPL_LOOP Breeds><option value="<TMPL_VAR ID>" <TMPL_VAR SELECTED>><TMPL_VAR NAME></TMPL_LOOP></select>
-          <dt>Ｄロイス
+          <dt>Ｄ露易絲
             <dd><input type="text" name="dlois" value="<TMPL_VAR dlois>">
-          <dt>ワークス
+          <dt>真身
             <dd><input type="text" name="works" value="<TMPL_VAR works>">
           <dt>性別
             <dd>
@@ -31,7 +31,7 @@
               <label><input type="radio" name="gender" value="female" <TMPL_VAR genderFemale>><span data-gender="female">♀</span></label>
               <label><input type="radio" name="gender" value="cross"  <TMPL_VAR genderCross >><span data-gender="cross" >⚧</span></label>
               <label><input type="radio" name="gender" value="none"   <TMPL_VAR genderNone  >><span data-gender="none"  >―</span></label>
-          <dt>画像
+          <dt>圖片
             <dd><label><input type="checkbox" name="image" value="1" <TMPL_IF image>checked</TMPL_IF>>あり</dd></label>
         </dl>
         <p class="right"><input type="submit" value="検索"></p>
@@ -52,17 +52,17 @@
         <table>
           <thead>
             <tr>
-              <th class="name"><a href="./?group=<TMPL_VAR ID><TMPL_VAR qLinks>&sort=name">名前</a>
-              <th class="player"><a href="./?group=<TMPL_VAR ID><TMPL_VAR qLinks>&sort=pl">プレイヤー</a>
+              <th class="name"><a href="./?group=<TMPL_VAR ID><TMPL_VAR qLinks>&sort=name">名字</a>
+              <th class="player"><a href="./?group=<TMPL_VAR ID><TMPL_VAR qLinks>&sort=pl">玩家</a>
               <th class="gender"><span>性別</span>
-              <th class="age"><span>年齢</span>
+              <th class="age"><span>年齡</span>
               <th class="sign"><span>星座</span>
-              <th class="blood"><span>血液型</span>
-              <th class="works"><span>ワークス</span>
-              <th class="exp"><a href="./?group=<TMPL_VAR ID><TMPL_VAR qLinks>&sort=exp">消費<br>経験点</a>
+              <th class="blood"><span>血型</span>
+              <th class="works"><span>真身</span>
+              <th class="exp"><a href="./?group=<TMPL_VAR ID><TMPL_VAR qLinks>&sort=exp">消耗<br>經驗點</a>
               <th class="syndrome"><span>シンドローム</span>
               <th class="dlois"><span>Ｄロイス</span>
-              <th class="date"><a href="./?group=<TMPL_VAR ID><TMPL_VAR qLinks>&sort=date">更新<br>日時</a>
+              <th class="date"><a href="./?group=<TMPL_VAR ID><TMPL_VAR qLinks>&sort=date">更新<br>日期</a>
           </thead>
           <TMPL_LOOP Lines><tr<TMPL_IF HIDE> class="hide"</TMPL_IF>>
             <td class="name"><a href="./?id=<TMPL_VAR ID>"><TMPL_VAR NAME></a>

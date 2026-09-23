@@ -156,9 +156,9 @@ print <<"HTML";
     @{[ renderVisibilityBlock() ]}
     <div class="box" id="group">
       <dl>
-        <dt>グループ
+        <dt>群組
         <dd><select name="group">@{[ renderGroupOptions ]}</select>
-        <dt>タグ
+        <dt>標籤
         <dd>@{[ input 'tags' ]}
       </dl>
     </div>
@@ -166,20 +166,20 @@ print <<"HTML";
     <div class="box in-toc" id="name-form" data-content-title="キャラクター名・プレイヤー名">
       <div>
         <dl id="character-name">
-          <dt>キャラクター名
+          <dt>角色名稱
           <dd>@{[ input 'characterName','text',"setName",'id="main-name"' ]}
-          <dt class="ruby">ふりがな
+          <dt class="ruby">讀音
           <dd>@{[ input 'characterNameRuby','text',"setName" ]}
         </dl>
         <dl id="aka">
-          <dt>コードネーム
+          <dt>代號
           <dd>@{[ input 'aka','text',"setName" ]}
-          <dt class="ruby">フリガナ
+          <dt class="ruby">讀音
           <dd>@{[ input 'akaRuby','text',"setName" ]}
         </dl>
       </div>
       <dl id="player-name">
-        <dt>プレイヤー名
+        <dt>玩家
         <dd>@{[ input 'playerName' ]}
       </dl>
     </div>
@@ -203,16 +203,16 @@ print <<"HTML";
       @{[ renderImageForm() ]}
 
       <div class="box-union" id="personal">
-        <dl class="box"><dt>年齢  <dd>@{[input "age"]}</dl>
+        <dl class="box"><dt>年齡  <dd>@{[input "age"]}</dl>
         <dl class="box"><dt>性別  <dd>@{[input "gender",'','','list="list-gender"']}</dl>
         <dl class="box"><dt>星座  <dd>@{[input "sign",'','','list="list-sign"']}</dl>
-        <dl class="box"><dt>身長  <dd>@{[input "height"]}</dl>
-        <dl class="box"><dt>体重  <dd>@{[input "weight"]}</dl>
-        <dl class="box"><dt>血液型<dd>@{[input "blood",'','','list="list-blood"']}</dl>
+        <dl class="box"><dt>身高  <dd>@{[input "height"]}</dl>
+        <dl class="box"><dt>體重  <dd>@{[input "weight"]}</dl>
+        <dl class="box"><dt>血型<dd>@{[input "blood",'','','list="list-blood"']}</dl>
       </div>
       <div class="box-union" id="works-cover">
-        <dl class="box"><dt>ワークス<dd>@{[input "works",'','checkWorks']}</dl>
-        <dl class="box"><dt>カヴァー<dd>@{[input "cover"]}</dl>
+        <dl class="box"><dt>真身<dd>@{[input "works",'','checkWorks']}</dl>
+        <dl class="box"><dt>表面<dd>@{[input "cover"]}</dl>
       </div>
 
       <div class="box" id="syndrome-status">
@@ -923,24 +923,24 @@ sub renderDataList {
   <datalist id="list-gender">
     <option value="男">
     <option value="女">
-    <option value="その他">
-    <option value="なし">
+    <option value="其它">
+    <option value="無">
     <option value="不明">
     <option value="不詳">
   </datalist>
   <datalist id="list-sign">
     <option value="牡羊座">
-    <option value="牡牛座">
-    <option value="双子座">
-    <option value="蟹座">
+    <option value="金牛座">
+    <option value="雙子座">
+    <option value="巨蟹座">
     <option value="獅子座">
-    <option value="乙女座">
+    <option value="處女座">
     <option value="天秤座">
-    <option value="蠍座">
+    <option value="天蠍座">
     <option value="射手座">
-    <option value="山羊座">
+    <option value="摩羯座">
     <option value="水瓶座">
-    <option value="魚座">
+    <option value="雙魚座">
     <option value="不明">
     <option value="不詳">
   </datalist>
@@ -948,8 +948,8 @@ sub renderDataList {
     <option value="A型"><option value="B型"><option value="AB型"><option value="O型"><option value="不明"><option value="不詳">
   </datalist>
   <datalist id="list-lois-relation">
-    <option value="Dロイス">
-    <option value="Eロイス">
+    <option value="D露易絲">
+    <option value="E露易絲">
   </datalist>
   <datalist id="list-emotionP">
     <option value="傾倒">
@@ -1000,24 +1000,24 @@ sub renderDataList {
     <option value="無関心">
   </datalist>
   <datalist id="list-ride">
-    <option value="運転:">
-    <option value="運転:二輪">
-    <option value="運転:四輪">
-    <option value="運転:船舶">
-    <option value="運転:航空機">
-    <option value="運転:馬">
-    <option value="運転:多脚戦車">
-    <option value="運転:宇宙船">
+    <option value="駕駛:">
+    <option value="駕駛:二輪">
+    <option value="駕駛:四輪">
+    <option value="駕駛:船舶">
+    <option value="駕駛:航空器">
+    <option value="駕駛:馬">
+    <option value="駕駛:多足戰車">
+    <option value="駕駛:太空船">
   </datalist>
   <datalist id="list-art" >
-    <option value="芸術:">
-    <option value="芸術:音楽">
-    <option value="芸術:歌唱">
-    <option value="芸術:演技">
-    <option value="芸術:絵画">
-    <option value="芸術:写真">
-    <option value="芸術:彫刻">
-    <option value="芸術:ゲーム">
+    <option value="藝術:">
+    <option value="藝術:音楽">
+    <option value="藝術:歌唱">
+    <option value="藝術:演技">
+    <option value="藝術:絵画">
+    <option value="藝術:写真">
+    <option value="藝術:彫刻">
+    <option value="藝術:ゲーム">
   </datalist>
   <datalist id="list-know">
     <option value="知識:">
@@ -1082,8 +1082,8 @@ sub renderDataList {
     <option value="【感覚】">
     <option value="【精神】">
     <option value="【社会】">
-    <option value="〈運転:〉">
-    <option value="〈芸術:〉">
+    <option value="〈駕駛:〉">
+    <option value="〈藝術:〉">
     <option value="〈知識:〉">
     <option value="〈情報:〉">
     <option value="効果参照">
@@ -1115,8 +1115,8 @@ sub renderDataList {
     <option value="【感覚】">
     <option value="【精神】">
     <option value="【社会】">
-    <option value="〈運転:〉">
-    <option value="〈芸術:〉">
+    <option value="〈駕駛:〉">
+    <option value="〈藝術:〉">
     <option value="〈知識:〉">
     <option value="〈情報:〉">
     <option value="効果参照">
@@ -1131,14 +1131,14 @@ sub renderDataList {
     <option value="解説参照">
   </datalist>
   <datalist id="list-vehicle-skill">
-    <option value="〈運転:〉">
-    <option value="〈運転:二輪〉">
-    <option value="〈運転:四輪〉">
-    <option value="〈運転:船舶〉">
-    <option value="〈運転:航空機〉">
-    <option value="〈運転:馬〉">
-    <option value="〈運転:多脚戦車〉">
-    <option value="〈運転:宇宙船〉">
+    <option value="〈駕駛:〉">
+    <option value="〈駕駛:二輪〉">
+    <option value="〈駕駛:四輪〉">
+    <option value="〈駕駛:船舶〉">
+    <option value="〈駕駛:航空器〉">
+    <option value="〈駕駛:馬〉">
+    <option value="〈駕駛:多足戰車〉">
+    <option value="〈駕駛:太空船〉">
   </datalist>
   <datalist id="list-item-skill">
     <option value="―">
