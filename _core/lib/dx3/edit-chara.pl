@@ -189,7 +189,7 @@ print <<"HTML";
       <dl>
         <dt>創建方式
         <dd>@{[ radios 'createType', 'changeCreateType', 'C=>基本創建','F=>完全描繪' ]}
-        <dt>消費經驗點
+        <dt>消耗經驗點
         <dd>@{[ input "history0Exp",'number','changeRegu',($set::make_fix?' readonly':'') ]} <span class="fullscratch-only">※完全描繪的130點不包含在內。</span>
         <dt>舞台
         <dd>@{[ input "stage",'','checkStage','list="list-stage"' ]}<br>
@@ -372,7 +372,7 @@ print <<"HTML";
       </dl>
       <ul class="annotate">
         <li>右側的輸入框是D露易絲等額外加值的欄位（不計算經驗點）
-        <li>沒輸入真身的對應技能時<span class="fullscratch-only">消費經驗點會顯示為「-9」</span><span class="construction-only">任意技能分配會顯示為「-4.5」</span><br>
+        <li>沒輸入真身的對應技能時<span class="fullscratch-only">消耗經驗點會顯示為「-9」</span><span class="construction-only">任意技能分配會顯示為「-4.5」</span><br>
           正確輸入真身的對應技能時會變成「0」點（部分擴充收錄的真身例外）
       </ul>
     </details>
