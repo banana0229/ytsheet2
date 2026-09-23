@@ -859,7 +859,7 @@ print <<"HTML";
             <td><input type="text" value="第一話「填寫範例」" disabled>
             <td><input type="text" value="10+5+1" disabled>
             <td><label><input type="checkbox" checked disabled><b>套用</b></label>
-            <td class="gm"><input type="text" value="サンプルGM" disabled>
+            <td class="gm"><input type="text" value="範例GM" disabled>
             <td class="member"><input type="text" value="荒川ヨドミ　鎧畑ショウコ　橘シドウ　金床スズ" disabled>
           </tr>
         </tbody>

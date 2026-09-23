@@ -68,7 +68,7 @@
 
   <main id="character">
     <TMPL_IF forbidden><aside class="information attention">
-      有閱覽限制的資料。<br>
+      有檢視限制的資料。<br>
       <TMPL_IF yourAuthor>除了你以外，部分或全部的資料會受到隱藏。(<a href="./?id=<TMPL_VAR id>&checkView=1">⇒確認</a>)</TMPL_IF>
     </aside></TMPL_IF>
     
@@ -370,7 +370,7 @@
       <div id="area-battle">
         <section class="box effects" id="effect">
           <h2>異能</h2>
-          <button class="open-button" onclick="switchEffectNoteFullOpen();" data-open="" data-text-open="效果を全展開" data-text-close="效果を折畳む"></button>
+          <button class="open-button" onclick="switchEffectNoteFullOpen();" data-open="" data-text-open="展開所有效果" data-text-close="摺疊效果"></button>
           <table class="data-table line-tbody">
             <thead>
               <tr><th>種類<th>名稱<th>LV<th>時機<th>技能<th>難易度<th>對象<th>射程<th>侵蝕值<th>限制
@@ -635,7 +635,7 @@
         }
         document.querySelector('#enc-table colgroup').prepend(document.createElement("col"));
         let thHead  = document.createElement("th"); thHead.textContent  = ''       ; document.getElementById('enc-table-head' ).prepend(thHead);
-        let thBonus = document.createElement("th"); thBonus.textContent = 'ダイス' ; document.getElementById('enc-table-dices').prepend(thBonus);
+        let thBonus = document.createElement("th"); thBonus.textContent = '骰數' ; document.getElementById('enc-table-dices').prepend(thBonus);
         let thLevel = document.createElement("th"); thLevel.textContent = 'Efct.Lv'; document.getElementById('enc-table-level').prepend(thLevel);
         
         let encroachValue;

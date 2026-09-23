@@ -169,8 +169,8 @@ if($pc{stage} =~ /クロウリングケイオス/){ $SHEET->param(ccOn => 1); }
 $SHEET->param(isFH => $pc{works} =~ /[FＦ][HＨ]/i);
 
 ### ブリード --------------------------------------------------
-my $breedPrefix = ($pc{breed} ? $pc{breed} : $pc{syndrome3} ? 'トライ' : $pc{syndrome2} ? 'クロス' : $pc{syndrome1} ? 'ピュア' : '');
-$SHEET->param(breed => isNoiseText(removeTags $breedPrefix) ? $breedPrefix : $breedPrefix ? "$breedPrefix<span class=\"shorten\">ブリード</span>" : '');
+my $breedPrefix = ($pc{breed} ? $pc{breed} : $pc{syndrome3} ? '三種混合' : $pc{syndrome2} ? '混血' : $pc{syndrome1} ? '純血' : '');
+$SHEET->param(breed => isNoiseText(removeTags $breedPrefix) ? $breedPrefix : $breedPrefix ? "$breedPrefix<span class=\"shorten\">種</span>" : '');
 
 ### 侵蝕率基本値 --------------------------------------------------
 if ($pc{encroachFixed}) {

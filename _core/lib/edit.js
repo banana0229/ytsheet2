@@ -149,7 +149,7 @@ function formCheck(){
 }
 function formPasswordCheck(){
   if(form.protect.value === 'password' && form.pass.type !== 'hidden' && form.pass.value === ''){
-    alert('パスワードが入力されていません。');
+    alert('沒有輸入密碼。');
     form.pass.focus();
     return false;
   }
@@ -256,7 +256,7 @@ function setName(){
   if(vCheck('aka')){ output += '<span class="aka">“'+(setRuby('aka'))+'”</span>' }
   if(vCheck(main)){ output += setRuby(main);}
   if(vCheck(sub)){ output += output ? `<small>（${setRuby(sub)}）</small>` : setRuby(sub);}
-  output ||= '（名称未入力）';
+  output ||= '（未輸入名稱）';
 
   document.querySelector('#header-menu > h2 > span').innerHTML = output;
   document.querySelectorAll('.color-sample .name').forEach(div => {

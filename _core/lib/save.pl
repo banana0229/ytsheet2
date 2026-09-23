@@ -39,7 +39,7 @@ if(($set::masterid && $LOGIN_ID eq $set::masterid) || ($set::masterkey && $pass 
 
 ## パスワードチェック
 if($::in{protect} eq 'password' && !$hasMasterKey){
-  if ($pass eq ''){ error('400:パスワードが入力されていません。'); }
+  if ($pass eq ''){ error('400:沒有輸入密碼。'); }
   else {
     if ($pass =~ /[^0-9A-Za-z\.\-\/]/) { error('400:パスワードに使える文字は、半角の英数字とピリオド、ハイフン、スラッシュだけです。'); }
   }

@@ -31,7 +31,7 @@ window.onload = function() {
 // 送信前チェック ----------------------------------------
 function formCheck(){
   if(form.characterName.value === '' && form.aka.value === ''){
-    alert('キャラクター名かコードネームのいずれかを入力してください。');
+    alert('請輸入角色或代號的名稱。');
     form.characterName.focus();
     return false;
   }

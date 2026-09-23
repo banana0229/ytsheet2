@@ -586,7 +586,7 @@ sub renderProtectBlock {
 sub renderVisibilityBlock {
   return <<~"HTML";
     <dl class="box" id="hide-options">
-      <dt>閱覽權限設定
+      <dt>檢視權限設定
       <dd id="forbidden-checkbox">
         <select name="forbidden">
           <option value="">顯示所有內容
