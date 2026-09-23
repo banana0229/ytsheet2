@@ -686,7 +686,7 @@ print <<"HTML";
     <div class="box">
       <table class="edit-table no-border-cells" id="armor-table">
         <thead>
-          <tr><th>防具<th>常備化<th>經驗點<th>種類<th><th>行動<th>閃躲<th>装甲值<th>解說
+          <tr><th>防具<th>常備化<th>經驗點<th>種類<th><th>行動<th>閃躲<th>裝甲值<th>解說
         <tbody>
           @{[ renderTemplateLoop(
             'armor',
