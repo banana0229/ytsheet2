@@ -732,7 +732,7 @@ function comboSkillSet(num){
     }
   }
   let op = document.createElement("option");
-  op.text = '解説参照';
+  op.text = '參照解說';
   select.appendChild(op);
   
   select.value = nowSelect;

@@ -488,7 +488,7 @@ print <<"HTML";
       </div>
       <div class="right lois-reset-buttons">
         <button type="button" class="small" onclick="resetLoisAll()">清空所有露易絲</button>
-        <button type="button" class="small" onclick="resetLoisAdd()">清空第4格以後的路易斯</button>
+        <button type="button" class="small" onclick="resetLoisAdd()">清空第4格以後的露易絲</button>
       </div>
     </details>
     <details class="box" id="memory" $open{memory}>
@@ -902,8 +902,8 @@ print renderEditPageEnd(
 sub renderDataList {
   return <<~"HTML";
   <datalist id="list-stage">
-    <option value="基本ステージ">
-    <option value="基本ステージ(UA)">
+    <option value="基本舞台">
+    <option value="基本舞台(UA)">
     <option value="オーヴァードアカデミア">
     <option value="ナイトメアプリズン">
     <option value="デモンズシティ">
@@ -958,46 +958,46 @@ sub renderDataList {
     <option value="尊敬">
     <option value="連帯感">
     <option value="慈愛">
-    <option value="感服">
+    <option value="佩服">
     <option value="純愛">
     <option value="友情">
-    <option value="慕情">
+    <option value="戀慕">
     <option value="同情">
     <option value="遺志">
     <option value="庇護">
     <option value="幸福感">
-    <option value="信頼">
-    <option value="執着">
+    <option value="信賴">
+    <option value="執著">
     <option value="親近感">
-    <option value="誠意">
-    <option value="好意">
+    <option value="真誠">
+    <option value="好感">
     <option value="有為">
-    <option value="尽力">
-    <option value="懐旧">
+    <option value="盡力">
+    <option value="懷念">
   </datalist>
   <datalist id="list-emotionN">
-    <option value="侮蔑">
-    <option value="食傷">
-    <option value="脅威">
-    <option value="嫉妬">
+    <option value="輕視">
+    <option value="厭倦">
+    <option value="威脅">
+    <option value="嫉妒">
     <option value="悔悟">
-    <option value="恐怖">
+    <option value="恐懼">
     <option value="不安">
     <option value="劣等感">
-    <option value="疎外感">
+    <option value="疏離感">
     <option value="恥辱">
     <option value="憐憫">
     <option value="偏愛">
-    <option value="憎悪">
-    <option value="隔意">
-    <option value="嫌悪">
-    <option value="猜疑心">
-    <option value="厭気">
-    <option value="不信感">
-    <option value="不快感">
-    <option value="憤懣">
-    <option value="敵愾心">
-    <option value="無関心">
+    <option value="憎惡">
+    <option value="隔閡">
+    <option value="厭惡">
+    <option value="猜忌">
+    <option value="厭煩">
+    <option value="不信任">
+    <option value="不快">
+    <option value="憤怒">
+    <option value="敵意">
+    <option value="無關心">
   </datalist>
   <datalist id="list-ride">
     <option value="駕駛:">
@@ -1033,9 +1033,9 @@ sub renderDataList {
     <option value="情報:">
     <option value="情報:UGN">
     <option value="情報:FH">
-    <option value="情報:ゼノス">
+    <option value="情報:杰諾斯">
     <option value="情報:噂話">
-    <option value="情報:裏社會">
+    <option value="情報:裡社會">
     <option value="情報:警察">
     <option value="情報:軍事">
     <option value="情報:學問">
@@ -1044,14 +1044,14 @@ sub renderDataList {
     <option value="情報:商業">
   </datalist>
   <datalist id="list-lois-color">
-    <option value="BK">ブラック
-    <option value="BL">ブルー
-    <option value="GR">グリーン
-    <option value="OR">オレンジ
-    <option value="PU">パープル
-    <option value="RE">レッド
-    <option value="WH">ホワイト
-    <option value="YE">イエロー
+    <option value="BK">黑
+    <option value="BL">藍
+    <option value="GR">綠
+    <option value="OR">橘
+    <option value="PU">紫
+    <option value="RE">紅
+    <option value="WH">白
+    <option value="YE">黃
   </datalist>
   <datalist id="list-timing">
     <option value="自動">
@@ -1147,9 +1147,9 @@ sub renderDataList {
     <option value="〈情報:〉">
     <option value="〈情報:UGN〉">
     <option value="〈情報:FH〉">
-    <option value="〈情報:ゼノス〉">
+    <option value="〈情報:杰諾斯〉">
     <option value="〈情報:噂話〉">
-    <option value="〈情報:裏社會〉">
+    <option value="〈情報:裡社會〉">
     <option value="〈情報:警察〉">
     <option value="〈情報:軍事〉">
     <option value="〈情報:学問〉">
@@ -1164,34 +1164,34 @@ sub renderDataList {
     <option value="近戰／射擊">
     <option value="紋章／近戰">
     <option value="紋章／射擊">
-    <option value="リレーション／近戰">
-    <option value="リレーション／射擊">
+    <option value="羈絆／近戰">
+    <option value="羈絆／射擊">
   </datalist>
   <datalist id="list-armor-type">
     <option value="防具">
     <option value="防具※">
-    <option value="防具（補助）">
+    <option value="防具（輔助）">
     <option value="紋章／防具">
-    <option value="紋章／防具（補助）">
-    <option value="リレーション／防具">
+    <option value="紋章／防具（輔助）">
+    <option value="羈絆／防具">
   </datalist>
   <datalist id="list-vehicle-type">
-    <option value="ヴィークル">
-    <option value="紋章／ヴィークル">
+    <option value="載具">
+    <option value="紋章／載具">
   </datalist>
   <datalist id="list-item-type">
     <option value="關係">
     <option value="一般">
-    <option value="その他">
-    <option value="使い捨て">
-    <option value="紋章／コネ">
+    <option value="其他">
+    <option value="消耗品">
+    <option value="紋章／關係">
     <option value="紋章／一般">
-    <option value="紋章／その他">
-    <option value="紋章／使い捨て">
-    <option value="リレーション／コネ">
-    <option value="リレーション／一般">
-    <option value="リレーション／その他">
-    <option value="リレーション／使い捨て">
+    <option value="紋章／其他">
+    <option value="紋章／消耗品">
+    <option value="羈絆／關係">
+    <option value="羈絆／一般">
+    <option value="羈絆／其他">
+    <option value="羈絆／消耗品">
   </datalist>
   <datalist id="list-dfclty">
     <option value="―">
