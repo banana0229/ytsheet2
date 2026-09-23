@@ -560,14 +560,14 @@ sub renderProtectBlock {
   }
   # 通常の表示
   $html .= qq|<details class="box" id="edit-protect" @{[$::in{mode} eq 'edit' ? '' : 'open']}>\n|;
-  $html .= qq|<summary>編集保護設定</summary>\n|;
+  $html .= qq|<summary>編輯權限設定</summary>\n|;
   $html .= qq|<fieldset id="edit-protect-view"><input type="hidden" name="protectOld" value="$::pc{protect}">\n|;
 
   if($LOGIN_ID){
-    $html .= qq|<input type="radio" name="protect" value="account"|.($::pc{protect} eq 'account' ? ' checked' : '').qq|> アカウントに紐付ける（ログイン中のみ編集可能になります）<br>\n|;
+    $html .= qq|<input type="radio" name="protect" value="account"|.($::pc{protect} eq 'account' ? ' checked' : '').qq|> 綁定帳號（登入中才能編輯）<br>\n|;
   }
 
-  $html .= qq|<input type="radio" name="protect" value="password"|.($::pc{protect} eq 'password' ? ' checked' : '').qq|> パスワードで保護 |;
+  $html .= qq|<input type="radio" name="protect" value="password"|.($::pc{protect} eq 'password' ? ' checked' : '').qq|> 設定密碼 |;
   if($::in{mode} eq 'edit' && $::pc{protect} eq 'password'){
     $html .= qq|<input type="hidden" name="pass" value="$::in{pass}"><br>\n|;
   }
@@ -575,7 +575,7 @@ sub renderProtectBlock {
     $html .= qq|<input type="password" name="pass"><br>\n|;
   }
 
-  $html .= qq|<input type="radio" name="protect" value="none"|.($::pc{protect} eq 'none' ? ' checked' : '').qq|> 保護しない（誰でも編集できるようになります）\n|;
+  $html .= qq|<input type="radio" name="protect" value="none"|.($::pc{protect} eq 'none' ? ' checked' : '').qq|> 不限制（任何人都可以編輯）\n|;
   $html .= qq|</fieldset>\n|;
   $html .= qq|</details>\n|;
 
@@ -586,19 +586,19 @@ sub renderProtectBlock {
 sub renderVisibilityBlock {
   return <<~"HTML";
     <dl class="box" id="hide-options">
-      <dt>閲覧可否設定
+      <dt>閱覽權限設定
       <dd id="forbidden-checkbox">
         <select name="forbidden">
-          <option value="">内容を全て開示
-          <option value="battle" @{[ $::pc{forbidden} eq 'battle' ? 'selected' : '' ]}>データ・数値のみ秘匿
-          <option value="all"    @{[ $::pc{forbidden} eq 'all'    ? 'selected' : '' ]}>内容を全て秘匿
+          <option value="">顯示所有內容
+          <option value="battle" @{[ $::pc{forbidden} eq 'battle' ? 'selected' : '' ]}>隱藏資料及數值
+          <option value="all"    @{[ $::pc{forbidden} eq 'all'    ? 'selected' : '' ]}>隱藏所有內容
         </select>
       <dd id="hide-checkbox">
         <select name="hide">
-          <option value="">一覧に表示
-          <option value="1" @{[ $::pc{hide} ? 'selected' : '' ]}>一覧には非表示
+          <option value="">於清單內顯示
+          <option value="1" @{[ $::pc{hide} ? 'selected' : '' ]}>不要顯示在清單上
         </select>
-      <dd>※「一覧に非表示」でもタグ検索結果・マイリストには表示されます
+      <dd>※就算「不要顯示在清單上」還是會出現在標籤搜尋，以及我的角色一覽上
     </dl>
   HTML
 }
@@ -671,10 +671,10 @@ sub renderImageForm {
   }
   my $emptyImageURL = 'data:image/webp;base64,UklGRhgBAABXRUJQVlA4TAwBAAAvY8AYEBK3AdCGzf//5MJWAqx0r7yycNzc9ooFE8BBxtnHwG0jRVk+zOIj9h90eIABiDAr7IeFiTK24obPYciHZ18Bdyuo04LtXSSCdIohUjoFmhlB/CQCxiQjwAJ3hQpeChq11stDUBEdKxnqUi057iYUU0KWBl80RQiUAksAKuIStE6qUEo5QLOLSA5Av/MKXJeQjtFUeyiDFr2UH2EUJc9cFvrgHaGMGqOPc5PHKPN7ggEBj8r7UiWN3YnLd/tLKlkBfh5NvAZ2pIS9q5NaDtFHexmu57gG3P+eoltDoPVL2XW7QYnGOxl+EZGi8RJ3ivqDcPJbGV0m7182Dl2EaaULsEyzqfb/08MC';
   my @spoilerTypes = (
-    'R-18=>R-18（性的な）画像としてスポイラー',
-    'R-18G=>R-18G（グロテスクな）画像としてスポイラー',
-    'sensitive=>センシティブ（その他の理由／R-18ではない）としてスポイラー',
-    'spoiler=>ネタバレとしてスポイラー',
+    'R-18=>R-18（色情）圖片警示',
+    'R-18G=>R-18G（獵奇）圖片警示',
+    'sensitive=>敏感（其他理由／非R-18）警示',
+    'spoiler=>劇透警示',
   );
   return <<~"HTML";
     <div class="box" id="image" style="max-height:550px;">
@@ -728,7 +728,7 @@ sub renderImageForm {
                   </label>
                   @{[ radio "mainImage", "checkMainImage($n)", $n, 'メイン画像' ]}
                   @{[ checkbox "imageHide$suffix", '非表示' ]}
-                  @{[ selectBox "imageSpoiler$suffix", "", 'DEF==>スポイラー設定▼', @spoilerTypes ]}
+                  @{[ selectBox "imageSpoiler$suffix", "", 'DEF==>警示設定', @spoilerTypes ]}
                 </div>
               HTM
             } 1 .. $imageMaxCount
@@ -738,7 +738,7 @@ sub renderImageForm {
           <li>画像を複数登録している場合、<b>メイン画像</b>に設定した画像が、シートの最初の表示やOGPに使用されます。<br>
               それ以外の画像は、シート内の切り替えボタンで表示されます。
           <li>画像を<b>非表示</b>に設定した場合、シートの表示やOGPには使用されません。（画像へのアクセス自体は可能です）
-          <li>スポイラー設定をすると、画像にぼかしがかかります。（クリックでぼかしが解除されます）
+          <li>啟用警示設定後，圖片將模糊顯示。（點擊後可解除）
         </ul>
         <script>
           const imageType = 'character';

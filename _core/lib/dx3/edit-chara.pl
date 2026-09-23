@@ -54,7 +54,7 @@ elsif($::mode eq 'blanksheet'){
     = ('auto','防衛',1,'自動','―','自動成功','場景','視界','0','―','非オーヴァードをエキストラ化');
 
   $pc{comboNum} = 1;
-  $pc{combo1Condition1} = '100%未満';
+  $pc{combo1Condition1} = '100%前';
   $pc{combo1Condition2} = '100%以上';
 
   $pc{paletteUseBuff} = 1;
@@ -552,7 +552,7 @@ print <<"HTML";
                   <td>@{[input "effect${num}Restrict",'','','placeholder="限制" list="list-restrict"']}
                 <tr><td colspan="9">
                   <div>
-                    <b>種類</b><select name="effect${num}Type" oninput="calcEffect()">@{[ option "effect${num}Type",'auto=>自動取得','dlois=>Dロイス','easy=>イージー','enemy=>エネミー' ]}</select>
+                    <b>種類</b><select name="effect${num}Type" oninput="calcEffect()">@{[ option "effect${num}Type",'auto=>自動取得','dlois=>D露易絲','easy=>簡易','enemy=>敵用' ]}</select>
                     <b class="small">經驗點修正</b>@{[input "effect${num}Exp",'number','calcEffect']}
                     <b>效果</b>@{[input "effect${num}Note"]}
                   </div>
@@ -580,7 +580,7 @@ print <<"HTML";
       <div>
         <table class="edit-table line-tbody no-border-cells" id="magic-table">
           <thead id="magic-head">
-            <tr><th><th>名称<th>種類<th>經驗點<th>発動值<th>侵蝕值<th>效果
+            <tr><th><th>名稱<th>種類<th>經驗點<th>発動值<th>侵蝕值<th>效果
           @{[ renderTemplateLoop(
             'magic',
             sub ($num) {
@@ -617,7 +617,7 @@ print <<"HTML";
             <div class="combo-table" id="combo-row${num}">
               <div class="handle"></div>
               <dl class="combo-name"><dt>名稱</dt><dd>@{[input "combo${num}Name"]}</dd></dl>
-              <dl class="combo-combo"><dt>組合</dt><dd>@{[input "combo${num}Combo"]}</dl>
+              <dl class="combo-combo"><dt>組合內容</dt><dd>@{[input "combo${num}Combo"]}</dl>
               <div class="combo-in">
                 <dl><dt>時機<dd>@{[input "combo${num}Timing",'','','list="list-combo-timing"']}</dl>
                 <dl><dt>技能      <dd>@{[ selectBox "combo${num}Skill", "calcCombo(${num})", @setComboSkills ]}</dl>
@@ -631,7 +631,7 @@ print <<"HTML";
                 <dt class="combo-cond">條件<span class="combo-condition-utility"></span>
                 <dt class="combo-dice">骰數
                 <dt class="combo-crit">Ｃ值
-                <dt class="combo-fixed">達成值修正<br><span class="very-small">(技能レベル+修正值)</span>
+                <dt class="combo-fixed">達成值修正<br><span class="very-small">(技能等級+修正值)</span>
                 <dt class="combo-atk">攻擊力
                 @{[ map {
                   <<~"DD";
@@ -646,7 +646,7 @@ print <<"HTML";
                 } 1 .. 5 ]}
               </dl>
               <div class="combo-note"><textarea name="combo${num}Note" rows="3" placeholder="解說">$pc{"combo${num}Note"}</textarea></div>
-              <div class="combo-other">@{[ checkbox "combo${num}Manual",'技能レベル・能力值を自動挿入しない',"calcCombo(${num})" ]} <span class="button" onclick="addCombo($num)">コンボ複製</span></div>
+              <div class="combo-other">@{[ checkbox "combo${num}Manual",'不自動代入技能等級與能力值',"calcCombo(${num})" ]} <span class="button" onclick="addCombo($num)">複製組合</span></div>
             </div>
             ROW
           }
@@ -712,7 +712,7 @@ print <<"HTML";
     <div class="box">
       <table class="edit-table no-border-cells" id="vehicle-table">
         <thead>
-          <tr><th>ヴィークル<th>常備化<th>經驗點<th>種類<th>技能<th>行動<th>攻擊力<th>装甲值<th><span class="small">全力移動</span><th>解說
+          <tr><th>載具<th>常備化<th>經驗點<th>種類<th>技能<th>行動<th>攻擊力<th>装甲值<th><span class="small">全力移動</span><th>解說
         <tbody>
           @{[ renderTemplateLoop(
             'vehicle',
@@ -874,10 +874,10 @@ print <<"HTML";
     <div class="box" id="exp-footer">
       <p class="construction-only">
         <b>コンストラクション作成</b>
-        :  能力值フリーポイント[<b id="freepoint-status"></b>/3]
-        ／ 技能フリーポイント[<b id="freepoint-skill"></b>/5]
+        :  任意能力值分配[<b id="freepoint-status"></b>/3]
+        ／ 任意技能分配[<b id="freepoint-skill"></b>/5]
         ／ 任意異能[<b id="freepoint-effect"></b>/4]個
-        ／ エフェクトレベルフリーポイント[<b id="freepoint-effectlv"></b>/2]
+        ／ 任意異能升級分配[<b id="freepoint-effectlv"></b>/2]
       </p>
       <p>
       經驗點[<b id="exp-total"></b>] -
