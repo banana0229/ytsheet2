@@ -759,10 +759,10 @@ function calcCombo(num){
       else if(id.match(/Negotiate|Procure|Info/)){ stt = status['social'] }
     }
     if(sttname){ 
-      if     (sttname === '肉体'){ stt = status['body']   }
-      else if(sttname === '感覚'){ stt = status['sense']  }
+      if     (sttname === '肉體'){ stt = status['body']   }
+      else if(sttname === '感覺'){ stt = status['sense']  }
       else if(sttname === '精神'){ stt = status['mind']   }
-      else if(sttname === '社会'){ stt = status['social'] }
+      else if(sttname === '社會'){ stt = status['social'] }
       else { stt = 0; }
     }
     return [lv, stt];
