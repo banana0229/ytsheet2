@@ -49,9 +49,9 @@ elsif($::mode eq 'blanksheet'){
   $pc{history0Exp}   = 0;
 
   ($pc{effect1Type},$pc{effect1Name},$pc{effect1Lv},$pc{effect1Timing},$pc{effect1Skill},$pc{effect1Dfclty},$pc{effect1Target},$pc{effect1Range},$pc{effect1Encroach},$pc{effect1Restrict},$pc{effect1Note})
-    = ('auto','リザレクト',1,'自動','―','自動成功','自身','至近','參照效果','―','(LV)D点HP回復、侵蝕值上昇');
+    = ('auto','復原',1,'自動','―','自動成功','自身','至近','參照效果','―','(LV)D点HP回復、侵蝕值上昇');
   ($pc{effect2Type},$pc{effect2Name},$pc{effect2Lv},$pc{effect2Timing},$pc{effect2Skill},$pc{effect2Dfclty},$pc{effect2Target},$pc{effect2Range},$pc{effect2Encroach},$pc{effect2Restrict},$pc{effect2Note})
-    = ('auto','ワーディング',1,'自動','―','自動成功','シーン','視界','0','―','非オーヴァードをエキストラ化');
+    = ('auto','防衛',1,'自動','―','自動成功','場景','視界','0','―','非オーヴァードをエキストラ化');
 
   $pc{comboNum} = 1;
   $pc{combo1Condition1} = '100%未満';
@@ -656,7 +656,7 @@ print <<"HTML";
     </details>
 
     <details class="box box-union" id="items" $open{item}>
-    <summary class="in-toc" data-content-title="アイテム">アイテム [<span id="exp-item">0</span>]</summary>
+    <summary class="in-toc" data-content-title="道具">道具 [<span id="exp-item">0</span>]</summary>
     <div class="box">
       <table class="edit-table no-border-cells" id="weapon-table">
         <thead>
@@ -686,7 +686,7 @@ print <<"HTML";
     <div class="box">
       <table class="edit-table no-border-cells" id="armor-table">
         <thead>
-          <tr><th>防具<th>常備化<th>經驗點<th>種類<th><th>行動<th>ドッジ<th>装甲值<th>解說
+          <tr><th>防具<th>常備化<th>經驗點<th>種類<th><th>行動<th>閃躲<th>装甲值<th>解說
         <tbody>
           @{[ renderTemplateLoop(
             'armor',
@@ -738,7 +738,7 @@ print <<"HTML";
     <div class="box">
       <table class="edit-table no-border-cells" id="item-table">
         <thead>
-          <tr><th>一般アイテム<th>常備化<th>經驗點<th>種類<th>技能<th>解說
+          <tr><th>一般道具<th>常備化<th>經驗點<th>種類<th>技能<th>解說
         <tbody>
           @{[ renderTemplateLoop(
             'item',
@@ -876,18 +876,18 @@ print <<"HTML";
         <b>コンストラクション作成</b>
         :  能力值フリーポイント[<b id="freepoint-status"></b>/3]
         ／ 技能フリーポイント[<b id="freepoint-skill"></b>/5]
-        ／ 任意エフェクト[<b id="freepoint-effect"></b>/4]個
+        ／ 任意異能[<b id="freepoint-effect"></b>/4]個
         ／ エフェクトレベルフリーポイント[<b id="freepoint-effectlv"></b>/2]
       </p>
       <p>
-      経験点[<b id="exp-total"></b>] -
+      經驗點[<b id="exp-total"></b>] -
       ( 能力值[<b id="exp-used-status"></b>]
       + 技能[<b id="exp-used-skill"></b>]
-      + エフェクト[<b id="exp-used-effect"></b>]
+      + 異能[<b id="exp-used-effect"></b>]
       <span class="crc-only">+ 術式[<b id="exp-used-magic"></b>]</span>
-      + アイテム[<b id="exp-used-item"></b>]
-      + メモリー[<b id="exp-used-memory"></b>]
-      ) = 残り[<b id="exp-rest"></b>]点
+      + 道具[<b id="exp-used-item"></b>]
+      + 回憶[<b id="exp-used-memory"></b>]
+      ) = 剩餘[<b id="exp-rest"></b>]点
       </p>
     </div>
   </section>
