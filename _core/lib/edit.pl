@@ -298,7 +298,7 @@ sub loadSheetData {
     delete $pc{protect};
     $_ =~ s/"/&quot;/g foreach(values %pc);
     if($::in{backupJSON}){
-      $message = '<span class="data-imported backup-loaded">未完成的角色資料還原成功</span>';
+      $message = '<span class="data-imported backup-loaded">未儲存的角色資料還原成功</span>';
     }
     else {
       $message = qq|<div class="data-imported">${convertedName}をコンバートして新規作成します。<br>（まだ保存はされていません）</div>|;
@@ -966,21 +966,21 @@ sub renderChatPaletteForm {
 sub renderDecorationForm {
   return <<~"HTML";
     <section id="section-color" style="display:none;">
-      <h2>シートの装飾設定</h2>
+      <h2>角色頁面裝飾設定</h2>
       <div class="box-union">
         <div class="box color-custom">
           <h2>主色彩</h2>
           <table>
           <tr class="color-range-H"><th>色相</th><td><input type="range" name="colorHeadBgH" min="0" max="360" value="$::pc{colorHeadBgH}" oninput="changeColor();"></td><td id="colorHeadBgHValue">$::pc{colorHeadBgH}</td></tr>
-          <tr class="color-range-S"><th>彩度</th><td><input type="range" name="colorHeadBgS" min="0" max="100" value="$::pc{colorHeadBgS}" oninput="changeColor();"></td><td id="colorHeadBgSValue">$::pc{colorHeadBgS}</td></tr>
-          <tr class="color-range-L"><th>輝度</th><td><input type="range" name="colorHeadBgL" min="0" max="100" value="$::pc{colorHeadBgL}" oninput="changeColor();"></td><td id="colorHeadBgLValue">$::pc{colorHeadBgL}</td></tr>
+          <tr class="color-range-S"><th>飽和度</th><td><input type="range" name="colorHeadBgS" min="0" max="100" value="$::pc{colorHeadBgS}" oninput="changeColor();"></td><td id="colorHeadBgSValue">$::pc{colorHeadBgS}</td></tr>
+          <tr class="color-range-L"><th>亮度</th><td><input type="range" name="colorHeadBgL" min="0" max="100" value="$::pc{colorHeadBgL}" oninput="changeColor();"></td><td id="colorHeadBgLValue">$::pc{colorHeadBgL}</td></tr>
           </table>
         </div>
         <div class="box color-custom">
           <h2>副色彩</h2>
           <table>
           <tr class="color-range-H"><th>色相</th><td><input type="range" name="colorBaseBgH"  min="0" max="360" value="$::pc{colorBaseBgH}" oninput="changeColor();"></td><td id="colorBaseBgHValue">$::pc{colorBaseBgH}</td></tr>
-          <tr class="color-range-S"><th>色の濃さ</th><td><input type="range" name="colorBaseBgS"  min="0" max="100" value="$::pc{colorBaseBgS}" oninput="changeColor();"></td><td id="colorBaseBgSValue">$::pc{colorBaseBgS}</td></tr>
+          <tr class="color-range-S"><th>飽和度</th><td><input type="range" name="colorBaseBgS"  min="0" max="100" value="$::pc{colorBaseBgS}" oninput="changeColor();"></td><td id="colorBaseBgSValue">$::pc{colorBaseBgS}</td></tr>
           </table>
           <hr>
           <p class="right"><span class="button" onclick="setDefaultColor();">恢復預設值</span></p>
@@ -998,7 +998,7 @@ sub renderDecorationForm {
           <div class="name">預覽</div>
           <div class="box">
             <table class="data-table">
-              <thead><tr><th>データ表組み</th><th>項目1</th><th>項目2</th></tr></thead>
+              <thead><tr><th>資料表</th><th>項目1</th><th>項目2</th></tr></thead>
               <tbody>
                 <tr><td>ＡＡＡ</td><td>+1</td><td>+0</td></tr>
                 <tr><td>ＢＢＢ</td><td>+2</td><td>+0</td></tr>
@@ -1006,15 +1006,15 @@ sub renderDecorationForm {
             </table>
           </div>
           <div class="box">
-            <h2>大見出し</h2>
-            <h3>中見出し</h3>
-            <h4>小見出し</h4>
+            <h2>大標題</h2>
+            <h3>中標題</h3>
+            <h4>小標題</h4>
             <table class="note-table">
-              <thead><tr><th>テーブルヘッダ</th><td></td></tr></thead>
-              <tbody><tr><th>テーブル見出し</th><td>テーブルセル</td></tr></tbody>
+              <thead><tr><th>表格起始</th><td></td></tr></thead>
+              <tbody><tr><th>表格欄位</th><td>表格內容</td></tr></tbody>
             </table>
             <p>
-              <a class="link">未読リンク</a> <a class="visited">既読リンク</a>
+              <a class="link">未讀超連結</a> <a class="visited">已讀超連結</a>
             </p>
           </div>
         </div>
@@ -1022,7 +1022,7 @@ sub renderDecorationForm {
           <div class="name color-set">預覽</div>
           <div class="box color-set">
             <table class="data-table">
-              <thead><tr><th>データ表組み</th><th>項目1</th><th>項目2</th></tr></thead>
+              <thead><tr><th>資料表</th><th>項目1</th><th>項目2</th></tr></thead>
               <tbody>
                 <tr><td>ＡＡＡ</td><td>+1</td><td>+0</td></tr>
                 <tr><td>ＢＢＢ</td><td>+2</td><td>+0</td></tr>
@@ -1030,15 +1030,15 @@ sub renderDecorationForm {
             </table>
           </div>
           <div class="box color-set">
-            <h2>大見出し</h2>
-            <h3>中見出し</h3>
-            <h4>小見出し</h4>
+            <h2>大標題</h2>
+            <h3>中標題</h3>
+            <h4>小標題</h4>
             <table class="note-table">
-              <thead><tr><th>テーブルヘッダ</th><td></td></tr></thead>
-              <tbody><tr><th>テーブル見出し</th><td>テーブルセル</td></tr></tbody>
+              <thead><tr><th>表格起始</th><td></td></tr></thead>
+              <tbody><tr><th>表格欄位</th><td>表格內容</td></tr></tbody>
             </table>
             <p>
-              <a class="link">未読リンク</a> <a class="visited">既読リンク</a>
+              <a class="link">未讀超連結</a> <a class="visited">已讀超連結</a>
             </p>
           </div>
         </div>

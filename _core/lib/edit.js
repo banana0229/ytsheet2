@@ -209,7 +209,7 @@ window.addEventListener('load', () => {
   if(form.mode.value == 'make'){
     const savedFormData = localStorage.getItem('formData-'+sheetType);
     if (savedFormData && !document.querySelector('.data-imported')) {
-      if(confirm("發現有未完成的角色資料，請問要還原嗎？\n取消的話，將會捨棄目前未完成的角色，重新建立一筆新資料。")){
+      if(confirm("發現有未儲存的角色資料，請問要還原嗎？\n取消的話，將會捨棄目前未儲存的角色，重新建立一筆新資料。")){
         // 増減項目の対処の都合で画面遷移を挟む
         let restoreForm = document.createElement("form");
         restoreForm.style.display = 'none';

@@ -1482,7 +1482,7 @@ sub ensureHtaccessDenied {
 sub renderTextRule {
   my $type = $::pc{type} // $::in{type} // '';
   return <<~"HTML";
-    <p>以下の書式で記入することで、テキスト装飾・整形が行なえます。</p>
+    <p>輸入以下語法，可調整文字顯示出來的格式。</p>
     <section>
       <dl><dt>粗體  <dd><code>''文字''</code>：<b>文字</b></dl>
       <dl><dt>斜體  <dd><code>'''文字'''</code>：<span class="oblique">文字</span></dl>
@@ -1498,20 +1498,20 @@ sub renderTextRule {
     <hr>
     <section class="multiline-rule">
       <p>
-        ※以下語法只對允許多行文字的欄位有效。
+        ※以下語法只對有多行文字的欄位有效。
         @{[ $::multilineTargets{$type} ? "<br>（有效的欄位：$::multilineTargets{$type}）<br>" : '' ]}
       </p>
-      <dl><dt>大標題<dd>開頭為<code>*</code>：1行目に記述すると項目の見出しを差し替え</dl>
+      <dl><dt>大標題<dd>開頭為<code>*</code>：如果是在第1行，則會替換項目的標題</dl>
       <dl><dt>中標題<dd>開頭為<code>**</code></dl>
       <dl><dt>小標題<dd>開頭為<code>***</code></dl>
-      <dl><dt>置左  <dd>開頭為<code>LEFT:</code>：以降のテキストがすべて左寄せになります。</dl>
-      <dl><dt>置中<dd>開頭為<code>CENTER:</code>：以降のテキストがすべて中央寄せになります。</dl>
-      <dl><dt>置右  <dd>開頭為<code>RIGHT:</code>：以降のテキストがすべて右寄せになります。</dl>
-      <dl><dt>分隔線（直線）<dd><code>----</code>（4つ以上のハイフン）</dl>
-      <dl><dt>分隔線（點線）<dd><code> * * * *</code>（4つ以上の「スペース＋アスタリスク」）</dl>
-      <dl><dt>分隔線（虛線）<dd><code> - - - -</code>（4つ以上の「スペース＋ハイフン」）</dl>
+      <dl><dt>置左  <dd>開頭為<code>LEFT:</code>：後續文字全部置左。</dl>
+      <dl><dt>置中<dd>開頭為<code>CENTER:</code>：後續文字全部置中。</dl>
+      <dl><dt>置右  <dd>開頭為<code>RIGHT:</code>：後續文字全部置右。</dl>
+      <dl><dt>分隔線（直線）<dd><code>----</code>（連續4個以上的減號）</dl>
+      <dl><dt>分隔線（點線）<dd><code> * * * *</code>（連續4個以上的空白＋星號）</dl>
+      <dl><dt>分隔線（虛線）<dd><code> - - - -</code>（連續4個以上的空白＋減號）</dl>
       <dl><dt>表格<dd>
-        <code>|文字|文字|</code>：表組み（テーブル）を作成します。<br>
+        <code>|文字|文字|</code>：生成表格。<br>
         <code>|~文字|</code>のようにセル頭に<code>~</code>で見出しセルになります。<br>
         <code>|&gt;|文字|</code>のように<code>&gt;</code>単独で右のセルと結合します。<br>
         <code>|CENTER: 文字|</code>のようにセル頭に<code>CENTER:</code>で中央揃えになります。<br>
@@ -1532,7 +1532,7 @@ sub renderTextRule {
         以<code>V</code><code>v</code><code>Ｖ</code><code>ｖ</code>中的任意符號替代<code>&gt;</code>的話，摺疊將會變成預設展開（例： <code>[v]項目名</code>）。
       </dl>
       <dl><dt>結束摺疊<dd>
-        開頭為<code>[---]</code>：（ハイフンは3つ以上任意）<br>
+        開頭為<code>[---]</code>：（連續3個以上的減號）<br>
         如果省略的話，後面所有文字都會被摺疊。
       </dl>
       <dl><dt>註解<dd>開頭為<code>//</code>：後續的文字將不會顯示出來。</dl>

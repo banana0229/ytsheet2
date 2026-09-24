@@ -204,12 +204,12 @@ $INDEX->param(Lists => [ makeGroupedLists(
 
 ## 検索サマリー --------------------------------------------------
 setSearchSummary(
-  [ $::in{stage},   'ステージ「%s」' ],
-  [ $::in{exp},     '経験点＋「%s」' ],
-  [ $::in{breed},   'ブリード「%s」' ],
-  [ $::in{syndrome},'シンドローム「%s」' ],
-  [ $::in{dlois},   'Ｄロイス「%s」' ],
-  [ $::in{works},   'ワークス「%s」' ],
+  [ $::in{stage},   '舞台「%s」' ],
+  [ $::in{exp},     '經驗點＋「%s」' ],
+  [ $::in{breed},   '血統「%s」' ],
+  [ $::in{syndrome},'症候群「%s」' ],
+  [ $::in{dlois},   'Ｄ露易絲「%s」' ],
+  [ $::in{works},   '真身「%s」' ],
   [ $::in{sign},    '星座「%s」' ],
 );
 
