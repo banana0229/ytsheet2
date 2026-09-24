@@ -83,7 +83,7 @@ ruby rp {
   font-size: 0;
 }
 .bold {
-  font-weight: bold;
+  font-weight: 500;
 }
 .oblique {
   font-style: oblique;
