@@ -1522,7 +1522,7 @@ sub renderTextRule {
         ※指定できる幅の単位は、<code>em</code>（1em=全角1文字）および<code>%</code>が有効です。<br>
         ※指定できる幅の上限は、それぞれ<code>20em</code>と<code>100%</code>です。<br>
       </dl>
-      <dl><dt>自訂清單<dd>
+      <dl><dt>自訂列表<dd>
         <code>:項目名|説明文</code><br>
         <code>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|説明文2行目</code> 項目名を記入しないか、半角スペースで埋めると上と結合します。
       </dl>

@@ -29,15 +29,15 @@
           <TMPL_LOOP LogList><li class="<TMPL_VAR SELECTED>"><a href="?id=<TMPL_VAR id><TMPL_VAR URL>"><TMPL_VAR DATE></a></TMPL_LOOP>
         </ul>
         <TMPL_IF viewLogNaming><details id="log-naming">
-          <summary>閲覧中のログ<TMPL_IF selectedLogName>の名前をつけなおす<TMPL_ELSE>に名前をつける</TMPL_IF></summary>
+          <summary>為檢視中的紀錄<TMPL_IF selectedLogName>重新取名<TMPL_ELSE>取別名</TMPL_IF></summary>
           <form id="log-naming-form" method="post" action="./">
             <input type="hidden" name="mode" value="bu-naming">
             <input type="hidden" name="id" value="<TMPL_VAR id>">
             <input type="hidden" name="date" value="<TMPL_VAR logId>">
             <dl>
-              <dt>名前<dd><input type="text" name="log-name" value="<TMPL_VAR selectedLogName>">
-              <TMPL_IF reqdPassword><dt>パスワード<dd><input type="password" name="pass"></TMPL_IF>
-              <dd><input type="submit" value="命名">
+              <dt>名稱<dd><input type="text" name="log-name" value="<TMPL_VAR selectedLogName>">
+              <TMPL_IF reqdPassword><dt>密碼<dd><input type="password" name="pass"></TMPL_IF>
+              <dd><input type="submit" value="改名">
             </dl>
           </form>
         </details></TMPL_IF>
@@ -46,13 +46,13 @@
       <aside id="downloadlist" class="float-box">
         <h2>輸出</h2>
         <ul>
-          <li id="downloadlist-udonarium"><a onclick="downloadAsUdonarium();">ユドナリウム用コマデータ<small>(zip形式ファイル)</small></a>
-          <li id="downloadlist-ccfolia"><a onclick="downloadAsCcfolia();">ココフォリア用コマデータ<small>(クリップボードへコピー)</small></a>
-          <li id="downloadlist-text"><a onclick="downloadAsText();">テキスト形式</a>
-          <li id="downloadlist-json"><a onclick="downloadAsJson();">JSON 形式</a>
-          <li id="downloadlist-html"><a onclick="downloadAsHtml();">HTML 形式</a>
-          <li id="downloadlist-zipped"><a onclick="downloadAsFullSet();">ZIP 形式（上記全部入り）</a>
-          <li class="link-tag"><span>ゆとシート内リンク用タグ<br><input type="text" onclick="this.select()" value="[<TMPL_VAR rawName>#<TMPL_VAR id>]"></span>
+          <li id="downloadlist-udonarium"><a onclick="downloadAsUdonarium();">ユドナリウム用的棋子資料<small>(zip格式)</small></a>
+          <li id="downloadlist-ccfolia"><a onclick="downloadAsCcfolia();">ココフォリア用的棋子資料<small>(複製到剪貼簿)</small></a>
+          <li id="downloadlist-text"><a onclick="downloadAsText();">文字格式</a>
+          <li id="downloadlist-json"><a onclick="downloadAsJson();">JSON 格式</a>
+          <li id="downloadlist-html"><a onclick="downloadAsHtml();">HTML 格式</a>
+          <li id="downloadlist-zipped"><a onclick="downloadAsFullSet();">ZIP 格式（包含上述所有內容）</a>
+          <li class="link-tag"><span>ゆとシート內連結用的標籤<br><input type="text" onclick="this.select()" value="[<TMPL_VAR rawName>#<TMPL_VAR id>]"></span>
         </ul>
       </aside>
     </TMPL_UNLESS>

@@ -163,7 +163,7 @@ print <<"HTML";
       </dl>
     </div>
 
-    <div class="box in-toc" id="name-form" data-content-title="キャラクター名・プレイヤー名">
+    <div class="box in-toc" id="name-form" data-content-title="角色、玩家名稱">
       <div>
         <dl id="character-name">
           <dt>角色名稱

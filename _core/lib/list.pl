@@ -636,16 +636,16 @@ sub setSearchSummary {
     elsif(ref($_) eq 'ARRAY'){ push @array, $_ }
   }
   my @summary;
-  if($::in{mode} eq 'mylist') { push(@summary, 'マイリスト') }
+  if($::in{mode} eq 'mylist') { push(@summary, '我的角色') }
   if($groups{$::in{group}}{name}){ push(@summary, $groups{$::in{group}}{name}) }
   foreach (
-    [ $::in{tag},  'タグ「%s」' ],
-    [ $::in{name}, ($args{nameHeader} || '名前').'に「%s」を含む' ],
-    [ $::in{player}, 'ＰＬ名に「%s」を含む' ],
-    [ $::in{author}, '製作者名に「%s」を含む' ],
+    [ $::in{tag},  '標籤「%s」' ],
+    [ $::in{name}, ($args{nameHeader} || '名字').'包含「%s」' ],
+    [ $::in{player}, '玩家名稱包含「%s」' ],
+    [ $::in{author}, '建立者名稱包含「%s」' ],
     [ $::in{gender}, '性別「%s」' ],
     @array,
-    [ $::in{image}, ($::in{image} eq '1' ? '画像あり' : $::in{image} eq 'N' ? '画像なし' : '画像「%s」') ],
+    [ $::in{image}, ($::in{image} eq '1' ? '有圖片' : $::in{image} eq 'N' ? '無圖片' : '圖片「%s」') ],
   ) {
     my ($value, $format) = @$_;
     next if !defined($value) || $value eq '';
