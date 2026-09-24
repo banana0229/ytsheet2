@@ -46,13 +46,13 @@ main {
 :root {
   --base-font-family-jp : "BIZ UDGothic", "Hiragino Sans","Kosugi","Meiryo",sans-serif;
   --base-font-family-pr : "BIZ UDPGothic","Hiragino Sans","Meiryo UI",sans-serif;
-  --base-font-family-min: "Noto Serif TC","Noto Serif JP","YuMincho","ヒラギノ明朝 ProN W3","Hiragino Mincho ProN",serif;
+  --base-font-family-min: "Noto Serif JP","YuMincho","ヒラギノ明朝 ProN W3","Hiragino Mincho ProN",serif;
   --base-font-family-input: 'Arial',"BIZ UDPGothic","Hiragino Sans","Meiryo UI",sans-serif;
   --base-font-family-mono : "BIZ UDGothic", monospace;
 }
 
 body {
-  font-family: "Varela Round","Raleway",var(--base-font-family-jp);
+  font-family: "Noto Serif TC","Varela Round","Raleway",var(--base-font-family-jp);
   --font-proportional: "Varela Round","Raleway",var(--base-font-family-pr);
 }
 header nav,
