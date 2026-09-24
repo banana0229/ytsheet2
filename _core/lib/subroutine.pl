@@ -1484,58 +1484,58 @@ sub renderTextRule {
   return <<~"HTML";
     <p>以下の書式で記入することで、テキスト装飾・整形が行なえます。</p>
     <section>
-      <dl><dt>粗體  <dd><code>''テキスト''</code>：<b>テキスト</b></dl>
-      <dl><dt>斜體  <dd><code>'''テキスト'''</code>：<span class="oblique">テキスト</span></dl>
-      <dl><dt>刪除線<dd><code>%%テキスト%%</code>：<span class="strike">テキスト</span></dl>
-      <dl><dt>底線  <dd><code>__テキスト__</code>：<span class="underline">テキスト</span></dl>
-      <dl><dt>注音  <dd><code>|テキスト《てきすと》</code>：<ruby>テキスト<rt>てきすと</rt></ruby></dl>
-      <dl><dt>黑點  <dd><code>《《テキスト》》</code>：<span class="text-em">テキスト</span></dl>
-      <dl><dt>透明  <dd><code>{{テキスト}}</code>：<span class="transparent">テキスト</span>（ドラッグ反転で見える）</dl>
-      <dl><dt>超連結<dd><code>[[テキスト>URL]]</code></dl>
-      <dl><dt>連結到其他角色<dd><code>[テキスト#シートのID]</code></dl>
+      <dl><dt>粗體  <dd><code>''文字''</code>：<b>文字</b></dl>
+      <dl><dt>斜體  <dd><code>'''文字'''</code>：<span class="oblique">文字</span></dl>
+      <dl><dt>刪除線<dd><code>%%文字%%</code>：<span class="strike">文字</span></dl>
+      <dl><dt>底線  <dd><code>__文字__</code>：<span class="underline">文字</span></dl>
+      <dl><dt>標音  <dd><code>|文字《Word》</code>：<ruby>文字<rt>Word</rt></ruby></dl>
+      <dl><dt>黑點  <dd><code>《《文字》》</code>：<span class="text-em">文字</span></dl>
+      <dl><dt>透明  <dd><code>{{文字}}</code>：<span class="transparent">文字</span>（反白後顯示）</dl>
+      <dl><dt>超連結<dd><code>[[文字>URL]]</code></dl>
+      <dl><dt>連結到其他角色<dd><code>[文字#角色頁面ID]</code></dl>
       @{[ defined(&renderAddTextRule) ? &renderAddTextRule() : '' ]}
     </section>
     <hr>
     <section class="multiline-rule">
       <p>
-        ※以下は一部の複数行の欄でのみ有効です。
-        @{[ $::multilineTargets{$type} ? "<br>（有効な欄：$::multilineTargets{$type}）<br>" : '' ]}
+        ※以下語法只對允許多行文字的欄位有效。
+        @{[ $::multilineTargets{$type} ? "<br>（有效的欄位：$::multilineTargets{$type}）<br>" : '' ]}
       </p>
-      <dl><dt>大標題<dd>行頭に<code>*</code>：1行目に記述すると項目の見出しを差し替え</dl>
-      <dl><dt>中標題<dd>行頭に<code>**</code></dl>
-      <dl><dt>小標題<dd>行頭に<code>***</code></dl>
-      <dl><dt>置左  <dd>行頭に<code>LEFT:</code>：以降のテキストがすべて左寄せになります。</dl>
-      <dl><dt>置中<dd>行頭に<code>CENTER:</code>：以降のテキストがすべて中央寄せになります。</dl>
-      <dl><dt>置右  <dd>行頭に<code>RIGHT:</code>：以降のテキストがすべて右寄せになります。</dl>
+      <dl><dt>大標題<dd>開頭為<code>*</code>：1行目に記述すると項目の見出しを差し替え</dl>
+      <dl><dt>中標題<dd>開頭為<code>**</code></dl>
+      <dl><dt>小標題<dd>開頭為<code>***</code></dl>
+      <dl><dt>置左  <dd>開頭為<code>LEFT:</code>：以降のテキストがすべて左寄せになります。</dl>
+      <dl><dt>置中<dd>開頭為<code>CENTER:</code>：以降のテキストがすべて中央寄せになります。</dl>
+      <dl><dt>置右  <dd>開頭為<code>RIGHT:</code>：以降のテキストがすべて右寄せになります。</dl>
       <dl><dt>分隔線（直線）<dd><code>----</code>（4つ以上のハイフン）</dl>
       <dl><dt>分隔線（點線）<dd><code> * * * *</code>（4つ以上の「スペース＋アスタリスク」）</dl>
       <dl><dt>分隔線（虛線）<dd><code> - - - -</code>（4つ以上の「スペース＋ハイフン」）</dl>
       <dl><dt>表格<dd>
-        <code>|テキスト|テキスト|</code>：表組み（テーブル）を作成します。<br>
-        <code>|~テキスト|</code>のようにセル頭に<code>~</code>で見出しセルになります。<br>
-        <code>|&gt;|テキスト|</code>のように<code>&gt;</code>単独で右のセルと結合します。<br>
-        <code>|CENTER: テキスト|</code>のようにセル頭に<code>CENTER:</code>で中央揃えになります。<br>
-        <code>|RIGHT: テキスト|</code>のようにセル頭に<code>RIGHT:</code>で右揃えになります。<br>
-        <code>|NOWRAP: テキスト|</code>のようにセル頭に<code>NOWRAP:</code>でそのセル内で改行しなくなります<br>
+        <code>|文字|文字|</code>：表組み（テーブル）を作成します。<br>
+        <code>|~文字|</code>のようにセル頭に<code>~</code>で見出しセルになります。<br>
+        <code>|&gt;|文字|</code>のように<code>&gt;</code>単独で右のセルと結合します。<br>
+        <code>|CENTER: 文字|</code>のようにセル頭に<code>CENTER:</code>で中央揃えになります。<br>
+        <code>|RIGHT: 文字|</code>のようにセル頭に<code>RIGHT:</code>で右揃えになります。<br>
+        <code>|NOWRAP: 文字|</code>のようにセル頭に<code>NOWRAP:</code>でそのセル内で改行しなくなります<br>
         <code>|CENTER:5em|RIGHT:10em|c</code>のように行末に<code>c</code>をつけると書式指定行となり、その列の文字揃えや幅をまとめて指定できます。<br>
         ※書式指定行では、通常の文字列は無効になります。<br>
         ※指定できる幅の単位は、<code>em</code>（1em=全角1文字）および<code>%</code>が有効です。<br>
         ※指定できる幅の上限は、それぞれ<code>20em</code>と<code>100%</code>です。<br>
       </dl>
-      <dl><dt>定義リスト<dd>
+      <dl><dt>自訂清單<dd>
         <code>:項目名|説明文</code><br>
         <code>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|説明文2行目</code> 項目名を記入しないか、半角スペースで埋めると上と結合します。
       </dl>
       <dl><dt>摺疊<dd>
-        行頭に<code>[>]項目名</code>：以降のテキストがすべて折り畳みになります。<br>
-        項目名を省略すると、自動的に「詳細」になります。<br>
-        <code>&gt;</code>の代わりに<code>V</code><code>v</code><code>Ｖ</code><code>ｖ</code>のいずれかの文字をもちいると、デフォルトで展開状態となります（例： <code>[v]項目名</code>）。
+        開頭為<code>[>]摺疊名稱</code>：後續的所有文字都將被摺疊。<br>
+        無設定摺疊名稱的話，將自動設定為「詳細」。<br>
+        以<code>V</code><code>v</code><code>Ｖ</code><code>ｖ</code>中的任意符號替代<code>&gt;</code>的話，摺疊將會變成預設展開（例： <code>[v]項目名</code>）。
       </dl>
       <dl><dt>結束摺疊<dd>
-        行頭に<code>[---]</code>：（ハイフンは3つ以上任意）<br>
-        省略すると、以後のテキストが全て折りたたまれます。
+        開頭為<code>[---]</code>：（ハイフンは3つ以上任意）<br>
+        如果省略的話，後面所有文字都會被摺疊。
       </dl>
-      <dl><dt>コメントアウト<dd>行頭に<code>//</code>：記述した行を非表示にします。</dl>
+      <dl><dt>註解<dd>開頭為<code>//</code>：後續的文字將不會顯示出來。</dl>
     </section>
   HTML
 }

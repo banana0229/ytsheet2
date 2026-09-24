@@ -1301,7 +1301,7 @@ input[type="number"] {
       > span.check {
         height: 1.2em;
         &::after {
-          content: "編集する";
+          content: "編輯";
           display: inline-block;
           width: 4em;
           opacity: 0.5;
@@ -1312,7 +1312,7 @@ input[type="number"] {
       }
       > span.check:has(~ .selected) {
         &::after {
-          content: "編集中";
+          content: "編輯中";
           opacity: 1;
         }
       }
@@ -1867,11 +1867,11 @@ input[type="number"] {
   }
   & .light .name::before,
   .night & .night .name::before {
-    content: "色見本：ライトモード";
+    content: "預覽：淺色模式";
   }
   .night & .light .name::before,
   & .night .name::before {
-    content: "色見本：ナイトモード";
+    content: "預覽：深色模式";
   }
   & .box {
     margin-top: var(--box-v-gap);

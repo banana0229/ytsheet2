@@ -455,7 +455,7 @@ sub renderEditPageEnd {
       <aside id="text-rule" class="sticky-footer" style="display:none">
         <h2>
           テキスト装飾・整形ルール
-          <small>（<a href="./?mode=edit-help@{[ $type ? "&type=$type" : '' ]}" target="_blank">⇒別ウィンドウで開く</a>）</small>
+          <small>（<a href="./?mode=edit-help@{[ $type ? "&type=$type" : '' ]}" target="_blank">⇒在新視窗中開啟</a>）</small>
         </h2>
         <i class="close-button" onclick="view('text-rule')"></i>
         <div>
@@ -501,9 +501,9 @@ sub renderEditPageEnd {
     </dialog>
 
     <dialog id="dialog-export-json">
-      <p>現在編集中のデータをJSONファイルとしてダウンロードします。</p>
-      <button onclick="exportAsJson()">ダウンロード</button>
-      <button type="button" command="close" commandfor="dialog-export-json">キャンセル</button>
+      <p>是否下載現在編輯中的JSON檔案？</p>
+      <button onclick="exportAsJson()">下載</button>
+      <button type="button" command="close" commandfor="dialog-export-json">取消</button>
     </dialog>
 
     $extraHtml
@@ -686,9 +686,9 @@ sub renderImageForm {
 
     <div id="image-custom" style="display:none">
       <div class="image-custom-view-area">
-        <div id="image-custom-frame-S" class="image-custom-frame"><div class="image-custom-view"><b>横幅が狭い時</b></div></div>
-        <div id="image-custom-frame-O" class="image-custom-frame"><div class="image-custom-view"><b>OGP <small>※シートURLをSNS等に貼った際に表示</small></b></div></div>
-        <div id="image-custom-frame-M" class="image-custom-frame"><div class="image-custom-view"><b>標準の比率 <small>※縦横比は適宜変動します</small></b><div class="words" id="words-preview"></div><div id="image-copyright-preview"></div></div>
+        <div id="image-custom-frame-S" class="image-custom-frame"><div class="image-custom-view"><b>畫面寬度不足時</b></div></div>
+        <div id="image-custom-frame-O" class="image-custom-frame"><div class="image-custom-view"><b>OGP <small>※將角色頁面貼於SNS等時顯示的縮圖</small></b></div></div>
+        <div id="image-custom-frame-M" class="image-custom-frame"><div class="image-custom-view"><b>標準比例 <small>※長寬比會自動調整</small></b><div class="words" id="words-preview"></div><div id="image-copyright-preview"></div></div>
           @{[ input "editingImagePositionY",'range','imagePosition','step="0.001"' ]}
           @{[ input "editingImagePositionX",'range','imagePosition','step="0.001"' ]}
         </div>
@@ -702,12 +702,12 @@ sub renderImageForm {
           @{[
             join '', map {
               my $n = $_;
-              qq#<div><label>画像@{[$n||1]}: <input type="file" accept="image/*" name="imageFile$n" onchange="imagePreView(this.files[0], $imageMaxSize, $n)"></label></div>#
+              qq#<div><label>圖片@{[$n||1]}: <input type="file" accept="image/*" name="imageFile$n" onchange="imagePreView(this.files[0], $imageMaxSize, $n)"></label></div>#
             } '', 2 .. $imageMaxCount
           ]}
         <p>
           ※ 檔案限制為最大 @{[ $imageMaxSizeView ]} 的 JPG/PNG/GIF/WebP
-          <small>（過大的檔案將自動轉換為WebP，如果轉換後還是超過的話，會調整尺寸）</small>
+          <small>（過大的檔案將自動轉為WebP，如果轉換後還是超過的話，會調整尺寸）</small>
         </p>
         <div id="image-select-buttons">
           @{[
@@ -734,9 +734,9 @@ sub renderImageForm {
           ]}
         </div>
         <ul class="annotate">
-          <li>画像を複数登録している場合、<b>メイン画像</b>に設定した画像が、シートの最初の表示やOGPに使用されます。<br>
-              それ以外の画像は、シート内の切り替えボタンで表示されます。
-          <li>画像を<b>非表示</b>に設定した場合、シートの表示やOGPには使用されません。（画像へのアクセス自体は可能です）
+          <li>上傳多張圖片時，設定為<b>主圖片</b>的圖片將會顯示於角色頁面的第一順位，以及縮圖上。<br>
+              其他圖片可在角色頁面中透過按鈕切換。
+          <li>將圖片設定為<b>隱藏</b>的話，角色頁面以及縮圖將不會顯示。（圖片本身還是能夠看到）
           <li>啟用警示設定後，圖片將模糊顯示。（點擊後可解除）
         </ul>
         <script>
@@ -787,33 +787,33 @@ sub renderImageForm {
           mainArea.addEventListener('touchmove' , function (e) { imageDragMove(e);  });
           mainArea.addEventListener('touchend'  , function (e) { imageDragEnd();    });
         </script>
-        <h3>画像レイアウト</h3>
+        <h3>圖片配置</h3>
         <p>
-          <b>縦基準位置</b>:<input type="number" id="image-positionY" step="0.1" min="0" max="100" onchange="imagePositionNumberToRange()">%<br>
-          <b>横基準位置</b>:<input type="number" id="image-positionX" step="0.1" min="0" max="100" onchange="imagePositionNumberToRange()">%<br>
+          <b>縱向位置基準</b>:<input type="number" id="image-positionY" step="0.1" min="0" max="100" onchange="imagePositionNumberToRange()">%<br>
+          <b>橫向位置基準</b>:<input type="number" id="image-positionX" step="0.1" min="0" max="100" onchange="imagePositionNumberToRange()">%<br>
         </p>
         <p>
-          <b>表示（トリミング）方式</b>：<br><select name="editingImageFit" oninput="imageDragPointSet();imagePosition()">
-          <option value="cover"    @{[$::pc{editingImageFit} eq 'cover'   ?'selected':'']}>自動的に最低限のトリミング（表示域いっぱいに表示）
-          <option value="contain"  @{[$::pc{editingImageFit} eq 'contain' ?'selected':'']}>トリミングしない（必ず画像全体を収める）
-          <option value="percentX" @{[$::pc{editingImageFit} eq 'percentX'?'selected':'']}>任意のトリミング／横幅を基準
-          <option value="percentY" @{[$::pc{editingImageFit} eq 'percentY'?'selected':'']}>任意のトリミング／縦幅を基準
-          <option value="unset"    @{[$::pc{editingImageFit} eq 'unset'   ?'selected':'']}>拡大縮小せず表示（ドット絵など向き）
+          <b>顯示（裁切）方式</b>：<br><select name="editingImageFit" oninput="imageDragPointSet();imagePosition()">
+          <option value="cover"    @{[$::pc{editingImageFit} eq 'cover'   ?'selected':'']}>最小裁切（保留最滿的顯示範圍）
+          <option value="contain"  @{[$::pc{editingImageFit} eq 'contain' ?'selected':'']}>不要裁切（整張圖片都要顯示）
+          <option value="percentX" @{[$::pc{editingImageFit} eq 'percentX'?'selected':'']}>任意裁切／以寬度為基準
+          <option value="percentY" @{[$::pc{editingImageFit} eq 'percentY'?'selected':'']}>任意裁切／以長度為基準
+          <option value="unset"    @{[$::pc{editingImageFit} eq 'unset'   ?'selected':'']}>不要縮放（適合點陣圖）
           </select><br>
-          <small>※いずれの設定でも、クリックすると画像全体が表示されます。</small>
+          <small>※不論設定哪一個，點擊後都可以看到完整的圖片。</small>
         </p>
         <p id="image-percent-config">
           <b>拡大率</b>：@{[ input "editingImagePercent",'number','imageDragPointSet();imagePosition','min="0"  style="width:4em;"' ]}%<br>
           <input type="range" id="image-percent-bar" min="10" max="1000" oninput="imagePercentBarChange(this.value)" style="width:100%;"><br>
           （100%で幅ピッタリ）<br>
         </p>
-        <h3>画像の注釈</h3>
+        <h3>圖片備註</h3>
         <p>
-          <b class="small">作者名や権利表示、スポイラーの理由など：</b><br>
-          @{[ input 'editingImageCopyright','text ','wordsPreView','placeholder="(C)画像の作者名" style="width:70%;"' ]}<br>
+          <b class="small">繪圖者、版權歸屬，又或是內容警示等等：</b><br>
+          @{[ input 'editingImageCopyright','text ','wordsPreView','placeholder="(C)圖片的作者" style="width:70%;"' ]}<br>
         </p>
         <p>
-          <b>URL（作者のWebサイトなど）：</b><br>
+          <b>URL（繪圖者的網站之類的）：</b><br>
           @{[ input 'editingImageCopyrightURL','url ','wordsPreView','placeholder="https://..." style="width:90%;"' ]}<br>
         </p>
         <h3>圖片上的台詞</h3>
@@ -874,12 +874,12 @@ sub renderChatPaletteForm {
   return <<~"HTML";
     <section id="section-palette" style="display:none;">
       <div class="box" id="unit-setting">
-        <h2>ユニット(コマ)の設定</h2>
-        <div class="annotate">各オンラインセッションツールに出力するユニット(コマ)に反映されます。</div>
+        <h2>角色(棋子)設定</h2>
+        <div class="annotate">會套用到輸出至各家網團工具的角色(棋子)上。</div>
         <dl>
-          <dt>表示名
+          <dt>顯示名稱
           <dd>@{[ input 'namePlate','','changeNamePlate','placeholder="ニックネーム、ファーストネームなど"' ]} <small>※コマ出力時、こちらの入力が名前として優先されます。名前が長いキャラなどに</small>
-          <dt>発言者色
+          <dt>文字顏色
           <dd>@{[ input 'nameColor','','changeNamePlate' ]} <small>※#から始まる6桁のカラーコードで記入してください。</small>
             <div id="name-plate-view">表示例：
               <span class="ytcha"></span> ／
@@ -887,7 +887,7 @@ sub renderChatPaletteForm {
               <span class="ccfol"></span> ／
               <span class="udona"></span>
             </div>
-          <dt>ステータス<br>
+          <dt>固定屬性<br>
           <dd>
             @{[ input 'unitStatusNotOutput','hidden' ]}
             @{[ input 'unitStatusNum','hidden' ]}
@@ -983,19 +983,19 @@ sub renderDecorationForm {
           <tr class="color-range-S"><th>色の濃さ</th><td><input type="range" name="colorBaseBgS"  min="0" max="100" value="$::pc{colorBaseBgS}" oninput="changeColor();"></td><td id="colorBaseBgSValue">$::pc{colorBaseBgS}</td></tr>
           </table>
           <hr>
-          <p class="right"><span class="button" onclick="setDefaultColor();">デフォルトに戻す</span></p>
+          <p class="right"><span class="button" onclick="setDefaultColor();">恢復預設值</span></p>
         </div>
         <div class="box font-custom">
-          <h2>名称欄のフォント</h2>
+          <h2>名稱字體</h2>
           <fieldset>
-            <label class="check-button"><input type="radio" name="nameFont" value=""@{[ $::pc{nameFont} eq '' ? ' checked':''] } oninput="changeNameFont()"><span>フォント：<small>デフォルト</small></span></label>
+            <label class="check-button"><input type="radio" name="nameFont" value=""@{[ $::pc{nameFont} eq '' ? ' checked':''] } oninput="changeNameFont()"><span>字體：<small>預設</small></span></label>
             @{[ renderFontCustomForm() ]}
           </fieldset>
         </div>
       </div>
       <div class="color-sample">
         <div class="light color-set">
-          <div class="name">色見本</div>
+          <div class="name">預覽</div>
           <div class="box">
             <table class="data-table">
               <thead><tr><th>データ表組み</th><th>項目1</th><th>項目2</th></tr></thead>
@@ -1019,7 +1019,7 @@ sub renderDecorationForm {
           </div>
         </div>
         <div class="night">
-          <div class="name color-set">色見本</div>
+          <div class="name color-set">預覽</div>
           <div class="box color-set">
             <table class="data-table">
               <thead><tr><th>データ表組み</th><th>項目1</th><th>項目2</th></tr></thead>

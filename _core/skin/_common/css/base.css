@@ -546,10 +546,10 @@ label.toggle-button {
     color: #777;
   }
   &.yes-no:has(input:checked)::before {
-    content: 'はい';
+    content: '是';
   }
   &.yes-no:has(input:not(:checked))::before {
-    content: 'いいえ';
+    content: '否';
   }
   &::after {
     content: '';
