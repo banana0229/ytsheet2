@@ -1051,7 +1051,7 @@ sub renderFontCustomForm {
   my $html;
   my $i = 1;
   foreach (@set::googlefonts) {
-    $html .= '<label class="check-button"><input type="radio" name="nameFont" value="'.$_->[0].'"'.($::pc{nameFont} eq $_->[0] ? ' checked':'').' oninput="changeNameFont()"><span style="font-family:'."'$_->[0]'".';font-weight:'.$_->[1].';">フォント：<small>'.$_->[0].'</small></span></label>';
+    $html .= '<label class="check-button"><input type="radio" name="nameFont" value="'.$_->[0].'"'.($::pc{nameFont} eq $_->[0] ? ' checked':'').' oninput="changeNameFont()"><span style="font-family:'."'$_->[0]'".';font-weight:'.$_->[1].';">字體：<small>'.$_->[0].'</small></span></label>';
     $i++;
   }
   return $html.'<script>const fontList = '.JSON::PP->new->encode(\@set::googlefonts).';</script>';

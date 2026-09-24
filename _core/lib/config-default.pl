@@ -90,6 +90,7 @@ package set;
     ['Kiwi Maru',     'bold'],
     ['M PLUS Rounded 1c',700],
     ['Noto Sans JP',  700],
+    ['Noto Sans TC',  700],
     ['Stick',         'normal'],
     ['RocknRoll One', 'normal'],
     ['Reggae One',    'normal'],
