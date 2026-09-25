@@ -42,7 +42,7 @@ sub palettePreset {
     $text .= "{肉體}+{DB}dx(10+{CB})+{迴避}+{AB} 〈迴避〉判定\n";
     $text .= "{感覺}+{DB}dx(10+{CB})+{射擊}+{AB} 〈射擊〉判定\n";
     $text .= "{感覺}+{DB}dx(10+{CB})+{知覺}+{AB} 〈知覺〉判定\n";
-    $text .= "{精神}+{DB}dx(10+{CB})+{RC}+{AB} 〈ＲＣ〉判定\n";
+    $text .= "{精神}+{DB}dx(10+{CB})+{RC}+{AB} 〈RC〉判定\n";
     $text .= "{精神}+{DB}dx(10+{CB})+{意志}+{AB} 〈意志〉判定\n";
     $text .= "{社會}+{DB}dx(10+{CB})+{交涉}+{AB} 〈交涉〉判定\n";
     $text .= "{社會}+{DB}dx(10+{CB})+{籌備}+{AB} 〈籌備〉判定\n";
