@@ -879,9 +879,9 @@ sub renderChatPaletteForm {
         <div class="annotate">會套用到輸出至各家網團工具的角色(棋子)上。</div>
         <dl>
           <dt>顯示名稱
-          <dd>@{[ input 'namePlate','','changeNamePlate','placeholder="ニックネーム、ファーストネームなど"' ]} <small>※コマ出力時、こちらの入力が名前として優先されます。名前が長いキャラなどに</small>
+          <dd>@{[ input 'namePlate','','changeNamePlate','placeholder="外號、名字等等"' ]} <small>※輸出成棋子時，此處的名稱會優先顯示，可用於名稱較長的角色</small>
           <dt>文字顏色
-          <dd>@{[ input 'nameColor','','changeNamePlate' ]} <small>※#から始まる6桁のカラーコードで記入してください。</small>
+          <dd>@{[ input 'nameColor','','changeNamePlate' ]} <small>※請輸入色碼#後的6位數字。</small>
             <div id="name-plate-view">表示例：
               <span class="ytcha"></span> ／
               <span class="tekey"></span> ／
@@ -1072,8 +1072,8 @@ sub renderDeleteForm {
         <input type="checkbox" name="check1" value="1" required>
         <input type="checkbox" name="check2" value="1" required>
         <input type="checkbox" name="check3" value="1" required>
-        <input type="submit" value="シート削除"><br>
-        ※チェックを全て入れてください
+        <input type="submit" value="刪除角色"><br>
+        ※請勾選所有確認框
       </fieldset>
     </form>
   HTML
