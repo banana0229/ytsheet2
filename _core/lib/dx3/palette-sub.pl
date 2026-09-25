@@ -33,7 +33,7 @@ sub palettePreset {
     # $text .= "//攻撃力修正=0\n";
     $text .= "###\n" if $bot{TKY};
     $text .= "### ■判定\n";
-    $text .= "{肉體0}+{DB}dx(10+{CB})+{AB} 【肉體】判定\n";
+    $text .= "{肉體}+{DB}dx(10+{CB})+{AB} 【肉體】判定\n";
     $text .= "{感覺}+{DB}dx(10+{CB})+{AB} 【感覺】判定\n";
     $text .= "{精神}+{DB}dx(10+{CB})+{AB} 【精神】判定\n";
     $text .= "{社會}+{DB}dx(10+{CB})+{AB} 【社會】判定\n";
@@ -73,7 +73,7 @@ sub palettePreset {
         if(!$::pc{"combo${num}Manual"}){
           if($::pc{"combo${num}Stt"}){
             if   ($::pc{"combo${num}Stt"} eq '肉體'){ $text .= '{肉體}+'; }
-            elsif($::pc{"combo${num}Stt"} eq '感覺'){ $text .= '{感覺}+'; }
+            # elsif($::pc{"combo${num}Stt"} eq '感覺'){ $text .= '{感覺}+'; }
             elsif($::pc{"combo${num}Stt"} eq '精神'){ $text .= '{精神}+'; }
             elsif($::pc{"combo${num}Stt"} eq '社會'){ $text .= '{社會}+'; }
           }
