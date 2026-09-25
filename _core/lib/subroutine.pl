@@ -621,7 +621,7 @@ sub logIn {
     close ($FH);
     print &setCookie($set::cookie,$_[0],$key,'+365d');
   }
-  else { error('ログインできませんでした。'); }
+  else { error('登入失敗'); }
 
   if($set::url_home){ print "Location: $set::url_home\n\n"; }
   else { print "Location: ./\n\n"; }
