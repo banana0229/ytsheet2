@@ -33,7 +33,7 @@ sub palettePreset {
     $text .= "//攻撃力修正=0\n";
     $text .= "###\n" if $bot{TKY};
     $text .= "### ■判定\n";
-    $text .= "\{肉體\}+{DB}dx(10+{CB})+{AB} 【肉體】判定\n";
+    $text .= "{肉體}+{DB}dx(10+{CB})+{AB} 【肉體】判定\n";
     $text .= "{感覺}+{DB}dx(10+{CB})+{AB} 【感覺】判定\n";
     $text .= "{精神}+{DB}dx(10+{CB})+{AB} 【精神】判定\n";
     $text .= "{社會}+{DB}dx(10+{CB})+{AB} 【社會】判定\n";
@@ -57,7 +57,7 @@ sub palettePreset {
     foreach my $num (1 .. $::pc{skillInfoNum}){
       $text .= "{社會}+{DB}dx(10+{CB})+{$::pc{'skillInfo'.$num.'Name'}}+{AB} 〈$::pc{'skillInfo'.$num.'Name'}〉判定\n" if $::pc{'skillInfo'.$num.'Name'};
     }
-    if(!$bot{CCF}) {
+    if($bot{CCF}) {
       $text .= "\n(0/10+1)D+0+0 \@傷害骰=(命中判定的十位數+1)D+攻擊力+其它修正\n";
       $text .= "C(0-{裝甲值}-0) \@閃躲失敗傷害=HP傷害-裝甲值-其它修正\n";
       $text .= "C(0-{裝甲值}-{格擋值}-0) \@格擋傷害=HP傷害-裝甲值-格擋值-其它修正\n";
@@ -70,8 +70,8 @@ sub palettePreset {
       $text .= "【$::pc{'combo'.$num.'Name'}】：$::pc{'combo'.$num.'Combo'}\\n"
             . textTiming($::pc{'combo'.$num.'Timing'})." / $::pc{'combo'.$num.'Skill'} / $::pc{'combo'.$num.'Dfclty'} / $::pc{'combo'.$num.'Target'} / $::pc{'combo'.$num.'Range'}"
             . ($::pc{'combo'.$num.'Note'} ? "\\n$::pc{'combo'.$num.'Note'}" : '')
-            ."\n";
-      $text .= ($bot{YTC} ? '@侵蝕' : ':侵蝕')  . "+$::pc{'combo'.$num.'Encroach'}\n";
+            ."\n" if !$bot{CCF};
+      $text .= ($bot{YTC} ? '@侵蝕' : ':侵蝕')  . "+$::pc{'combo'.$num.'Encroach'}\n" if !$bot{CCF};
       foreach my $i (1..5) {
         next if !$::pc{'combo'.$num.'Condition'.$i};
         $text .= "▼$::pc{'combo'.$num.'Condition'.$i} ----------\n" if $bot{YTC} || $bot{TKY};
@@ -89,16 +89,16 @@ sub palettePreset {
             elsif($::pc{"combo${num}Skill"} =~ /^(交涉|籌備|情報)/){ $text .= '{社會}+';  }
           }
         }
-        $text .= "$::pc{'combo'.$num.'DiceAdd'.$i}+{DB}dx($::pc{'combo'.$num.'Crit'.$i}+{CB})+$::pc{'combo'.$num.'Fixed'.$i}+{AB}";
-        $text .= " 判定／$::pc{'combo'.$num.'Condition'.$i}／$::pc{'combo'.$num.'Name'}" if $bot{BCD} && !$bot{TKY};
-        $text .= "\n";
+        $text .= "$::pc{'combo'.$num.'DiceAdd'.$i}+{DB}dx($::pc{'combo'.$num.'Crit'.$i}+{CB})+$::pc{'combo'.$num.'Fixed'.$i}+{AB}" if !$bot{CCF};
+        $text .= " 判定／$::pc{'combo'.$num.'Condition'.$i}／$::pc{'combo'.$num.'Name'}" if $bot{BCD} && !$bot{TKY} && !$bot{CCF};
+        $text .= "\n" if !$bot{CCF};
         if($::pc{'combo'.$num.'Atk'.$i} ne ''){
-          $text .= "d10+$::pc{'combo'.$num.'Atk'.$i}+{AtkB} ダメージ";
-          $text .= "／$::pc{'combo'.$num.'Condition'.$i}／$::pc{'combo'.$num.'Name'}" if $bot{BCD} && !$bot{TKY};
-          $text .= "\n";
+          $text .= "d10+$::pc{'combo'.$num.'Atk'.$i}+{AtkB} 傷害" if !$bot{CCF};
+          $text .= "／$::pc{'combo'.$num.'Condition'.$i}／$::pc{'combo'.$num.'Name'}" if $bot{BCD} && !$bot{TKY} && !$bot{CCF};
+          $text .= "\n" if !$bot{CCF};
         }
       }
-      $text .= "\n";
+      $text .= "\n" if !$bot{CCF};
     }
   }
   
@@ -117,6 +117,7 @@ sub palettePreset {
   if(!$type && $bot{CCF}) {
     $text =~ s/(.+?)\+\{DB\}(.*?)dx\(10\+\{CB\}\)(.*?)\+\{AB\}(.*?)(\s|$)/$1\+\{侵蝕骰數修正\}\+0\)DX\(10\-0\)$3$4$5/mg;
     $text =~ s/\/\/.+?\s|$//mg;
+    $text =~ s/###.+?\s|$//mg;
   }
 
   return $text;
