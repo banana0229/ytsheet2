@@ -28,14 +28,14 @@ sub palettePreset {
     $text .= "//格擋值=0\n";
   }
   if(!$type){
-    $text .= "//侵蝕率ダイスボーナス=0\n";
-    $text .= "### ■バフ・デバフ\n";
-    $text .= "//ダイス修正=0\n";
-    $text .= "//C値修正=0\n";
-    $text .= "//達成値修正=0\n";
-    $text .= "//攻撃力修正=0\n";
+    $text .= "//侵蝕率ダイスボーナス=0\n" if !$bot{CCF};;
+    $text .= "### ■バフ・デバフ\n" if !$bot{CCF};;
+    $text .= "//ダイス修正=0\n" if !$bot{CCF};;
+    $text .= "//C値修正=0\n" if !$bot{CCF};;
+    $text .= "//達成値修正=0\n" if !$bot{CCF};;
+    $text .= "//攻撃力修正=0\n" if !$bot{CCF};;
     $text .= "###\n" if $bot{TKY};
-    $text .= "### ■判定\n";
+    $text .= "### ■判定\n" if !$bot{CCF};;
     $text .= "{肉體}+{DB}dx(10+{CB})+{AB} 【肉體】判定\n";
     $text .= "{感覺}+{DB}dx(10+{CB})+{AB} 【感覺】判定\n";
     $text .= "{精神}+{DB}dx(10+{CB})+{AB} 【精神】判定\n";
@@ -106,11 +106,11 @@ sub palettePreset {
   }
   
   $text .= "###\n" if $bot{TKY};
-  $text .= "### ■代入式\n";
-  $text .= "//DB={侵蝕率ダイスボーナス}+{ダイス修正}\n";
-  $text .= "//CB={C値修正}\n";
-  $text .= "//AB={達成値修正}\n";
-  $text .= "//AtkB={攻撃力修正}\n";
+  $text .= "### ■代入式\n" if !$bot{CCF};;
+  $text .= "//DB={侵蝕率ダイスボーナス}+{ダイス修正}\n" if !$bot{CCF};;
+  $text .= "//CB={C値修正}\n" if !$bot{CCF};;
+  $text .= "//AB={達成値修正}\n" if !$bot{CCF};;
+  $text .= "//AtkB={攻撃力修正}\n" if !$bot{CCF};;
   $text .= "###\n" if $bot{YTC} || $bot{TKY};
   
   if($bot{BCD}) {
