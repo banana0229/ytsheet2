@@ -118,7 +118,7 @@ sub palettePreset {
   if(!$type && $bot{CCF}) {
     $text =~ s/(.+?)\+\{DB\}(.*?)dx\(10\+\{CB\}\)(.*?)\+\{AB\}(.*?)(\s|$)/$1\+\{侵蝕率骰數加成\}\+0\)DX\(10\-0\)$3$4$5/mg;
     $text =~ s/\/\/.+?\s|$//mg;
-    $text =~ s/###.+?\s|$//mg;
+    $text =~ s/###.*\s?|$//mg;
   }
 
   return $text;
