@@ -854,6 +854,7 @@ sub renderChatPaletteForm {
     tool => [
       '=>ゆとチャadv.',
       'tekey=>Tekey',
+      'ccfolia=>ccfolia',
       'bcdice=>その他(BCDice使用)',
     ],
     buff => 1,
