@@ -223,7 +223,7 @@ sub convertHokanjoToYtsheet {
   $pc{freeNoteView} =~ s/\r\n?|\n/<br>/g;
   
   ## チャットパレット
-  $pc{paletteUseBuff} = 0;
+  $pc{paletteUseBuff} = 1;
 
   ## 〆
   $pc{ver} = 0;
@@ -464,7 +464,7 @@ sub convertSoukoToYtsheet {
   $pc{historyNum} = 3;
   
   ## チャットパレット
-  $pc{paletteUseBuff} = 0;
+  $pc{paletteUseBuff} = 1;
 
   ## 画像
   $pc{imageURL} = $in{'image_url'};
@@ -661,7 +661,7 @@ sub convert1to2 {
   }
   $pc{history0Exp} = $pc{make_exp};
   
-  $pc{paletteUseBuff} = 0;
+  $pc{paletteUseBuff} = 1;
 
   $pc{ver} = 0;
   return %pc;
