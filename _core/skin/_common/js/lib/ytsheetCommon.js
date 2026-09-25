@@ -238,7 +238,7 @@ output.generateCcfoliaJson = async (generateType, json, opt_sheetUrl = '') => {
       }
     }
   }
-  
+
   /* 常用對話表 commands */
   {
     var commands = "";
@@ -292,7 +292,7 @@ output.generateCcfoliaJson = async (generateType, json, opt_sheetUrl = '') => {
     speaking: true
   };
 
-  result.data = output['generateCcfoliaJsonOf'+generateType](json, character, defaultPalette);
+  result.data = output['generateCcfoliaJsonOf'+generateType](json, character, commands/*defaultPalette*/);
   
   return JSON.stringify(result);
 };
