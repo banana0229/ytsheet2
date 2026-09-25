@@ -57,7 +57,7 @@ elsif($::mode eq 'blanksheet'){
   $pc{combo1Condition1} = '100%前';
   $pc{combo1Condition2} = '100%以上';
 
-  $pc{paletteUseBuff} = 1;
+  $pc{paletteUseBuff} = 0;
 
   %pc = applyCustomizedInitialValues(\%pc);
 }
