@@ -55,7 +55,7 @@ sub upgradeCharaData {
     }
   }
   if($ver < 1.11001){
-    $pc{paletteUseBuff} = 1;
+    $pc{paletteUseBuff} = 0;
   }
   if($ver < 1.12012){
     foreach my $num (1 .. $pc{historyNum}){
