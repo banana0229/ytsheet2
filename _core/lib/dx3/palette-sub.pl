@@ -25,12 +25,12 @@ sub palettePreset {
     $text .= ":侵蝕骰數修正=0 \@指定侵蝕骰數修正\n";
   }
   if(!$type){
-    # $text .= "//侵蝕率ダイスボーナス=0\n";
-    # $text .= "### ■バフ・デバフ\n";
-    # $text .= "//ダイス修正=0\n";
-    # $text .= "//C値修正=0\n";
-    # $text .= "//達成値修正=0\n";
-    # $text .= "//攻撃力修正=0\n";
+    $text .= "//侵蝕率ダイスボーナス=0\n";
+    $text .= "### ■バフ・デバフ\n";
+    $text .= "//ダイス修正=0\n";
+    $text .= "//C値修正=0\n";
+    $text .= "//達成値修正=0\n";
+    $text .= "//攻撃力修正=0\n";
     $text .= "###\n" if $bot{TKY};
     $text .= "### ■判定\n";
     $text .= "\{肉體\}+{DB}dx(10+{CB})+{AB} 【肉體】判定\n";
@@ -56,6 +56,11 @@ sub palettePreset {
     }
     foreach my $num (1 .. $::pc{skillInfoNum}){
       $text .= "{社會}+{DB}dx(10+{CB})+{$::pc{'skillInfo'.$num.'Name'}}+{AB} 〈$::pc{'skillInfo'.$num.'Name'}〉判定\n" if $::pc{'skillInfo'.$num.'Name'};
+    }
+    if(!$bot{CCF}) {
+      $text .= "\n(0/10+1)D+0+0 \@傷害骰=(命中判定的十位數+1)D+攻擊力+其它修正\n";
+      $text .= "C(0-{裝甲值}-0) \@閃躲失敗傷害=HP傷害-裝甲值-其它修正\n";
+      $text .= "C(0-{裝甲值}-{格擋值}-0) \@格擋傷害=HP傷害-裝甲值-格擋值-其它修正\n";
     }
     $text .= "\n";
     foreach my $num (1 .. $::pc{comboNum}){
@@ -111,9 +116,7 @@ sub palettePreset {
   
   if(!$type && $bot{CCF}) {
     $text =~ s/(.+?)\+\{DB\}(.*?)dx\(10\+\{CB\}\)(.*?)\+\{AB\}(.*?)(\s|$)/$1\+\{侵蝕骰數修正\}\+0\)DX\(10\-0\)$3$4$5/mg;
-    $text .= "\n(0/10+1)D+0+0 \@傷害骰=(命中判定的十位數+1)D+攻擊力+其它修正\n";
-    $text .= "C(0-{裝甲值}-0) \@閃躲失敗傷害=HP傷害-裝甲值-其它修正\n";
-    $text .= "C(0-{裝甲值}-{格擋值}-0) \@格擋傷害=HP傷害-裝甲值-格擋值-其它修正\n";
+    $text =~ s/\/\/.+?\s|$//mg;
   }
 
   return $text;
