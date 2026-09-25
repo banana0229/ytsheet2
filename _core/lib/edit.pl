@@ -866,8 +866,8 @@ sub renderChatPaletteForm {
   foreach ('TMPL',1..$::pc{unitStatusNum}) {
     $status .= '<tr id="unit-status'.$_.'">';
     $status .= '<td class="handle">';
-    $status .= '<td>'.input("unitStatus${_}Label",'','','placeholder="ラベル"');
-    $status .= '<td>'.input("unitStatus${_}Value",'','','placeholder="値"');
+    $status .= '<td>'.input("unitStatus${_}Label",'','','placeholder="名稱"');
+    $status .= '<td>'.input("unitStatus${_}Value",'','','placeholder="值"');
     $status = '<template id="unit-status-template">'.$status.'</template>' if $_ eq 'TMPL';
   }
 

@@ -11,12 +11,12 @@ sub addJsonData {
   ## ロイス数
   my @dloises; $pc{loisHave} = 0; $pc{loisMax} = 0; $pc{titusHave} = 0; $pc{sublimated} = 0;
   foreach my $num (1..7){
-    if($pc{"lois${num}Relation"} =~ /[DＤEＥ]ロイス|^[DＤEＥ]$/){
+    if($pc{"lois${num}Relation"} =~ /[DＤEＥ]露易絲|^[DＤEＥ]$/){
       $pc{"lois${num}Name"} =~ s#/#／#g;
       push(@dloises, $pc{"lois${num}Name"});
     }
     else {
-      if($pc{"lois${num}State"} =~ /タイタス/){
+      if($pc{"lois${num}State"} =~ /泰特斯/){
         $pc{titusHave}++;
       }
       elsif($pc{"lois${num}State"} =~ /昇華/){
@@ -38,13 +38,13 @@ sub addJsonData {
   foreach my $data (@classes){
     $class_text .= ($class_text ? '／' : '') . $data->{NAME} . $data->{LV} if $data->{LV} > 0;
   }
-  my $base = "性別:$pc{gender}　年齢:$pc{age}";
-  my $sub  = "身長:$pc{height}　体重:$pc{weight}";
-  my $works = "ワークス:$pc{works}　カヴァー:$pc{cover}";
-  my $syndrome = "シンドローム:$pc{syndrome1}"
+  my $base = "性別:$pc{gender}　年齡:$pc{age}";
+  my $sub  = "身高:$pc{height}　體重:$pc{weight}";
+  my $works = "真身:$pc{works}　表面:$pc{cover}";
+  my $syndrome = "症候群:$pc{syndrome1}"
                . ($pc{syndrome2}?"／$pc{syndrome2}":'')
                . ($pc{syndrome3}?"／$pc{syndrome3}":'');
-  my $dlois = (@dloises ? 'Dロイス:'.join('／', @dloises) : '');
+  my $dlois = (@dloises ? 'D露易絲:'.join('／', @dloises) : '');
 
   $pc{sheetDescriptionS} = $base."\n".$works."\n".$syndrome;
   $pc{sheetDescriptionM} = $base."　".$sub."\n".$works."\n".$syndrome.($dlois?"\n$dlois":'');

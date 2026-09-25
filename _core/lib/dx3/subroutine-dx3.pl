@@ -14,8 +14,10 @@ sub createUnitStatus {
   my @unitStatus = (
     { 'HP' => $pc{maxHpTotal}.'/'.$pc{maxHpTotal} },
     { '侵蝕' => $pc{baseEncroach} },
-    { 'ロイス' => $pc{loisHave}.'/'.$pc{loisMax} },
-    { '財産' => $pc{savingTotal} },
+    { '露易絲' => $pc{loisHave}.'/'.$pc{loisMax} },
+    { '泰特斯' => 0 },
+    { '財產' => $pc{savingTotal} },
+    { '侵蝕率加成' => 0 },
     { '行動' => $pc{initiativeTotal} },
   );
   
@@ -82,7 +84,7 @@ sub upgradeCharaData {
   if($ver < 1.24004){
     $pc{history0Exp} -= 130;
     $pc{expSpent} = $pc{expTotal} - 130;
-    $pc{createTypeName} = 'フルスクラッチ';
+    $pc{createTypeName} = '完全描繪';
   }
   if($ver < 1.24009){
     foreach my $stt ([0,'Body'], [1,'Sense'], [2,'Mind'], [3,'Social']){

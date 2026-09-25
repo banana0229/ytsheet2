@@ -428,7 +428,7 @@ function setDefaultStatus(statusArray){
           <td>
           <th>${key}
           <td>${item[key]}
-          <td><label class="check-button"><input type="checkbox" value="${key}" oninput="setStatusNotOutput()" ${notset.includes(key)?'checked':''}><span>出力しない</span><label>`;
+          <td><label class="check-button"><input type="checkbox" value="${key}" oninput="setStatusNotOutput()" ${notset.includes(key)?'checked':''}><span>不輸出</span><label>`;
         tbody.append(row);
       }
     }
