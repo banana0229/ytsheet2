@@ -137,7 +137,7 @@ output.getChatPalette = (sheetUrl) => {
   sheetUrl = sheetUrl.replace(/&?mode=([^&]+)/g, '');
   return new Promise((resolve, reject)=>{
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', `${sheetUrl}&mode=palette&tool=ccfolia`, true);
+    xhr.open('GET', `${sheetUrl}&mode=palette&tool=bcdice`, true);
     xhr.responseType = "text";
     xhr.onload = (e) => {
       resolve(output.separateParametersFromChatPalette(e.currentTarget.response));
@@ -220,7 +220,7 @@ output.generateUdonariumXml = async (generateType, json, opt_url='', opt_imageHa
 
 output.generateCcfoliaJson = async (generateType, json, opt_sheetUrl = '') => {
   const result = { kind: "character" };
-  const defaultPalette = await output.getChatPalette(opt_sheetUrl+'&propertiesall=1');
+  const defaultPalette = await output.getChatPalette(opt_sheetUrl+'&propertiesall=1&tool=ccfolia');
 
   const initiative = output.consts?.initiative || {};
 
