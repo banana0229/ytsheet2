@@ -131,7 +131,7 @@ sub paletteProperties {
   my $type = shift;
   my @propaties;
   push @propaties, "### ■能力値";
-  push @propaties, "//肉体=$::pc{sttTotalBody}"  ;
+  push @propaties, "//肉體=$::pc{sttTotalBody}"  ;
   push @propaties, "//感覚=$::pc{sttTotalSense}" ;
   push @propaties, "//精神=$::pc{sttTotalMind}"  ;
   push @propaties, "//社会=$::pc{sttTotalSocial}";
