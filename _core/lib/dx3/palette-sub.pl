@@ -23,6 +23,7 @@ sub palettePreset {
     $text .= ":HP-0 \@-HP\n";
     $text .= ":財產-0 \@-財產\n";
     $text .= ":侵蝕骰數修正=0 \@指定侵蝕骰數修正\n";
+    $text .= "\n";
   }
   if(!$type){
     $text .= "//侵蝕率ダイスボーナス=0\n";
