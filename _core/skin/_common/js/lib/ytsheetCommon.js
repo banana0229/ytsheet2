@@ -137,7 +137,7 @@ output.getChatPalette = (sheetUrl) => {
   sheetUrl = sheetUrl.replace(/&?mode=([^&]+)/g, '');
   return new Promise((resolve, reject)=>{
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', `${sheetUrl}&mode=palette&tool=bcdice`, true);
+    xhr.open('GET', `${sheetUrl}&mode=palette&tool=ccfolia`, true);
     xhr.responseType = "text";
     xhr.onload = (e) => {
       resolve(output.separateParametersFromChatPalette(e.currentTarget.response));
