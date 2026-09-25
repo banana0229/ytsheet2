@@ -238,43 +238,7 @@ output.generateCcfoliaJson = async (generateType, json, opt_sheetUrl = '') => {
       }
     }
   }
-
-  /* 常用對話表 commands */
-  {
-    var commands = "";
-
-    commands = commands.concat("1D 登場侵蝕\n");
-
-    /*數值增減指令*/
-    commands = commands.concat(":侵蝕+0 @+侵蝕\n");
-    commands = commands.concat(":侵蝕-0 @-侵蝕\n");
-    commands = commands.concat(":HP+0 @+HP\n");
-    commands = commands.concat(":HP-0 @-HP\n");
-    commands = commands.concat(":財產-0 @-財產\n");
-    commands = commands.concat(":侵蝕骰數修正=0 @指定侵蝕骰數修正\n");
-
-    commands = commands.concat(defaultPalette.palette);
-    /*
-    for (i = 0; i < abilityArray.length; i++) {
-      let abilityName = abilityArray[i];
-
-      commands = commands.concat(`({${abilityName}}+{侵蝕骰數修正}+0)DX(10-0)　【${abilityName}】判定\n`);
-      }
-
-    for (i = 0; i < abilityArray.length; i++) {
-      let abilityName = abilityArray[i];
-      for (j = 0; j < skill2DArray[i].length; j++) {
-        let skillName = skill2DArray[i][j];
-
-        commands = commands.concat(`({${abilityName}}+{侵蝕骰數修正}+0)DX(10-0)+{${skillName}}　<${skillName}>判定\n`);
-      }
-    }*/
-
-    commands = commands.concat("(0/10+1)D+0+0 @傷害骰=(命中判定的十位數+1)D+攻擊力+其它修正\n");
-    commands = commands.concat("C(0-{裝甲值}-0) @閃躲失敗傷害=HP傷害-裝甲值-其它修正\n");
-    commands = commands.concat("C(0-{裝甲值}-{格擋值}-0) @格擋傷害=HP傷害-裝甲值-格擋值-其它修正\n");
-  }
-
+  
   const character = {
     playerName: json.playerName,
     externalUrl: opt_sheetUrl,
@@ -288,11 +252,11 @@ output.generateCcfoliaJson = async (generateType, json, opt_sheetUrl = '') => {
     invisible: false, hideStatus: false,
     color: (json.nameColor || '').split(',')[0],
     roomId: null,
-    commands: commands,//defaultPalette.palette || '',
+    commands: defaultPalette.palette || '',
     speaking: true
   };
 
-  result.data = output['generateCcfoliaJsonOf'+generateType](json, character, commands/*defaultPalette*/);
+  result.data = output['generateCcfoliaJsonOf'+generateType](json, character, defaultPalette);
   
   return JSON.stringify(result);
 };

@@ -11,8 +11,19 @@ sub palettePreset {
   my %bot;
   if   (!$tool)           { $bot{YTC} = 1; }
   elsif($tool eq 'tekey' ){ $bot{TKY} = $bot{BCD} = 1; }
+  elsif($tool eq 'ccfolia'){ $bot{CCF} = $bot{BCD} = 1; }
   elsif($tool eq 'bcdice'){ $bot{BCD} = 1; }
   ## ＰＣ
+  if(!$type && $bot{CCF}){
+    $text .= "1D 登場侵蝕\n";
+    # 數值增減指令
+    $text .= ":侵蝕+0 @+侵蝕\n";
+    $text .= ":侵蝕-0 @-侵蝕\n";
+    $text .= ":HP+0 @+HP\n";
+    $text .= ":HP-0 @-HP\n";
+    $text .= ":財產-0 @-財產\n";
+    $text .= ":侵蝕骰數修正=0 @指定侵蝕骰數修正\n";
+  }
   if(!$type){
     # $text .= "//侵蝕率ダイスボーナス=0\n";
     # $text .= "### ■バフ・デバフ\n";
@@ -98,6 +109,13 @@ sub palettePreset {
     $text =~ s/^(.+?)dx(.+?)(\s|$)/\($1\)dx$2$3/mg;
   }
   
+  if(!$type && $bot{CCF}) {
+    $text =~ s/(.+?)\+\{DB\}(.*?)dx\(10\+\{CB\}\)(.*?)\+\{AB\}(.*?)(\s|$)/$1\+\{侵蝕骰數修正\}\+0$2DX\(10\-0\)$3$4$5/mg;
+    $text .= "(0/10+1)D+0+0 @傷害骰=(命中判定的十位數+1)D+攻擊力+其它修正\n";
+    $text .= "C(0-{裝甲值}-0) @閃躲失敗傷害=HP傷害-裝甲值-其它修正\n";
+    $text .= "C(0-{裝甲值}-{格擋值}-0) @格擋傷害=HP傷害-裝甲值-格擋值-其它修正\n";
+  }
+
   return $text;
 }
 
