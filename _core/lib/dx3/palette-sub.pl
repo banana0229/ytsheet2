@@ -14,37 +14,37 @@ sub palettePreset {
   elsif($tool eq 'bcdice'){ $bot{BCD} = 1; }
   ## ＰＣ
   if(!$type){
-    $text .= "//侵蝕率ダイスボーナス=0\n";
-    $text .= "### ■バフ・デバフ\n";
-    $text .= "//ダイス修正=0\n";
-    $text .= "//C値修正=0\n";
-    $text .= "//達成値修正=0\n";
-    $text .= "//攻撃力修正=0\n";
+    # $text .= "//侵蝕率ダイスボーナス=0\n";
+    # $text .= "### ■バフ・デバフ\n";
+    # $text .= "//ダイス修正=0\n";
+    # $text .= "//C値修正=0\n";
+    # $text .= "//達成値修正=0\n";
+    # $text .= "//攻撃力修正=0\n";
     $text .= "###\n" if $bot{TKY};
     $text .= "### ■判定\n";
-    $text .= "{肉体}+{DB}dx(10+{CB})+{AB} 【肉体】判定\n";
-    $text .= "{感覚}+{DB}dx(10+{CB})+{AB} 【感覚】判定\n";
+    $text .= "{肉體}+{DB}dx(10+{CB})+{AB} 【肉體】判定\n";
+    $text .= "{感覺}+{DB}dx(10+{CB})+{AB} 【感覺】判定\n";
     $text .= "{精神}+{DB}dx(10+{CB})+{AB} 【精神】判定\n";
-    $text .= "{社会}+{DB}dx(10+{CB})+{AB} 【社会】判定\n";
-    $text .= "{肉体}+{DB}dx(10+{CB})+{白兵}+{AB} 〈白兵〉判定\n";
-    $text .= "{肉体}+{DB}dx(10+{CB})+{回避}+{AB} 〈回避〉判定\n";
-    $text .= "{感覚}+{DB}dx(10+{CB})+{射撃}+{AB} 〈射撃〉判定\n";
-    $text .= "{感覚}+{DB}dx(10+{CB})+{知覚}+{AB} 〈知覚〉判定\n";
+    $text .= "{社會}+{DB}dx(10+{CB})+{AB} 【社會】判定\n";
+    $text .= "{肉體}+{DB}dx(10+{CB})+{近戰}+{AB} 〈近戰〉判定\n";
+    $text .= "{肉體}+{DB}dx(10+{CB})+{迴避}+{AB} 〈迴避〉判定\n";
+    $text .= "{感覺}+{DB}dx(10+{CB})+{射擊}+{AB} 〈射擊〉判定\n";
+    $text .= "{感覺}+{DB}dx(10+{CB})+{知覺}+{AB} 〈知覺〉判定\n";
     $text .= "{精神}+{DB}dx(10+{CB})+{RC}+{AB} 〈ＲＣ〉判定\n";
     $text .= "{精神}+{DB}dx(10+{CB})+{意志}+{AB} 〈意志〉判定\n";
-    $text .= "{社会}+{DB}dx(10+{CB})+{交渉}+{AB} 〈交渉〉判定\n";
-    $text .= "{社会}+{DB}dx(10+{CB})+{調達}+{AB} 〈調達〉判定\n";
+    $text .= "{社會}+{DB}dx(10+{CB})+{交涉}+{AB} 〈交涉〉判定\n";
+    $text .= "{社會}+{DB}dx(10+{CB})+{籌備}+{AB} 〈籌備〉判定\n";
     foreach my $num (1 .. $::pc{skillRideNum}){
-      $text .= "{肉体}+{DB}dx(10+{CB})+{$::pc{'skillRide'.$num.'Name'}}+{AB} 〈$::pc{'skillRide'.$num.'Name'}〉判定\n" if $::pc{'skillRide'.$num.'Name'};
+      $text .= "{肉體}+{DB}dx(10+{CB})+{$::pc{'skillRide'.$num.'Name'}}+{AB} 〈$::pc{'skillRide'.$num.'Name'}〉判定\n" if $::pc{'skillRide'.$num.'Name'};
     }
     foreach my $num (1 .. $::pc{skillArtNum}){
-      $text .= "{感覚}+{DB}dx(10+{CB})+{$::pc{'skillArt'.$num.'Name'}}+{AB} 〈$::pc{'skillArt'.$num.'Name'}〉判定\n"  if $::pc{'skillArt'.$num.'Name'};
+      $text .= "{感覺}+{DB}dx(10+{CB})+{$::pc{'skillArt'.$num.'Name'}}+{AB} 〈$::pc{'skillArt'.$num.'Name'}〉判定\n"  if $::pc{'skillArt'.$num.'Name'};
     }
     foreach my $num (1 .. $::pc{skillKnowNum}){
       $text .= "{精神}+{DB}dx(10+{CB})+{$::pc{'skillKnow'.$num.'Name'}}+{AB} 〈$::pc{'skillKnow'.$num.'Name'}〉判定\n" if $::pc{'skillKnow'.$num.'Name'};
     }
     foreach my $num (1 .. $::pc{skillInfoNum}){
-      $text .= "{社会}+{DB}dx(10+{CB})+{$::pc{'skillInfo'.$num.'Name'}}+{AB} 〈$::pc{'skillInfo'.$num.'Name'}〉判定\n" if $::pc{'skillInfo'.$num.'Name'};
+      $text .= "{社會}+{DB}dx(10+{CB})+{$::pc{'skillInfo'.$num.'Name'}}+{AB} 〈$::pc{'skillInfo'.$num.'Name'}〉判定\n" if $::pc{'skillInfo'.$num.'Name'};
     }
     $text .= "\n";
     foreach my $num (1 .. $::pc{comboNum}){
@@ -61,16 +61,16 @@ sub palettePreset {
         $text .= "▼$::pc{'combo'.$num.'Condition'.$i} ----------\n" if $bot{YTC} || $bot{TKY};
         if(!$::pc{"combo${num}Manual"}){
           if($::pc{"combo${num}Stt"}){
-            if   ($::pc{"combo${num}Stt"} eq '肉体'){ $text .= '{肉体}+'; }
-            elsif($::pc{"combo${num}Stt"} eq '感覚'){ $text .= '{感覚}+'; }
+            if   ($::pc{"combo${num}Stt"} eq '肉體'){ $text .= '{肉體}+'; }
+            elsif($::pc{"combo${num}Stt"} eq '感覺'){ $text .= '{感覺}+'; }
             elsif($::pc{"combo${num}Stt"} eq '精神'){ $text .= '{精神}+'; }
-            elsif($::pc{"combo${num}Stt"} eq '社会'){ $text .= '{社会}+'; }
+            elsif($::pc{"combo${num}Stt"} eq '社會'){ $text .= '{社會}+'; }
           }
           else {
-            if   ($::pc{"combo${num}Skill"} =~ /^(白兵|回避|運転)/){ $text .= '{肉体}+';  }
-            elsif($::pc{"combo${num}Skill"} =~ /^(射撃|知覚|芸術)/){ $text .= '{感覚}+';  }
+            if   ($::pc{"combo${num}Skill"} =~ /^(近戰|迴避|駕駛)/){ $text .= '{肉體}+';  }
+            elsif($::pc{"combo${num}Skill"} =~ /^(射擊|知覺|藝術)/){ $text .= '{感覺}+';  }
             elsif($::pc{"combo${num}Skill"} =~ /^(RC|意思|知識)/)  { $text .= '{精神}+';  }
-            elsif($::pc{"combo${num}Skill"} =~ /^(交渉|調達|情報)/){ $text .= '{社会}+';  }
+            elsif($::pc{"combo${num}Skill"} =~ /^(交涉|籌備|情報)/){ $text .= '{社會}+';  }
           }
         }
         $text .= "$::pc{'combo'.$num.'DiceAdd'.$i}+{DB}dx($::pc{'combo'.$num.'Crit'.$i}+{CB})+$::pc{'combo'.$num.'Fixed'.$i}+{AB}";
@@ -132,19 +132,19 @@ sub paletteProperties {
   my @propaties;
   push @propaties, "### ■能力値";
   push @propaties, "//肉體=$::pc{sttTotalBody}"  ;
-  push @propaties, "//感覚=$::pc{sttTotalSense}" ;
+  push @propaties, "//感覺=$::pc{sttTotalSense}" ;
   push @propaties, "//精神=$::pc{sttTotalMind}"  ;
-  push @propaties, "//社会=$::pc{sttTotalSocial}";
+  push @propaties, "//社會=$::pc{sttTotalSocial}";
   push @propaties, "###" if $tool eq 'tekey';
   push @propaties, "### ■技能";
-  push @propaties, "//白兵=".($::pc{skillTotalMelee}    ||0);
-  push @propaties, "//回避=".($::pc{skillTotalDodge}    ||0);
-  push @propaties, "//射撃=".($::pc{skillTotalRanged}   ||0);
-  push @propaties, "//知覚=".($::pc{skillTotalPercept}  ||0);
+  push @propaties, "//近戰=".($::pc{skillTotalMelee}    ||0);
+  push @propaties, "//迴避=".($::pc{skillTotalDodge}    ||0);
+  push @propaties, "//射擊=".($::pc{skillTotalRanged}   ||0);
+  push @propaties, "//知覺=".($::pc{skillTotalPercept}  ||0);
   push @propaties, "//RC="  .($::pc{skillTotalRC}       ||0);
   push @propaties, "//意志=".($::pc{skillTotalWill}     ||0);
-  push @propaties, "//交渉=".($::pc{skillTotalNegotiate}||0);
-  push @propaties, "//調達=".($::pc{skillTotalProcure}  ||0);
+  push @propaties, "//交涉=".($::pc{skillTotalNegotiate}||0);
+  push @propaties, "//籌備=".($::pc{skillTotalProcure}  ||0);
   foreach my $name ('Ride','Art','Know','Info'){
     foreach my $num (1 .. $::pc{'skill'.$name.'Num'}){
       next if !$::pc{'skill'.$name.$num.'Name'};
