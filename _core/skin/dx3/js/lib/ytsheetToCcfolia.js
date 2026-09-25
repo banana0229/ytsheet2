@@ -11,6 +11,7 @@ output.generateCcfoliaJsonOfDoubleCross3PC = (json, character, defaultPalette) =
   character.memo += json.aka ? `代號：${json.aka}` : '';
   character.memo += json.aka && json.akaRuby ? ` (${json.akaRuby})` : '';
   //character.memo += `玩家：${json.playerName || '無玩家情報'}\n`;
+  character.memo += `\n`;
   character.memo += `${json.works || ''} / ${json.cover || ''}\n`;
   character.memo += `${json.syndrome1 || ''}${json.syndrome2 ? '、'+json.syndrome2 : ''}${json.syndrome3 ? '、'+json.syndrome3 : ''}\n`;
   //character.memo += `\n`;
