@@ -24,6 +24,8 @@ sub palettePreset {
     $text .= ":財產-0 \@-財產\n";
     $text .= ":侵蝕率骰數加成=0 \@指定侵蝕率骰數加成\n";
     $text .= "\n";
+    $text .= "//裝甲值=0\n";
+    $text .= "//格擋值=0\n";
   }
   if(!$type){
     $text .= "//侵蝕率ダイスボーナス=0\n";
@@ -117,8 +119,8 @@ sub palettePreset {
   
   if(!$type && $bot{CCF}) {
     $text =~ s/(.+?)\+\{DB\}(.*?)dx\(10\+\{CB\}\)(.*?)\+\{AB\}(.*?)(\s|$)/$1\+\{侵蝕率骰數加成\}\+0\)DX\(10\-0\)$3$4$5/mg;
-    $text =~ s/\/\/.+?\s|$//mg;
-    $text =~ s/###.*\s?|$//mg;
+    # $text =~ s/\/\/.+?\s|$//mg;
+    # $text =~ s/###.*\s?|$//mg;
   }
 
   return $text;
