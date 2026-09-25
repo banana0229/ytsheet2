@@ -856,7 +856,7 @@ sub renderChatPaletteForm {
       'tekey=>Tekey',
       'bcdice=>その他(BCDice使用)',
     ],
-    buff => 1,
+    buff => 0,
     @_,
   );
   $palette .= "$_\n" foreach(paletteProperties('',$::in{type}));
