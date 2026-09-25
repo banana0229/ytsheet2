@@ -15,9 +15,9 @@ sub createUnitStatus {
     { 'HP' => $pc{maxHpTotal}.'/'.$pc{maxHpTotal} },
     { '侵蝕' => $pc{baseEncroach} },
     { '露易絲' => $pc{loisHave}.'/'.$pc{loisMax} },
-    { '泰特斯' => 0 },
+    { '泰特斯' => $pc{titusHave} },
     { '財產' => $pc{savingTotal} },
-    { '侵蝕率加成' => 0 },
+    { '侵蝕率骰數加成' => 0 },
     { '行動' => $pc{initiativeTotal} },
   );
   

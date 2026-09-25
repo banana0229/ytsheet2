@@ -887,7 +887,7 @@ sub renderChatPaletteForm {
               <span class="ccfol"></span> ／
               <span class="udona"></span>
             </div>
-          <dt>固定屬性<br>
+          <dt>屬性<br>
           <dd>
             @{[ input 'unitStatusNotOutput','hidden' ]}
             @{[ input 'unitStatusNum','hidden' ]}

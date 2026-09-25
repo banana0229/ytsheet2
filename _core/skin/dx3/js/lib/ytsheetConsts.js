@@ -108,14 +108,14 @@ output.consts.MEMORIES_COLUMNS = {
 
 output.consts.DX3_STATUS = [
   {
-    name: '肉体',
+    name: '肉體',
     column: 'Body',
     skills: [
       {
-        name: '白兵',
+        name: '近戰',
         column: 'Melee'
       }, {
-        name: '回避',
+        name: '迴避',
         column: 'Dodge'
       }
     ],
