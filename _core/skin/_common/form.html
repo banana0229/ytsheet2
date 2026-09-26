@@ -15,16 +15,16 @@
             <label><span>名稱</span> <input type="text" name="name" required><b>必填</b></label>
           </p>
           <p>
-            <label><span>ＩＤ<small>(登入用)</small></span> <input type="text" name="id" pattern="^[0-9A-Za-z]+$" title="半角英数字のみ。" required><b>必填</b></label>
+            <label><span>ＩＤ<small>(登入用)</small></span> <input type="text" name="id" pattern="^[0-9A-Za-z]+$" title="半形英數字。" required><b>必填</b></label>
           </p>
           <p>
             <label><span>信箱</span> <input type="email" name="mail"></label>
           </p>
           <p>
-            <label><span>密碼</span> <input type="password" name="password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必填</b></label>
+            <label><span>密碼</span> <input type="password" name="password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半形英數字、『.』『-』『/』" required><b>必填</b></label>
           </p>
           <p>
-            <label><span>密碼(重新確認)</span> <input type="password" name="password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必填</b></label>
+            <label><span>密碼(重新確認)</span> <input type="password" name="password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半形英數字、『.』『-』『/』" required><b>必填</b></label>
           </p>
           <p>
             <input type="submit" value="註冊">
@@ -94,10 +94,10 @@
           <input type="hidden" name="mode" value="reset">
           <input type="hidden" name="code" value="<TMPL_VAR token>">
           <p>
-            <label><span>密碼</span> <input type="password" name="password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必填</b></label>
+            <label><span>密碼</span> <input type="password" name="password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半形英數字、『.』『-』『/』" required><b>必填</b></label>
           </p>
           <p>
-            <label><span>密碼(重新確認)</span> <input type="password" name="password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ" required><b>必填</b></label>
+            <label><span>密碼(重新確認)</span> <input type="password" name="password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半形英數字、『.』『-』『/』" required><b>必填</b></label>
           </p>
           <p>
             <input type="submit" value="送出">
@@ -173,13 +173,13 @@
               <label><span>舊密碼</span> <input type="password" name="password"></label>
             </p>
             <p>
-              <label><span>新密碼</span> <input type="password" name="new_password" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ"></label>
+              <label><span>新密碼</span> <input type="password" name="new_password" pattern="^[0-9A-Za-z\.\-\/]+$" title=半形英數字、『.』『-』『/』"></label>
             </p>
             <p>
-              <label><span>新密碼(重新確認)</span> <input type="password" name="new_password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半角英数字、『.』『-』『/』のみ"></label>
+              <label><span>新密碼(重新確認)</span> <input type="password" name="new_password_confirm" pattern="^[0-9A-Za-z\.\-\/]+$" title="半形英數字、『.』『-』『/』"></label>
             </p>
             <p>
-              <input type="submit" value="変更">
+              <input type="submit" value="變更">
             </p>
           </form>
         </section><section class="form" id="delete-account">
@@ -191,12 +191,12 @@
               真的要刪除帳號嗎？<br>
               <br>
               就算刪除了帳號，已建立的角色也<b>不會消失</b>。<br>
-              （會變成只能讀取／輸出，無法變更的角色）<br>
+              （會變成只能檢視／輸出，無法變更的角色）<br>
               <br>
-              確定刪除帳號的話，<br>請在輸入完密碼後，點擊下方的「削除する」按鈕。
+              確定刪除帳號的話，<br>請在輸入完密碼後，點擊下方的「刪除」按鈕。
             </p>
             <p><label><span>密碼</span> <input type="password" name="password"></label></p>
-            <p><input type="submit" value="削除する"></p>
+            <p><input type="submit" value="刪除"></p>
           </form>
         </section></TMPL_IF>
       </TMPL_IF>
@@ -308,7 +308,7 @@
   <TMPL_IF textRule>
     <article id="edit-help">
       <section class="form">
-        <h2>テキスト装飾・整形ルール</h2>
+        <h2>文字裝飾・樣式語法</h2>
         <TMPL_VAR textRule>
       </section>
     </article>

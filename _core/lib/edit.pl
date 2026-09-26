@@ -454,7 +454,7 @@ sub renderEditPageEnd {
       </article>
       <aside id="text-rule" class="sticky-footer" style="display:none">
         <h2>
-          テキスト装飾・整形ルール
+          文字裝飾・樣式語法
           <small>（<a href="./?mode=edit-help@{[ $type ? "&type=$type" : '' ]}" target="_blank">⇒在新視窗中開啟</a>）</small>
         </h2>
         <i class="close-button" onclick="view('text-rule')"></i>

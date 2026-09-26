@@ -866,7 +866,7 @@ print <<"HTML";
         </tbody>
       </table>
       <ul class="annotate">
-        <li>經驗點的欄位可以進行<code>10+5+1</code>的四則運算（可以用來區分不同條件的經驗點）。<br>
+        <li>經驗點的欄位可進行<code>10+5+1</code>的四則運算（可以用來區分不同條件的經驗點）。<br>
           勾選經驗點欄右邊的套用後，就會計算那欄的經驗點。
       </ul>
       @{[ ($::in{log} || $::in{overwrite}) ? '<button type="button" class="set-newest" onclick="setNewestHistoryData()">最新の團務履歷を適用する</button>' : '' ]}

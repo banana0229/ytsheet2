@@ -46,7 +46,7 @@ elsif($mode eq 'convertform'){
   $INDEX->param(ConvertURLs => \@urls);
 }
 elsif($mode eq 'edit-help'){
-  $INDEX->param(pageTitle => 'テキスト装飾・整形ルール - ');
+  $INDEX->param(pageTitle => '文字裝飾・樣式語法 - ');
   $INDEX->param(textRule => renderTextRule());
 }
 

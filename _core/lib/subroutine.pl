@@ -1511,16 +1511,16 @@ sub renderTextRule {
       <dl><dt>分隔線（點線）<dd><code> * * * *</code>（連續4個以上的空白＋星號）</dl>
       <dl><dt>分隔線（虛線）<dd><code> - - - -</code>（連續4個以上的空白＋減號）</dl>
       <dl><dt>表格<dd>
-        <code>|文字|文字|</code>：生成表格。<br>
-        <code>|~文字|</code>のようにセル頭に<code>~</code>で見出しセルになります。<br>
-        <code>|&gt;|文字|</code>のように<code>&gt;</code>単独で右のセルと結合します。<br>
-        <code>|CENTER: 文字|</code>のようにセル頭に<code>CENTER:</code>で中央揃えになります。<br>
-        <code>|RIGHT: 文字|</code>のようにセル頭に<code>RIGHT:</code>で右揃えになります。<br>
-        <code>|NOWRAP: 文字|</code>のようにセル頭に<code>NOWRAP:</code>でそのセル内で改行しなくなります<br>
-        <code>|CENTER:5em|RIGHT:10em|c</code>のように行末に<code>c</code>をつけると書式指定行となり、その列の文字揃えや幅をまとめて指定できます。<br>
-        ※書式指定行では、通常の文字列は無効になります。<br>
-        ※指定できる幅の単位は、<code>em</code>（1em=全角1文字）および<code>%</code>が有効です。<br>
-        ※指定できる幅の上限は、それぞれ<code>20em</code>と<code>100%</code>です。<br>
+        <code>|文字|文字|</code>：建立表格。<br>
+        <code>|~文字|</code>於開頭加上<code>~</code>可以讓表格格式變成項目。<br>
+        <code>|&gt;|文字|</code>表格內單獨只有一個<code>&gt;</code>的話，會與右邊表格合併。<br>
+        <code>|CENTER: 文字|</code>於開頭加上<code>CENTER:</code>可以讓表格置中。<br>
+        <code>|RIGHT: 文字|</code>於開頭加上<code>RIGHT:</code>可以讓表格置右。<br>
+        <code>|NOWRAP: 文字|</code>於開頭加上<code>NOWRAP:</code>可以讓表格不會換行<br>
+        <code>|CENTER:5em|RIGHT:10em|c</code>於結尾加上<code>c</code>會改為格式指定，可將寬度與對齊方向套用至整列的表格。<br>
+        ※格式指定的表格，無法做為一般的表格顯示內容。<br>
+        ※指定寬度用的單位為<code>em</code>（1em=1個全形文字），或是<code>%</code>。<br>
+        ※寬度上限為<code>20em</code>或<code>100%</code>。<br>
       </dl>
       <dl><dt>自訂列表<dd>
         <code>:項目名|説明文</code><br>
