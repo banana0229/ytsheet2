@@ -109,7 +109,7 @@ function clipboardItemToTextareaClipboard(clipboardItem) {
     blob.text().then((jsonText)=>{
       try {
         copyToClipboard(jsonText);
-        alert('已複製到剪貼簿。請於ccfolia的房間內貼上，以讀取角色資料');
+        alert('已複製到剪貼簿。請於ccfolia的房間內貼上，以讀取角色資料\n(裝甲值、格擋值目前固定為0，請自行調整)');
       } catch (e) {
         popTextareaForCopy(jsonText);
       }
@@ -121,7 +121,7 @@ async function downloadAsCcfolia() {
   const clipboardItem = getClipboardItem();
   if(navigator.clipboard && navigator.clipboard.write) { // FireFox は navigator.clipboard.write が使えない（2022/07/16 v.102.0.1）
     navigator.clipboard.write([clipboardItem]).then((ok)=>{
-      alert('已複製到剪貼簿。請於ccfolia的房間內貼上，以讀取角色資料');
+      alert('已複製到剪貼簿。請於ccfolia的房間內貼上，以讀取角色資料\n(裝甲值、格擋值目前固定為0，請自行調整)');
     }, (err)=>{
       clipboardItemToTextareaClipboard(clipboardItem);
     });

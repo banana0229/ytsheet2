@@ -134,7 +134,7 @@
         </dl>
         <dl>
           <dt><label class="toggle-button"><input type="checkbox" onchange="toggleSingleColumnMode()"></label> 總是顯示為一排
-          <dd>設為ON的話，檢視角色時不會受到視窗大小的影響，總是以一排顯示。（無效化視窗夠寬時，會顯示成兩排的設定）
+          <dd>設為ON的話，檢視角色時不會受到視窗大小的影響，總是以一排顯示。（將會取消視窗夠寬時，會顯示為兩排的設定）
         </dl>
         <p id="confirm-adult-age">你是否已年滿18歲？ <label class="toggle-button yes-no"><input type="checkbox" onchange="declareAdultAge()"></label></p>
         <dl>
@@ -206,38 +206,38 @@
   <TMPL_IF modeConvert>
     <article id="convertform">
       <section class="form">
-        <h2><span class="material-symbols-outlined bold">edit_note</span>コンバート作成</h2>
-        <h3>URLから</h3>
+        <h2><span class="material-symbols-outlined bold">edit_note</span>轉換建立</h2>
+        <h3>從URL建立</h3>
         <form method="get" action="./" id="form-to-import-from-url">
           <input type="hidden" name="mode" value="convert">
           <p>
-            入力したURLのデータを元にゆとシートⅡで新規作成します。<br>
-            <input type="url" name="url" style="width:50%;" placeholder="http://..." required><input type="submit" value="作成">
+            根據輸入的URL建立新的角色資料。<br>
+            <input type="url" name="url" style="width:50%;" placeholder="http://..." required><input type="submit" value="建立">
           </p>
         </form>
         <hr>
-        <h3>ローカルファイルから</h3>
+        <h3>從本機檔案建立</h3>
         <form method="post" enctype="multipart/form-data" action="./">
           <input type="hidden" name="mode" value="convert">
           <p>
-            アップロードしたJSONファイルを元にゆとシートⅡで新規作成します。<br>
-            <input type="file" name="file" style="width:50%;" accept=".json,.txt" required><input type="submit" value="作成">
+            根據上傳的JSON檔，建立新的角色資料。<br>
+            <input type="file" name="file" style="width:50%;" accept=".json,.txt" required><input type="submit" value="建立">
           </p>
         </form>
         <hr>
-        <h3>クリップボードから</h3>
+        <h3>從剪貼簿建立</h3>
         <div class="form">
           <p>
-            クリップボードからURL/JSONを読み取り、ゆとシートⅡで新規作成します。<br>
+            根據剪貼簿的URLURL/JSON檔，建立新的角色資料。<br>
             <button class="submit" id="button-to-import-from-clipboard" disabled>作成</button>
           </p>
         </div>
       </section>
       <section class="form">
-        <h2><span class="material-symbols-outlined bold">visibility</span>コンバートビュー</h2>
+        <h2><span class="material-symbols-outlined bold">visibility</span>轉換預覽</h2>
         <form method="get" action="./">
           <p>
-            入力したURLのデータをゆとシートⅡで表示します。（保存はされません）<br>
+            根據輸入的URL顯示角色資料。（不會儲存）<br>
             <input type="url" name="url" style="width:50%;" placeholder="http://..." required><input type="submit" value="表示">
           </p>
         </form>
@@ -257,16 +257,16 @@
           <TMPL_LOOP ConvertURLs><dd><TMPL_VAR URL>data/<i>[番号/ID]</i>.html</TMPL_LOOP>
         </dl></TMPL_IF>
         <dl>
-          <dt>他、ゆとシートⅡ
-          <dd>http://<i>(設置されたゆとシートⅡのURL)</i>/?id=<i>[ID]</i>
+          <dt>其他ゆとシートⅡ
+          <dd>http://<i>(其他ゆとシートⅡ的URL)</i>/?id=<i>[ID]</i>
         </dl>
       </section>
       <section class="form">
-        <h3><span class="material-symbols-outlined bold">info</span>コンバートの仕様</h3>
+        <h3><span class="material-symbols-outlined bold">info</span>轉換的規格</h3>
         <section>
-        <h4>データの変換</h4>
+        <h4>資料轉換</h4>
         <p class="left">
-          　基本的に、数値などは自動的に計算され直します。<br>
+          　基本上數值都會重新計算。<br>
           　また、一部テキスト等もゆとシート向けに自動的に変換されます。<br>
           　一例を下記に示します。<br>
         </p>

@@ -645,7 +645,7 @@ sub setSearchSummary {
     [ $::in{author}, '建立者名稱包含「%s」' ],
     [ $::in{gender}, '性別「%s」' ],
     @array,
-    [ $::in{image}, ($::in{image} eq '1' ? '有圖片' : $::in{image} eq 'N' ? '無圖片' : '圖片「%s」') ],
+    [ $::in{image}, ($::in{image} eq '1' ? '有設定圖片' : $::in{image} eq 'N' ? '無設定圖片' : '圖片「%s」') ],
   ) {
     my ($value, $format) = @$_;
     next if !defined($value) || $value eq '';

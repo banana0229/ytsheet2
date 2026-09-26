@@ -1482,7 +1482,7 @@ sub ensureHtaccessDenied {
 sub renderTextRule {
   my $type = $::pc{type} // $::in{type} // '';
   return <<~"HTML";
-    <p>輸入以下語法，可調整文字顯示出來的格式。</p>
+    <p>輸入以下語法，可調整文字的顯示樣式。</p>
     <section>
       <dl><dt>粗體  <dd><code>''文字''</code>：<b>文字</b></dl>
       <dl><dt>斜體  <dd><code>'''文字'''</code>：<span class="oblique">文字</span></dl>
