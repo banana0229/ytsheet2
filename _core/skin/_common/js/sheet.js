@@ -98,7 +98,7 @@ function createRemoveSpoilerButton(id, type = imageLayouts[id].spoiler) {
     notes.append(button);
   }
   else {
-    notes.innerHTML += `<small>無法對未滿18歲的顯示。</small>`;
+    notes.innerHTML += `<small>無法對未滿18歲的使用者顯示。</small>`;
     if(id) {
       notes.innerHTML += `<small>如果您已滿18歲的話，請至<a href="./?mode=option">檢視設定</a>進行相關設定。</small>`;
     }
