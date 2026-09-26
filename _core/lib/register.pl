@@ -10,7 +10,7 @@ if($mode eq 'register'){
   if(!checkToken($::in{_token})){ error('セッションの有効期限が切れたか、二重投稿です'); }
 
   if($set::registerkey && $set::registerkey ne $::in{registerkey}){ error('金鑰錯誤。'); }
-  if($::in{password} ne $::in{password_confirm}){ error('パスワードの確認入力が一致しません'); }
+  if($::in{password} ne $::in{password_confirm}){ error('密碼不一致'); }
   if ($::in{password} eq ''){ error('パスワードが入力されていません'); }
   else {
     if ($::in{password} =~ /[^0-9A-Za-z\.\-\/]/) { error('パスワードに使える文字は、半角の英数字とピリオド、ハイフン、スラッシュだけです'); }
@@ -18,7 +18,7 @@ if($mode eq 'register'){
 
   open (my $READ, '<', $set::userfile);
   while (my $line = <$READ>){
-    if(index($line, "$::in{id}<") == 0){ error('そのIDは使用されています'); }
+    if(index($line, "$::in{id}<") == 0){ error('ID已被使用'); }
   }
   close ($READ);
 
@@ -64,7 +64,7 @@ elsif($mode eq 'option'){
 elsif($mode eq 'passchange'){
   my $LOGIN_ID = check;
 
-  if($::in{new_password} ne $::in{new_password_confirm}){ error('パスワードの確認入力が一致しません'); }
+  if($::in{new_password} ne $::in{new_password_confirm}){ error('密碼不一致'); }
   if ($::in{password} eq ''){ error('パスワードが入力されていません'); }
   if ($::in{new_password} eq ''){ error('新しいパスワードが入力されていません'); }
   else {
@@ -91,15 +91,15 @@ elsif($mode eq 'passchange'){
     }
   });
   
-  if(!$flag){ error('パスワードが間違っています'); }
+  if(!$flag){ error('密碼錯誤'); }
   
-  our $set_message = '変更を保存しました。';
+  our $set_message = '變更成功。';
   require $set::lib_form;
 }
 elsif($mode eq 'delete-account'){
   my $LOGIN_ID = check;
 
-  unless(getKey($LOGIN_ID, $::in{password})){ error('401:ログイン状態でないか、パスワードが間違っています。') }
+  unless(getKey($LOGIN_ID, $::in{password})){ error('401:非登入狀態，或是密碼錯誤。') }
 
   overwriteFile($set::userfile, sub {
     my ($READ, $WRITE) = @_;

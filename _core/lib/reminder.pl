@@ -50,7 +50,7 @@ elsif($::in{id}){
 elsif($::in{password}){
   if(!checkToken($::in{code})){ error('URLの有効期限が過ぎています。'); }
 
-  if($::in{password} ne $::in{password_confirm}){ error('パスワードの確認入力が一致しません'); }
+  if($::in{password} ne $::in{password_confirm}){ error('密碼不一致'); }
   if ($::in{password} eq ''){ error('パスワードが入力されていません'); }
   else {
     if ($::in{password} =~ /[^0-9A-Za-z\.\-\/]/) { error('パスワードに使える文字は、半角の英数字とピリオド、ハイフン、スラッシュだけです'); }
