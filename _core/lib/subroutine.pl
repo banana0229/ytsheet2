@@ -1523,8 +1523,8 @@ sub renderTextRule {
         ※寬度上限為<code>20em</code>或<code>100%</code>。<br>
       </dl>
       <dl><dt>自訂列表<dd>
-        <code>:項目名|説明文</code><br>
-        <code>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|説明文2行目</code> 項目名を記入しないか、半角スペースで埋めると上と結合します。
+        <code>:項目名稱|說明文</code><br>
+        <code>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|第2行的說明文</code> 沒有輸入項目名稱，或是項目名稱只有半形空白時，會與前一個項目結合。
       </dl>
       <dl><dt>摺疊<dd>
         開頭為<code>[>]摺疊名稱</code>：後續的所有文字都將被摺疊。<br>
