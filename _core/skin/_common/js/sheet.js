@@ -78,17 +78,17 @@ window.addEventListener('DOMContentLoaded', ()=>{
 function createRemoveSpoilerButton(id, type = imageLayouts[id].spoiler) {
   let notes = document.createElement('div');
   notes.classList.add('spoiler-notes');
-  if(type == 'R-18'     ){ notes.innerHTML = "<p>画像はR-18（成人向け／性的表現を含む）として設定されています。</p>" }
-  if(type == 'R-18G'    ){ notes.innerHTML = "<p>画像はR-18G（成人向け／グロテスク表現を含む）として設定されています。</p>" }
-  if(type == 'sensitive'){ notes.innerHTML = "<p>画像はセンシティブな内容を含むものとして設定されています。</p>" }
-  if(type == 'spoiler'  ){ notes.innerHTML = "<p>画像はネタバレのおそれのあるものとして設定されています。</p>" }
+  if(type == 'R-18'     ){ notes.innerHTML = "<p>該圖片被設為包含R-18（成人／色情表現）內容。</p>" }
+  if(type == 'R-18G'    ){ notes.innerHTML = "<p>該圖片被設為包含R-18G（成人／獵奇表現）內容。</p>" }
+  if(type == 'sensitive'){ notes.innerHTML = "<p>該圖片被設為包含敏感內容。</p>" }
+  if(type == 'spoiler'  ){ notes.innerHTML = "<p>該圖片被設為包含劇透內容。</p>" }
 
   if(hasDeclaredAdultAge == 1 || (type && !/R-18/.test(type)) || downloadMode){
     if(downloadMode && /R-18/.test(type)){
-      notes.innerHTML += `<small>18歳未満のユーザーは閲覧しないでください。</small>`;
+      notes.innerHTML += `<small>未滿18歲的使用者請不要閱覽。</small>`;
     }
     let button = document.createElement('span');
-    button.textContent = "表示";
+    button.textContent = "顯示";
     button.classList.add('remove-spoiler-button');
     button.addEventListener('click', (e) => { 
       delete notes.parentNode.dataset.spoiler;
@@ -98,9 +98,9 @@ function createRemoveSpoilerButton(id, type = imageLayouts[id].spoiler) {
     notes.append(button);
   }
   else {
-    notes.innerHTML += `<small>18歳未満のユーザーには表示できません。</small>`;
+    notes.innerHTML += `<small>無法對未滿18歲的顯示。</small>`;
     if(id) {
-      notes.innerHTML += `<small>あなたが18歳以上である場合は、<a href="./?mode=option">閲覧設定</a>で設定してください。</small>`;
+      notes.innerHTML += `<small>如果您已滿18歲的話，請至<a href="./?mode=option">檢視設定</a>進行相關設定。</small>`;
     }
   }
   return notes;
