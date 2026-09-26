@@ -174,7 +174,7 @@ sub dataCalc {
   ### ロイス --------------------------------------------------
   my @dloises;
   foreach my $num (1..7){
-    if($pc{"lois${num}Relation"} =~ /[DＤ]ロイス|^[DＤ]$/){
+    if($pc{"lois${num}Relation"} =~ /[DＤ]露易絲|^[DＤ]$/){
       $pc{"lois${num}Name"} =~ s#/#／#g;
       push(@dloises, $pc{"lois${num}Name"});
     }
